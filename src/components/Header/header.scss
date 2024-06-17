@@ -1,0 +1,27 @@
+@use '../../styles/abstracts';
+
+%flexItemsCenter {
+  display: flex;
+  align-items: center;
+}
+
+.header {
+  background: var(--header-bg-color);
+  padding: 20px 0;
+}
+.top-bar {
+  position: relative;
+  @extend %flexItemsCenter;
+  &__logo {
+    @include abstracts.screen(lg) {
+      margin-left: 40px;
+    }
+    @include abstracts.screen(md) {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      margin-left: 0;
+    }
+  }
+}
