@@ -1,4 +1,3 @@
-import MainLayout from '../../layouts/MainLayout'
 import SlideShow from './Components/SlideShow'
 import Category from './Components/Category'
 import ProductList from './Components/ProductList'

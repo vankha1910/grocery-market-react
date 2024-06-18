@@ -1,3 +1,5 @@
+import './styles/main.scss'
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import MainLayout from './layouts/MainLayout'
 import HomePage from './pages/Home'
@@ -6,7 +8,6 @@ import Profile from './pages/Profile'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import PageNotFound from './pages/PageNotFound'
-import './styles/main.scss'
 function App() {
   return (
     <BrowserRouter>
