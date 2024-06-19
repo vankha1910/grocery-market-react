@@ -1,6 +1,6 @@
+import './productTabInfo.scss'
 import { useState } from 'react'
 import { Rate } from 'antd'
-import './productTabInfo.scss'
 import {
   Avatar1,
   Avatar2,
@@ -12,8 +12,82 @@ import {
   productImage3,
   productImage4
 } from '~/assets'
-
+import ProductItem from '../../../../components/ProductItem'
 const tabList = ['Description', 'Review (1100)', 'Similar']
+const productList = [
+  {
+    img: productImage1,
+    name: 'Coffee Beans - Espresso Arabica and Robusta Beans',
+    brand: 'Lavazza',
+    price: 120.05,
+    rated: 5,
+    liked: false
+  },
+  {
+    img: productImage2,
+    name: 'Lavazza Coffee Blends - Try the Italian Espresso',
+    brand: 'Welikecoffee',
+    price: 46.77,
+    rated: 4.2,
+    liked: true
+  },
+  {
+    img: productImage3,
+    name: 'Lavazza - Caffè Espresso Black Tin - Ground coffee',
+    brand: 'Lavazza',
+    price: 99.99,
+    rated: 5,
+    liked: false
+  },
+  {
+    img: productImage2,
+    name: 'Lavazza Coffee Blends - Try the Italian Espresso',
+    brand: 'Welikecoffee',
+    price: 99.77,
+    rated: 3.2,
+    liked: false
+  },
+  {
+    img: productImage1,
+    name: 'Coffee Beans - Espresso Arabica and Robusta Beans',
+    brand: 'Lavazza',
+    price: 120.05,
+    rated: 5,
+    liked: false
+  },
+  {
+    img: productImage2,
+    name: 'Lavazza Coffee Blends - Try the Italian Espresso',
+    brand: 'Welikecoffee',
+    price: 46.77,
+    rated: 4.2,
+    liked: true
+  },
+  {
+    img: productImage3,
+    name: 'Lavazza - Caffè Espresso Black Tin - Ground coffee',
+    brand: 'Lavazza',
+    price: 99.99,
+    rated: 5,
+    liked: false
+  },
+  {
+    img: productImage2,
+    name: 'Lavazza Coffee Blends - Try the Italian Espresso',
+    brand: 'Welikecoffee',
+    price: 99.77,
+    rated: 3.2,
+    liked: false
+  },
+  {
+    img: productImage4,
+    name: 'Lavazza Coffee Blends - Try the Italian Espresso',
+    brand: 'Welikecoffee',
+    price: 46.77,
+    rated: 4.2,
+    liked: true
+  }
+]
 const ProductTabInfo = () => {
   const [tab, setTab] = useState(0)
 
@@ -185,138 +259,11 @@ const ProductTabInfo = () => {
             <div className='prod-content'>
               <h2 className='prod-content__heading'>Similar items you might like</h2>
               <div className='row row-cols-5 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-2'>
-                <div className='col'>
-                  <article className='product-card'>
-                    <div className='product-card__img-wrap'>
-                      <a href='./product-detail.html'>
-                        <img alt='' className='product-card__img' src={productImage1} />
-                      </a>
-                      <button className='btn-like product-card__btn-like'>
-                        <img alt='' className='like-btn__icon icon' src={HeartIcon} />
-                        {/* <img alt='' className='like-btn__icon--liked' src='./assets/icons/heart-red.svg' /> */}
-                      </button>
-                    </div>
-                    <h3 className='product-card__title'>
-                      <a href='./product-detail.html'>Coffee Beans - Espresso Arabica and Robusta Beans</a>
-                    </h3>
-                    <p className='product-card__brand'>Lavazza</p>
-                    <div className='product-card__row'>
-                      <span className='product-card__price'>$47.00</span>
-                      <img alt='' className='product-card__star' src={StarIcon} />
-                      <span className='product-card__score'>4.3</span>
-                    </div>
-                  </article>
-                </div>
-                <div className='col'>
-                  <article className='product-card'>
-                    <div className='product-card__img-wrap'>
-                      <a href='./product-detail.html'>
-                        <img alt='' className='product-card__img' src={productImage2} />
-                      </a>
-                      <button className='btn-like product-card__btn-like'>
-                        <img alt='' className='like-btn__icon icon' src={HeartIcon} />
-                        {/* <img alt='' className='like-btn__icon--liked' src='./assets/icons/heart-red.svg' /> */}
-                      </button>
-                    </div>
-                    <h3 className='product-card__title'>
-                      <a href='./product-detail.html'>Lavazza Coffee Blends - Try the Italian Espresso</a>
-                    </h3>
-                    <p className='product-card__brand'>Lavazza</p>
-                    <div className='product-card__row'>
-                      <span className='product-card__price'>$53.00</span>
-                      <img alt='' className='product-card__star' src={StarIcon} />
-                      <span className='product-card__score'>3.4</span>
-                    </div>
-                  </article>
-                </div>
-                <div className='col'>
-                  <article className='product-card'>
-                    <div className='product-card__img-wrap'>
-                      <a href='./product-detail.html'>
-                        <img alt='' className='product-card__img' src={productImage3} />
-                      </a>
-                      <button className='btn-like btn-like--liked product-card__btn-like'>
-                        <img alt='' className='like-btn__icon icon' src={HeartIcon} />
-                        <img alt='' className='like-btn__icon--liked' src='./assets/icons/heart-red.svg' />
-                      </button>
-                    </div>
-                    <h3 className='product-card__title'>
-                      <a href='./product-detail.html'>Lavazza - Caffè Espresso Black Tin - Ground coffee</a>
-                    </h3>
-                    <p className='product-card__brand'>Welikecoffee</p>
-                    <div className='product-card__row'>
-                      <span className='product-card__price'>$99.99</span>
-                      <img alt='' className='product-card__star' src={StarIcon} />
-                      <span className='product-card__score'>5.0</span>
-                    </div>
-                  </article>
-                </div>
-                <div className='col'>
-                  <article className='product-card'>
-                    <div className='product-card__img-wrap'>
-                      <a href='./product-detail.html'>
-                        <img alt='' className='product-card__img' src={productImage4} />
-                      </a>
-                      <button className='btn-like product-card__btn-like'>
-                        <img alt='' className='like-btn__icon icon' src={HeartIcon} />
-                        <img alt='' className='like-btn__icon--liked' src='./assets/icons/heart-red.svg' />
-                      </button>
-                    </div>
-                    <h3 className='product-card__title'>
-                      <a href='./product-detail.html'>Qualità Oro Mountain Grown - Espresso Coffee Beans</a>
-                    </h3>
-                    <p className='product-card__brand'>Lavazza</p>
-                    <div className='product-card__row'>
-                      <span className='product-card__price'>$38.65</span>
-                      <img alt='' className='product-card__star' src={StarIcon} />
-                      <span className='product-card__score'>4.4</span>
-                    </div>
-                  </article>
-                </div>
-                {/* <div className='col'>
-                  <article className='product-card'>
-                    <div className='product-card__img-wrap'>
-                      <a href='./product-detail.html'>
-                        <img alt='' className='product-card__img' src='./assets/img/product/item-1.png' />
-                      </a>
-                      <button className='btn-like product-card__btn-like'>
-                        <img alt='' className='like-btn__icon icon' src='./assets/icons/heart.svg' />
-                        <img alt='' className='like-btn__icon--liked' src='./assets/icons/heart-red.svg' />
-                      </button>
-                    </div>
-                    <h3 className='product-card__title'>
-                      <a href='./product-detail.html'>Coffee Beans - Espresso Arabica and Robusta Beans</a>
-                    </h3>
-                    <p className='product-card__brand'>Lavazza</p>
-                    <div className='product-card__row'>
-                      <span className='product-card__price'>$47.00</span>
-                      <img alt='' className='product-card__star' src='./assets/icons/star.svg' />
-                      <span className='product-card__score'>4.3</span>
-                    </div>
-                  </article>
-                </div>
-                <div className='col'>
-                  <article className='product-card'>
-                    <div className='product-card__img-wrap'>
-                      <a href='./product-detail.html'>
-                        <img alt='' className='product-card__img' src='./assets/img/product/item-2.png' />
-                      </a>
-                      <button className='btn-like product-card__btn-like'>
-                        <img alt='' className='like-btn__icon icon' src='./assets/icons/heart.svg' />
-                        <img alt='' className='like-btn__icon--liked' src='./assets/icons/heart-red.svg' />
-                      </button>
-                    </div>
-                    <h3 className='product-card__title'>
-                      <a href='./product-detail.html'>Lavazza Coffee Blends - Try the Italian Espresso</a>
-                    </h3>
-                    <p className='product-card__brand'>Lavazza</p>
-                    <div className='product-card__row'>
-                      <span className='product-card__price'>$53.00</span>
-                      <img alt='' className='product-card__star' src='./assets/icons/star.svg' />
-                      <span className='product-card__score'>3.4</span>
-                    </div>
-                  </article>
-                </div> */}
+                {productList.map((item, index) => (
+                  <div className='col' key={index}>
+                    <ProductItem product={item} />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
