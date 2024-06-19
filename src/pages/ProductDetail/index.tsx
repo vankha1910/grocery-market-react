@@ -6,7 +6,7 @@ import ProductTabInfo from './Components/ProductTabInfo'
 import './productDetail.scss'
 const ProductDetail = () => {
   const listProductImage = [productImage1, productImage2, productImage3, productImage4]
-
+  const breadcrumbArray = ['Departments', 'Coffee', 'Coffee Beans', 'Lavazza']
   return (
     <main className='product-page'>
       <div className='container'>
@@ -19,7 +19,7 @@ const ProductDetail = () => {
           </div>
         </div>
         <div className='product-container'>
-          <Breadcrumb></Breadcrumb>
+          <Breadcrumb breadcrumbArray={breadcrumbArray}></Breadcrumb>
         </div>
         <div className='product-container prod-info-content'>
           <div className='row'>
