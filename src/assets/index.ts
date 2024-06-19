@@ -19,6 +19,22 @@ import FormErrorIcon from './icons/form-error.svg'
 import MessageIcon from './icons/message.svg'
 import LockIcon from './icons/lock.svg'
 import GoogleIcon from './icons/google.svg'
+import ProfileIcon from './icons/profile.svg'
+import LocationIcon from './icons/location.svg'
+import Message2Icon from './icons/message-2.svg'
+import DownloadIcon from './icons/download.svg'
+import GiftIcon from './icons/gift.svg'
+import Gift2Icon from './icons/gift-2.svg'
+import ShieldIcon from './icons/shield.svg'
+import InforIcon from './icons/info.svg'
+import DangerIcon from './icons/danger.svg'
+import PlusIcon from './icons/plus.svg'
+import PhoneIcon from './icons/calling.svg'
+
+import planeIcon from './imgs/card/plane.svg'
+import planeBgIcon from './imgs/card/plane-bg.svg'
+import leafIcon from './imgs/card/leaf.svg'
+import leafBgIcon from './imgs/card/leaf-bg.svg'
 
 import slideImage1 from './imgs/slideshow/slideshow-1.png'
 import slideImage1Mb from './imgs/slideshow/slideshow-1-mb.png'
@@ -75,5 +91,20 @@ export {
   MessageIcon,
   LockIcon,
   GoogleIcon,
-  ForgotIntro
+  ForgotIntro,
+  ProfileIcon,
+  LocationIcon,
+  Message2Icon,
+  DownloadIcon,
+  GiftIcon,
+  Gift2Icon,
+  ShieldIcon,
+  InforIcon,
+  DangerIcon,
+  planeIcon,
+  planeBgIcon,
+  leafIcon,
+  leafBgIcon,
+  PlusIcon,
+  PhoneIcon
 }
