@@ -5,8 +5,9 @@ import MainLayout from './layouts/MainLayout'
 import HomePage from './pages/Home'
 import ProductDetail from './pages/ProductDetail'
 import Profile from './pages/Profile'
-import Login from './pages/Login'
-import Register from './pages/Register'
+import Login from './pages/(auth)/Login'
+import Register from './pages/(auth)/Register'
+import ForgotPassword from './pages/(auth)/ForgotPassword'
 import PageNotFound from './pages/PageNotFound'
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
 
         <Route path='login' element={<Login></Login>}></Route>
         <Route path='register' element={<Register></Register>}></Route>
+        <Route path='forgot-password' element={<ForgotPassword></ForgotPassword>}></Route>
         <Route path='*' element={<PageNotFound></PageNotFound>}></Route>
       </Routes>
     </BrowserRouter>

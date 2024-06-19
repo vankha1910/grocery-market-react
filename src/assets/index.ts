@@ -15,6 +15,11 @@ import LinkedinIcon from './icons/linkedin.svg'
 import DocumentIcon from './icons/document.svg'
 import BagIcon from './icons/bag.svg'
 import ArrowDownLarge from './icons/select-arrow.svg'
+import FormErrorIcon from './icons/form-error.svg'
+import MessageIcon from './icons/message.svg'
+import LockIcon from './icons/lock.svg'
+import GoogleIcon from './icons/google.svg'
+
 import slideImage1 from './imgs/slideshow/slideshow-1.png'
 import slideImage1Mb from './imgs/slideshow/slideshow-1-mb.png'
 
@@ -32,6 +37,8 @@ import productImage2 from './imgs/products/product-2.png'
 import productImage3 from './imgs/products/product-3.png'
 import productImage4 from './imgs/products/product-4.png'
 
+import LoginIntro from './imgs/auth/sign-up-intro.svg'
+import ForgotIntro from './imgs/auth/forgot-password.png'
 export {
   Logo,
   ArrowDown,
@@ -62,5 +69,11 @@ export {
   ArrowDownLarge,
   Avatar1,
   Avatar2,
-  Avatar3
+  Avatar3,
+  LoginIntro,
+  FormErrorIcon,
+  MessageIcon,
+  LockIcon,
+  GoogleIcon,
+  ForgotIntro
 }
