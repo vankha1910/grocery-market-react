@@ -30,6 +30,11 @@ import InforIcon from './icons/info.svg'
 import DangerIcon from './icons/danger.svg'
 import PlusIcon from './icons/plus.svg'
 import PhoneIcon from './icons/calling.svg'
+import ArrowDown2 from './icons/arrow-down-2.svg'
+import MinusIcon from './icons/minus.svg'
+import TrashIcon from './icons/trash.svg'
+import HeartIcon2 from './icons/heart-2.svg'
+import EditIcon from './icons/edit.svg'
 
 import planeIcon from './imgs/card/plane.svg'
 import planeBgIcon from './imgs/card/plane-bg.svg'
@@ -106,5 +111,10 @@ export {
   leafIcon,
   leafBgIcon,
   PlusIcon,
-  PhoneIcon
+  PhoneIcon,
+  ArrowDown2,
+  MinusIcon,
+  TrashIcon,
+  HeartIcon2,
+  EditIcon
 }

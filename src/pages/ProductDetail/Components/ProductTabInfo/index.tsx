@@ -1,17 +1,7 @@
 import './productTabInfo.scss'
 import { useState } from 'react'
 import { Rate } from 'antd'
-import {
-  Avatar1,
-  Avatar2,
-  Avatar3,
-  HeartIcon,
-  StarIcon,
-  productImage1,
-  productImage2,
-  productImage3,
-  productImage4
-} from '~/assets'
+import { Avatar1, Avatar2, Avatar3, productImage1, productImage2, productImage3, productImage4 } from '~/assets'
 import ProductItem from '../../../../components/ProductItem'
 const tabList = ['Description', 'Review (1100)', 'Similar']
 const productList = [

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import AuthLayout from '../../../layouts/AuthLayout'
-import { ForgotIntro, FormErrorIcon, GoogleIcon, MessageIcon } from '~/assets'
+import { ForgotIntro, FormErrorIcon, MessageIcon } from '~/assets'
 const index = () => {
   const authHeading = `Reset your password`
   const authDesc = `Enter your email and we'll send you a link to reset your password.`

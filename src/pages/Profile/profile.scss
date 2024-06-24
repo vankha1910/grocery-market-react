@@ -239,19 +239,21 @@
 
   &__checkbox {
     &-input {
-      appearance: none;
+      width: 20px;
+      height: 20px;
+      // appearance: none;
 
-      &::before {
-        content: url('../icons/checkbox-uncheck.svg');
-      }
+      // &::before {
+      //   content: url('../icons/checkbox-uncheck.svg');
+      // }
 
-      &:not(:checked)::before {
-        filter: var(--icon-color);
-      }
+      // &:not(:checked)::before {
+      //   filter: var(--icon-color);
+      // }
 
-      &:checked::before {
-        content: url('../icons/checkbox-checked.svg');
-      }
+      // &:checked::before {
+      //   content: url('../icons/checkbox-checked.svg');
+      // }
     }
   }
 

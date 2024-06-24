@@ -1,4 +1,3 @@
-import React from 'react'
 import PaymentCard from '../PaymentCard'
 import {
   LocationIcon,

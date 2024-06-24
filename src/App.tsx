@@ -9,14 +9,19 @@ import Login from './pages/(auth)/Login'
 import Register from './pages/(auth)/Register'
 import ForgotPassword from './pages/(auth)/ForgotPassword'
 import PageNotFound from './pages/PageNotFound'
+import Checkout from './pages/Checkout'
+import Shipping from './pages/Shipping'
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<MainLayout></MainLayout>}>
-          <Route path='/' element={<HomePage></HomePage>}></Route>
+          <Route index element={<HomePage></HomePage>}></Route>
+          <Route path='home' element={<HomePage></HomePage>}></Route>
           <Route path='product/:id' element={<ProductDetail></ProductDetail>}></Route>
           <Route path='profile' element={<Profile></Profile>}></Route>
+          <Route path='checkout' element={<Checkout></Checkout>}></Route>
+          <Route path='shipping' element={<Shipping></Shipping>}></Route>
         </Route>
 
         <Route path='login' element={<Login></Login>}></Route>
