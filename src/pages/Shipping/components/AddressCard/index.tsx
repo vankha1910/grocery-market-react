@@ -6,7 +6,7 @@ type AddressCardProps = {
   address: string
   defaultAddress: boolean
 }
-const index = ({ name, address, defaultAddress }: AddressCardProps) => {
+const index = ({ address }: { address: AddressCardProps }) => {
   return (
     <article className='address-card'>
       <div className='address-card__left'>
@@ -15,14 +15,14 @@ const index = ({ name, address, defaultAddress }: AddressCardProps) => {
             <input
               type='radio'
               name='shipping-address'
-              defaultChecked={defaultAddress}
+              defaultChecked={address.defaultAddress}
               className='cart-info__checkbox-input'
             />
           </label>
         </div>
         <div className='address-card__info'>
-          <h3 className='address-card__title'>{name}</h3>
-          <p className='address-card__desc'>{address}</p>
+          <h3 className='address-card__title'>{address?.name}</h3>
+          <p className='address-card__desc'>{address?.address}</p>
           <ul className='address-card__list'>
             <li className='address-card__list-item'>Shipping</li>
             <li className='address-card__list-item'>Delivery from store</li>

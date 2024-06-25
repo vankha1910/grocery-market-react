@@ -11,23 +11,25 @@ import ForgotPassword from './pages/(auth)/ForgotPassword'
 import PageNotFound from './pages/PageNotFound'
 import Checkout from './pages/Checkout'
 import Shipping from './pages/Shipping'
+import Favourite from './pages/Favourite'
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<MainLayout></MainLayout>}>
-          <Route index element={<HomePage></HomePage>}></Route>
-          <Route path='home' element={<HomePage></HomePage>}></Route>
-          <Route path='product/:id' element={<ProductDetail></ProductDetail>}></Route>
-          <Route path='profile' element={<Profile></Profile>}></Route>
-          <Route path='checkout' element={<Checkout></Checkout>}></Route>
-          <Route path='shipping' element={<Shipping></Shipping>}></Route>
+          <Route index element={<HomePage />}></Route>
+          <Route path='home' element={<HomePage />}></Route>
+          <Route path='product/:id' element={<ProductDetail />}></Route>
+          <Route path='profile' element={<Profile />}></Route>
+          <Route path='checkout' element={<Checkout />}></Route>
+          <Route path='shipping' element={<Shipping />}></Route>
+          <Route path='favourite' element={<Favourite />}></Route>
         </Route>
 
-        <Route path='login' element={<Login></Login>}></Route>
-        <Route path='register' element={<Register></Register>}></Route>
-        <Route path='forgot-password' element={<ForgotPassword></ForgotPassword>}></Route>
-        <Route path='*' element={<PageNotFound></PageNotFound>}></Route>
+        <Route path='login' element={<Login />}></Route>
+        <Route path='register' element={<Register />}></Route>
+        <Route path='forgot-password' element={<ForgotPassword />}></Route>
+        <Route path='*' element={<PageNotFound />}></Route>
       </Routes>
     </BrowserRouter>
   )
