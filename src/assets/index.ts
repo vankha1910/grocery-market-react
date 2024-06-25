@@ -35,7 +35,8 @@ import MinusIcon from './icons/minus.svg'
 import TrashIcon from './icons/trash.svg'
 import HeartIcon2 from './icons/heart-2.svg'
 import EditIcon from './icons/edit.svg'
-
+import ArrowUp from './icons/arrow-up.png'
+import SunIcon from './icons/sun.svg'
 import planeIcon from './imgs/card/plane.svg'
 import planeBgIcon from './imgs/card/plane-bg.svg'
 import leafIcon from './imgs/card/leaf.svg'
@@ -116,5 +117,7 @@ export {
   MinusIcon,
   TrashIcon,
   HeartIcon2,
-  EditIcon
+  EditIcon,
+  ArrowUp,
+  SunIcon
 }
