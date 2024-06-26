@@ -12,7 +12,10 @@ import {
 import './topAction.scss'
 import { Link } from 'react-router-dom'
 import PreviewItem from '../PreviewItem'
-const index = () => {
+import { useDarkMode } from '../../contexts/DarkModeContext'
+const TopAction = () => {
+  const { toggleDarkMode, isDarkMode } = useDarkMode()
+
   const previewList = [
     {
       productImage: productImage1,
@@ -136,8 +139,8 @@ const index = () => {
                 </Link>
               </li>
               <li className='user-menu__separate'>
-                <button className='user-menu__link' id='switch-theme-btn'>
-                  <span>Dark mode</span>
+                <button onClick={toggleDarkMode} className='user-menu__link' id='switch-theme-btn'>
+                  <span>{!isDarkMode ? 'Dark mode' : 'Light mode'}</span>
                   <img src={SunIcon} alt='' className='icon user-menu__icon' />
                 </button>
               </li>
@@ -157,4 +160,4 @@ const index = () => {
   )
 }
 
-export default index
+export default TopAction
