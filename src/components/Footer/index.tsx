@@ -9,7 +9,7 @@ const index = () => {
           {/* Footer column 1 */}
           <div className='footer__col'>
             {/* Logo */}
-            <Logo></Logo>
+            <Logo isFooter></Logo>
             <p className='footer__desc'>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, maxime et veniam eligendi rem voluptatibus.
             </p>

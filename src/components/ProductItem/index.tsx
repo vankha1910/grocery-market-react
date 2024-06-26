@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { HeartIcon, StarIcon } from '~/assets'
 import './productItem.scss'
 type Product = {
@@ -12,12 +13,16 @@ const index = ({ product }: { product?: Product }) => {
   return (
     <article className='product-card'>
       <div className='product-card__img-wrap'>
-        <img className='product-card__img' src={product?.img} alt='' />
+        <Link to={'/product/2'}>
+          <img className='product-card__img' src={product?.img} alt='' />
+        </Link>
         <button className='product-card__btn-like btn-like'>
           <img className='btn-like__icon icon' src={HeartIcon} alt='' />
         </button>
       </div>
-      <h3 className='product-card__title'>{product?.name}</h3>
+      <Link to={'/product/2'} className='product-card__title'>
+        {product?.name}
+      </Link>
       <p className='product-card__brand'>{product?.brand}</p>
       <div className='product-card__row'>
         <p className='product-card__price'>${product?.price}</p>

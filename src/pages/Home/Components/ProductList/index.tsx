@@ -1,4 +1,4 @@
-import ProductItem from '../ProductItem'
+import ProductItem from '../../../../components/ProductItem'
 import { productImage1, productImage2, productImage3 } from '~/assets'
 const productList = [
   {
