@@ -12,6 +12,7 @@ import PageNotFound from './pages/PageNotFound'
 import Checkout from './pages/Checkout'
 import Shipping from './pages/Shipping'
 import Favourite from './pages/Favourite'
+import Products from './pages/Products'
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +20,7 @@ function App() {
         <Route element={<MainLayout></MainLayout>}>
           <Route index element={<HomePage />}></Route>
           <Route path='home' element={<HomePage />}></Route>
+          <Route path='products' element={<Products />}></Route>
           <Route path='product/:id' element={<ProductDetail />}></Route>
           <Route path='profile' element={<Profile />}></Route>
           <Route path='checkout' element={<Checkout />}></Route>

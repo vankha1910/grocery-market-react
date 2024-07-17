@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import ProductItem from '../../../../components/ProductItem'
 import { productImage1, productImage2, productImage3 } from '~/assets'
 const productList = [
@@ -70,12 +71,12 @@ const index = () => {
   return (
     <section className='home__container product-list'>
       <div className='home__row'>
-        <h2 className='home__heading'>Total LavAzza 1320</h2>
+        <h2 className='home__heading'>Recommended for you</h2>
         <div className='filter-wrapper'>
-          <button className='btn-filter'>
-            Filter
+          <Link to='/products' className='btn-filter'>
+            View all
             <img src='./assets/icons/filter.svg' alt='' />
-          </button>
+          </Link>
         </div>
       </div>
       <div className='product-list row row-cols-4 row-cols-lg-2 row-cols-sm-1 g-3'>
