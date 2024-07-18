@@ -27,7 +27,7 @@ $error-color: #ed4337;
   }
 
   &__group {
-    margin-top: 30px;
+    margin-top: 24px;
 
     @include abstracts.screen(md) {
       margin-top: 20px;
@@ -80,14 +80,14 @@ $error-color: #ed4337;
 
   &__text-input {
     position: relative;
-    height: 48px;
+    height: 40px;
 
     &--small {
-      height: 42px;
+      height: 36px;
     }
 
     @include abstracts.screen(md) {
-      height: 48px;
+      height: 40px;
     }
   }
 
@@ -97,7 +97,7 @@ $error-color: #ed4337;
     width: 100%;
     height: 100%;
 
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 500;
     line-height: 144.444%;
 

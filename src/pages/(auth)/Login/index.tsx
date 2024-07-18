@@ -33,10 +33,10 @@ const index = () => {
           <p className='form__error'>Password must be at least 6 characters</p>
         </div>
         <div className='form__group form__group--inline'>
-          <label className='form__checkbox'>
+          {/* <label className='form__checkbox'>
             <input type='checkbox' name='' id='' className='form__checkbox-input d-none' />
             <span className='form__checkbox-label'>Set as default card</span>
-          </label>
+          </label> */}
           <Link to='/forgot-password' className='auth__link form__pull-right'>
             Forgot password?
           </Link>
