@@ -21,6 +21,10 @@
     margin-top: 14px;
     font-size: 1.4rem;
     line-height: 142.857%;
+    text-wrap: nowrap;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   &__price {

@@ -69,7 +69,7 @@ const productList = [
 ]
 const index = () => {
   return (
-    <section className='home__container product-list'>
+    <section className='home__container product-list container'>
       <div className='home__row'>
         <h2 className='home__heading'>Recommended for you</h2>
         <div className='filter-wrapper'>

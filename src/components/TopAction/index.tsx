@@ -40,7 +40,7 @@ const TopAction = () => {
           <img className='icon top-act__icon' src={SearchIcon} alt='Search icon' />
         </button>
       </div>
-      <div className='top-act__group'>
+      <div className='top-act__group top-act__group--double'>
         <div className='top-act__btn-wrap'>
           <button className='top-act__btn'>
             <img className='icon top-act__icon' src={HeartIcon} />
@@ -68,6 +68,7 @@ const TopAction = () => {
             </div>
           </div>
         </div>
+        <div className='top-act__separate' />
 
         <div className='top-act__btn-wrap'>
           <button className='top-act__btn'>
@@ -113,7 +114,6 @@ const TopAction = () => {
             </div>
           </div>
         </div>
-        <div className='top-act__separate' />
       </div>
       <div className='top-act__user'>
         <img className='top-act__avatar' src={Avatar} alt='' />

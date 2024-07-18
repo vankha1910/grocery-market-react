@@ -91,8 +91,8 @@ const index = () => {
   return (
     <>
       <nav id='navbar' className='navbar hide'>
-        <button toggle-target='#navbar' className='navbar__close js-toggle d-none d-lg-block'>
-          <img className='icon navbar__close-icon' src={ArrowLeft} alt='' />
+        <button toggle-target='#navbar' className='navbar__close js-toggle d-none d-lg-block '>
+          <img className='icon navbar__close-icon ' src={ArrowLeft} alt='' />
         </button>
         <div className='d-none d-md-flex nav-act'>
           <a href='./checkout.html' className='nav-btn'>
@@ -109,17 +109,17 @@ const index = () => {
         <ul className='navbar__list js-dropdown-list'>
           <li className='navbar__item'>
             <a href='#!' className='navbar__link'>
-              Departments <img src={ArrowDown} alt='' className='navbar__arrow' />
+              Product <img src={ArrowDown} alt='' className='navbar__arrow icon' />
             </a>
           </li>
           <li className='navbar__item'>
             <a href='#!' className='navbar__link'>
-              Grocery <img src={ArrowDown} alt='' className='navbar__arrow' />
+              Blog <img src={ArrowDown} alt='' className='navbar__arrow icon' />
             </a>
           </li>
           <li className='navbar__item'>
             <a href='#!' className='navbar__link'>
-              Beauty <img src={ArrowDown} alt='' className='navbar__arrow' />
+              Contact <img src={ArrowDown} alt='' className='navbar__arrow icon' />
             </a>
           </li>
         </ul>
