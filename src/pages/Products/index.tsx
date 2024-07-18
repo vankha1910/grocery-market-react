@@ -2,7 +2,7 @@ import React from 'react'
 import './products.scss'
 import ProductItem from '../../components/ProductItem'
 import { StarIcon, productImage1, productImage2, productImage3 } from '~/assets'
-import { Pagination, Rate } from 'antd'
+import { Pagination, Rate, Select } from 'antd'
 
 const productList = [
   {
@@ -71,6 +71,28 @@ const productList = [
   }
 ]
 const index = () => {
+  const selectOption = [
+    {
+      value: '0',
+      label: 'Newest'
+    },
+    {
+      value: '1',
+      label: 'Price High to Low'
+    },
+    {
+      value: '2',
+      label: 'Price Low to High'
+    },
+    {
+      value: '3',
+      label: 'Rating High to Low'
+    },
+    {
+      value: '4',
+      label: 'Rating Low to High'
+    }
+  ]
   return (
     <main className='products-page'>
       <div className='container'>
@@ -137,48 +159,16 @@ const index = () => {
                 </ul>
               </div>
               <div className='separate'></div>
-              <div className='product-filter filter-rating'>
-                <h3 className='filter__title'>Rating</h3>
-                <ul className='filter__list'>
-                  <li className='filter__item'>
-                    <input className='filter__input d-none' type='checkbox' name='rating' id='rating-5' />
-                    <label className='filter__label' htmlFor='rating-5'>
-                      <Rate disabled defaultValue={5}></Rate>
-                    </label>
-                  </li>
-                  <li className='filter__item'>
-                    <input className='filter__input d-none' type='checkbox' name='rating' id='rating-4' />
-                    <label className='filter__label' htmlFor='rating-4'>
-                      <Rate disabled defaultValue={4}></Rate>
-                    </label>
-                  </li>
-                  <li className='filter__item'>
-                    <input className='filter__input d-none' type='checkbox' name='rating' id='rating-3' />
-                    <label className='filter__label' htmlFor='rating-3'>
-                      <Rate disabled defaultValue={3}></Rate>
-                    </label>
-                  </li>
-                  <li className='filter__item'>
-                    <input className='filter__input d-none' type='checkbox' name='rating' id='rating-2' />
-                    <label className='filter__label' htmlFor='rating-2'>
-                      <Rate disabled defaultValue={2}></Rate>
-                    </label>
-                  </li>
-                  <li className='filter__item'>
-                    <input className='filter__input d-none' type='checkbox' name='rating' id='rating-1' />
-                    <label className='filter__label' htmlFor='rating-1'>
-                      <Rate disabled defaultValue={1}></Rate>
-                    </label>
-                  </li>
-                </ul>
-              </div>
             </div>
           </div>
           <div className='col-10 col-lg-9 col-sm-12'>
             <div className='product-content'>
               <div className='product-content__top'>
                 <h3 className='product-content__title'>Product List (99)</h3>
-                <div className='product-sort'></div>
+                <div className='product-sort'>
+                  <span>Sort by: </span>
+                  <Select defaultValue={'0'} options={selectOption} style={{ width: 160 }}></Select>
+                </div>
               </div>
               <div className='product-list row row-cols-4 row-cols-lg-2 row-cols-sm-1 g-3'>
                 {productList.map((item, index) => (
