@@ -38,14 +38,14 @@ const index = () => {
               Addresses
             </a>
           </li>
-          <li>
+          {/* <li>
             <a className='profile-menu__link' href='#!'>
               <span className='profile-menu__icon'>
                 <img alt='' className='icon' src={Message2Icon} />
               </span>
               Communications & privacy
             </a>
-          </li>
+          </li> */}
         </ul>
       </div>
       <div className='profile-menu'>

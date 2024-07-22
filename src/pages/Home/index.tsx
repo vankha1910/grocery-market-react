@@ -1,4 +1,3 @@
-import SlideShow from './Components/SlideShow'
 import Category from './Components/Category'
 import ProductList from './Components/ProductList'
 import Hero from './Components/Hero'

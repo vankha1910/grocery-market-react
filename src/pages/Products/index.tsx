@@ -1,8 +1,7 @@
-import React from 'react'
 import './products.scss'
 import ProductItem from '../../components/ProductItem'
-import { StarIcon, productImage1, productImage2, productImage3 } from '~/assets'
-import { Pagination, Rate, Select } from 'antd'
+import { productImage1, productImage2, productImage3 } from '~/assets'
+import { Pagination, Select } from 'antd'
 
 const productList = [
   {

@@ -1,48 +1,77 @@
 import { Link } from 'react-router-dom'
 import AuthLayout from '../../../layouts/AuthLayout'
-import { FormErrorIcon, GoogleIcon, LockIcon, LoginIntro, MessageIcon } from '~/assets'
-const index = () => {
-  const introDesc = `The best of luxury brand values, high quality products, and innovative services`
-  const authHeading = `Hello Again!`
-  const authDesc = `Welcome back to sign in. As a returning customer, you have access to your previously saved all information.`
+import { GoogleIcon, LockIcon, LoginIntro, MessageIcon } from '~/assets'
+import { useForm } from 'react-hook-form'
+import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useState } from 'react'
+import useSignIn from '~/hooks/useLogin'
+const introDesc = `The best of luxury brand values, high quality products, and innovative services`
+const authHeading = `Hello Again!`
+const authDesc = `Welcome back to sign in. As a returning customer, you have access to your previously saved all information.`
+
+type FormData = {
+  email: string
+  password: string
+}
+
+const Login = () => {
+  const signIn = useSignIn()
+  const [showPassword, setShowPassword] = useState(false)
+
+  const loginSchema = yup.object().shape({
+    email: yup.string().email('Email is not in correct format !').required('Email is required !'),
+    password: yup.string().required('Password is required !').min(6, 'Password must be at least 6 characters !')
+  })
+  const {
+    register,
+    formState: { errors },
+    handleSubmit
+  } = useForm<FormData>({
+    resolver: yupResolver(loginSchema)
+  })
+
+  const onSubmit = handleSubmit((data) => {
+    signIn.mutate(data)
+  })
+
   return (
     <AuthLayout introImg={LoginIntro} introDesc={introDesc} authHeading={authHeading} authDesc={authDesc}>
-      <form action='/' className='form auth__form'>
+      <form onSubmit={onSubmit} action='/' className='form auth__form'>
         <div className='form__group'>
           <div className='form__text-input'>
-            <input type='email' name='' id='' placeholder='Email' className='form__input' autoFocus required />
+            <input type='email' placeholder='Email' className='form__input' autoFocus {...register('email')} />
             <img src={MessageIcon} alt='' className='form__input-icon' />
-            <img src={FormErrorIcon} alt='' className='form__input-icon-error' />
           </div>
-          <p className='form__error'>Email is not in correct format</p>
+          {errors?.email && <p className='form__error'>{errors?.email.message}</p>}
         </div>
         <div className='form__group'>
           <div className='form__text-input'>
             <input
-              type='password'
-              name=''
+              type={showPassword ? 'text' : 'password'}
               id=''
               placeholder='Password'
               className='form__input'
-              required
-              minLength={6}
+              {...register('password')}
             />
-            <img src={LockIcon} alt='' className='form__input-icon' />
-            <img src={FormErrorIcon} alt='' className='form__input-icon-error' />
+            <img
+              src={LockIcon}
+              alt=''
+              className='form__input-icon pointer'
+              onClick={() => setShowPassword(!showPassword)}
+            />
           </div>
-          <p className='form__error'>Password must be at least 6 characters</p>
+          {errors?.password && <p className='form__error'>{errors?.password.message}</p>}
         </div>
         <div className='form__group form__group--inline'>
-          {/* <label className='form__checkbox'>
-            <input type='checkbox' name='' id='' className='form__checkbox-input d-none' />
-            <span className='form__checkbox-label'>Set as default card</span>
-          </label> */}
           <Link to='/forgot-password' className='auth__link form__pull-right'>
             Forgot password?
           </Link>
         </div>
         <div className='form__group auth__btn-group'>
-          <button className='btn btn--primary auth__btn form__submit-btn'>Sign In</button>
+          <button type='submit' className='btn btn--primary auth__btn form__submit-btn'>
+            Sign In
+          </button>
           <button className='btn btn--outline auth__btn btn--no-margin'>
             <img src={GoogleIcon} alt='' className='btn__icon icon' />
             Sign in with Google
@@ -60,4 +89,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Login

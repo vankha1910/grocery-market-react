@@ -3,10 +3,10 @@
 $error-color: #ed4337;
 
 .form {
-  &:has(:invalid) &__submit-btn {
-    opacity: 0.5;
-    pointer-events: none;
-  }
+  // &:has(:invalid) &__submit-btn {
+  //   opacity: 0.5;
+  //   pointer-events: none;
+  // }
 
   &__row {
     display: flex;
@@ -40,19 +40,19 @@ $error-color: #ed4337;
   }
 
   &__group:has(:invalid):has(&__input:not(:placeholder-shown)) {
-    .form__text-input {
-      border-color: $error-color;
-      background: rgba($color: $error-color, $alpha: 0.1);
-    }
+    // .form__text-input {
+    //   border-color: $error-color;
+    //   background: rgba($color: $error-color, $alpha: 0.1);
+    // }
 
-    .form__error,
-    .form__input-icon-error {
-      display: block;
-    }
+    // .form__error,
+    // .form__input-icon-error {
+    //   display: block;
+    // }
 
-    .form__input-icon {
-      display: none;
-    }
+    // .form__input-icon {
+    //   display: none;
+    // }
   }
 
   &__text-area,
@@ -245,7 +245,7 @@ $error-color: #ed4337;
     font-weight: 500;
     margin-top: 10px;
     color: $error-color;
-    display: none;
+    // display: none;
   }
 
   &__input-icon-error {

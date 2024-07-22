@@ -46,6 +46,7 @@ import slideImage1 from './imgs/slideshow/slideshow-1.png'
 import slideImage1Mb from './imgs/slideshow/slideshow-1-mb.png'
 
 import Avatar from './imgs/avatar/avatar.jpg'
+import defaultAvatar from './imgs/avatar/default-avatar.png'
 import Avatar1 from './imgs/avatar/avatar-1.png'
 import Avatar2 from './imgs/avatar/avatar-2.png'
 import Avatar3 from './imgs/avatar/avatar-3.png'
@@ -119,5 +120,6 @@ export {
   HeartIcon2,
   EditIcon,
   ArrowUp,
-  SunIcon
+  SunIcon,
+  defaultAvatar
 }
