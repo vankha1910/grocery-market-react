@@ -5,27 +5,24 @@ import { Pagination, Select } from 'antd'
 import { useState } from 'react'
 import queryString from 'query-string'
 import useProducts from '~/features/product/useProduct'
-import { Product } from '~/types/product.type'
+import { Product, ProductParams } from '~/types/product.type'
 import { useSearchParams } from 'react-router-dom'
+import { buildQueryParams } from '~/utils'
 
 const brandList = ['Lavazza', 'Welikecoffee', 'Nescafe', 'Cappuccino', 'Espresso']
 const categoryList = ['Category1', 'Category 2', 'Category 3']
 
-function buildQueryParams(params) {
-  const filteredParams = Object.fromEntries(Object.entries(params).filter(([key, value]) => value !== null))
-  return queryString.stringify(filteredParams)
-}
-
+const RESULT_PER_PAGE = import.meta.env.VITE_RESULT_PER_PAGE
 const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams()
-  const [params, setParams] = useState({
+  const [params, setParams] = useState<ProductParams>({
     page: 1,
-    limit: 8,
+    limit: RESULT_PER_PAGE,
     sort: '-createdAt',
-    brand: null,
-    category: null
+    brand: '',
+    category: ''
   })
-  const { data } = useProducts(buildQueryParams(params))
+  const { data, isFetching } = useProducts(params)
   const productList: Product[] = data?.data?.products
 
   const selectOption = [
@@ -64,6 +61,7 @@ const Products = () => {
     })
     searchParams.set('page', page)
     setSearchParams(searchParams)
+    handleSrcollToTop()
   }
   const handleSortBy = (value: string) => {
     setParams((pre) => {
@@ -76,6 +74,9 @@ const Products = () => {
     searchParams.set('sort', value)
     searchParams.set('page', '1')
     setSearchParams(searchParams)
+  }
+  const handleSrcollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
   return (
     <main className='products-page'>

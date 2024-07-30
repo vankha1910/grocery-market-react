@@ -20,3 +20,11 @@ export type Product = {
   origin?: string
   roastLevel?: string
 }
+
+export type ProductParams = {
+  page?: number
+  limit?: number
+  sort?: string
+  brand?: string
+  category?: string
+}
