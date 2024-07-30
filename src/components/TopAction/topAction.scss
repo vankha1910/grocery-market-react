@@ -97,6 +97,15 @@
   &__dropdown-arrow {
     right: 15px !important;
   }
+  &__badge {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background: var(--header-bg-color);
+    padding: 2px 12px;
+    border-radius: 2.75rem;
+    border: 1px solid var(--text-color);
+  }
 }
 
 .act-dropdown {
@@ -119,7 +128,7 @@
   &__arrow {
     position: absolute;
     top: -17px;
-    right: 90px;
+    right: 55px;
     height: 20.5px;
     filter: var(--dropdown-arrow-color);
   }

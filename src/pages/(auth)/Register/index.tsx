@@ -4,7 +4,7 @@ import { GoogleIcon, LockIcon, LoginIntro, MessageIcon } from '~/assets'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import useSignUp from '../../../hooks/useSignUp'
+import useSignUp from '~/features/auth/useSignUp'
 import { Spin } from 'antd'
 const introDesc = `The best of luxury brand values, high quality products, and innovative services`
 const authHeading = `Sign Up`
@@ -40,7 +40,6 @@ const Register = () => {
   const onSubmit = handleSubmit((data) => {
     signup.mutate(data)
   })
-  console.log(signup?.isPending)
   return (
     <AuthLayout introImg={LoginIntro} introDesc={introDesc} authHeading={authHeading} authDesc={authDesc}>
       <>

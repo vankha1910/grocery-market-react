@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { signInApi } from '../api/auth.api'
+import { signInApi } from '../../api/auth.api'
 import { FormRegisterData } from '~/types/auth.type'
 import { toast } from 'react-toastify'
 import { setProfileToLS, storedToken } from '~/utils'

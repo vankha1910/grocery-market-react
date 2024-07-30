@@ -1,83 +1,11 @@
 import './productTabInfo.scss'
 import { useState } from 'react'
 import { Rate } from 'antd'
-import { Avatar1, Avatar2, Avatar3, productImage1, productImage2, productImage3, productImage4 } from '~/assets'
-import ProductItem from '../../../../components/ProductItem'
+import { Avatar1, Avatar2, Avatar3, productImage1 } from '~/assets'
+import productList from '~/data/product'
+import ProductItem from '~/components/ProductItem'
 const tabList = ['Description', 'Review (1100)', 'Similar']
-const productList = [
-  {
-    img: productImage1,
-    name: 'Coffee Beans - Espresso Arabica and Robusta Beans',
-    brand: 'Lavazza',
-    price: 120.05,
-    rated: 5,
-    liked: false
-  },
-  {
-    img: productImage2,
-    name: 'Lavazza Coffee Blends - Try the Italian Espresso',
-    brand: 'Welikecoffee',
-    price: 46.77,
-    rated: 4.2,
-    liked: true
-  },
-  {
-    img: productImage3,
-    name: 'Lavazza - Caffè Espresso Black Tin - Ground coffee',
-    brand: 'Lavazza',
-    price: 99.99,
-    rated: 5,
-    liked: false
-  },
-  {
-    img: productImage2,
-    name: 'Lavazza Coffee Blends - Try the Italian Espresso',
-    brand: 'Welikecoffee',
-    price: 99.77,
-    rated: 3.2,
-    liked: false
-  },
-  {
-    img: productImage1,
-    name: 'Coffee Beans - Espresso Arabica and Robusta Beans',
-    brand: 'Lavazza',
-    price: 120.05,
-    rated: 5,
-    liked: false
-  },
-  {
-    img: productImage2,
-    name: 'Lavazza Coffee Blends - Try the Italian Espresso',
-    brand: 'Welikecoffee',
-    price: 46.77,
-    rated: 4.2,
-    liked: true
-  },
-  {
-    img: productImage3,
-    name: 'Lavazza - Caffè Espresso Black Tin - Ground coffee',
-    brand: 'Lavazza',
-    price: 99.99,
-    rated: 5,
-    liked: false
-  },
-  {
-    img: productImage2,
-    name: 'Lavazza Coffee Blends - Try the Italian Espresso',
-    brand: 'Welikecoffee',
-    price: 99.77,
-    rated: 3.2,
-    liked: false
-  },
-  {
-    img: productImage4,
-    name: 'Lavazza Coffee Blends - Try the Italian Espresso',
-    brand: 'Welikecoffee',
-    price: 46.77,
-    rated: 4.2,
-    liked: true
-  }
-]
+
 const ProductTabInfo = () => {
   const [tab, setTab] = useState(0)
 

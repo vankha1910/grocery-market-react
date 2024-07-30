@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { signUpApi } from '../api/auth.api'
+import { signUpApi } from '~/api/auth.api'
 import { FormRegisterData } from '~/types/auth.type'
 import { toast } from 'react-toastify'
 import { setProfileToLS, storedToken } from '~/utils'
@@ -11,8 +11,6 @@ const useSignUp = () => {
     mutationFn: ({ email, password, confirmPassword }: FormRegisterData) => signUpApi(email, password, confirmPassword),
     onSuccess: async (res) => {
       const data = await res.json()
-      console.log(res)
-      console.log(data)
       if (res.ok) {
         toast.success(`Register successfully`)
         setProfileToLS(data.data.user)

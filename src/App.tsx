@@ -32,8 +32,8 @@ function App() {
       <ReactQueryDevtools initialIsOpen={false} />
       <ToastContainer
         position='top-right'
-        autoClose={4000}
-        hideProgressBar={false}
+        autoClose={3000}
+        hideProgressBar={true}
         newestOnTop={false}
         closeOnClick
         rtl={false}
@@ -48,7 +48,7 @@ function App() {
             <Route index element={<HomePage />}></Route>
             <Route path='home' element={<HomePage />}></Route>
             <Route path='products' element={<Products />}></Route>
-            <Route path='product/:id' element={<ProductDetail />}></Route>
+            <Route path='product/:productId' element={<ProductDetail />}></Route>
             <Route path='profile' element={<Profile />}></Route>
             <Route path='checkout' element={<Checkout />}></Route>
             <Route path='shipping' element={<Shipping />}></Route>

@@ -10,19 +10,17 @@ const index = () => {
     <main className='checkout-page'>
       <div className='container'>
         {/* Search bar */}
-        <div className='checkout-container'>
+        {/* <div className='checkout-container'>
           <div className='search-bar d-none d-md-flex'>
             <input type='text' name='' id='' placeholder='Search for item' className='search-bar__input' />
             <button className='search-bar__submit'>
               <img src='./assets/icons/search.svg' alt='' className='search-bar__icon icon' />
             </button>
           </div>
-        </div>
+        </div> */}
         {/* Breadcrumbs */}
         <div className='checkout-container'>
-          <ul className='breadcrumbs checkout-page__breadcrumbs'>
-            <Breadcrumb breadcrumbArray={breadcrumbArray}></Breadcrumb>
-          </ul>
+          <Breadcrumb breadcrumbArray={breadcrumbArray}></Breadcrumb>
         </div>
         {/* Checkout content */}
         <div className='checkout-container'>

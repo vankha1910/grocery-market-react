@@ -1,7 +1,13 @@
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { GiftIcon } from '~/assets'
+import { RootState } from '~/store'
+import { CartItemType } from '~/types/cart.type'
 
-const index = () => {
+const CartSummary = () => {
+  const totalPrice = useSelector<RootState>((state) => state.cart.totalPrice) as number
+  const cart = useSelector<RootState>((state) => state.cart.cart) as CartItemType[]
+  const SHIPPING_FEE = 10
   return (
     <>
       <div className='cart-info'>
@@ -9,22 +15,22 @@ const index = () => {
           <span>
             Subtotal <span className='cart-info__sub-label'>(items)</span>
           </span>
-          <span>3</span>
+          <span>{cart?.length || 0}</span>
         </div>
         <div className='cart-info__row'>
           <span>
             Price <span className='cart-info__sub-label'>(Total)</span>
           </span>
-          <span>$191.65</span>
+          <span>${totalPrice || 0}</span>
         </div>
         <div className='cart-info__row'>
           <span>Shipping</span>
-          <span>$10.00</span>
+          <span>${SHIPPING_FEE}</span>
         </div>
         <div className='cart-info__separate' />
         <div className='cart-info__row'>
           <span>Estimated Total</span>
-          <span>$201.65</span>
+          <span>${totalPrice + SHIPPING_FEE}</span>
         </div>
         <Link to='/shipping' className='cart-info__next-btn btn btn--primary btn--rounded'>
           Continue to checkout
@@ -47,4 +53,4 @@ const index = () => {
   )
 }
 
-export default index
+export default CartSummary

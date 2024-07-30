@@ -15,9 +15,13 @@ import './topAction.scss'
 import PreviewItem from '../PreviewItem'
 import { useDarkMode } from '../../contexts/DarkModeContext'
 import { getProfileFromLS, getStoredToken } from '~/utils'
+import { useSelector } from 'react-redux'
+import { CartItemType } from '~/types/cart.type'
+import { RootState } from '~/store'
 const TopAction = () => {
   const { toggleDarkMode, isDarkMode } = useDarkMode()
-
+  const cartList = useSelector<RootState>((state) => state.cart.cart) as CartItemType[]
+  const totalPrice = useSelector<RootState>((state) => state.cart.totalPrice) as number
   const previewList = [
     {
       productImage: productImage1,
@@ -38,8 +42,6 @@ const TopAction = () => {
 
   const token = getStoredToken()
   const user = getProfileFromLS()
-  console.log(token)
-  console.log(user)
   const handleLogout = () => {}
   return (
     <div className='top-act'>
@@ -49,14 +51,14 @@ const TopAction = () => {
         </button>
       </div>
 
-      {token ? (
+      {true ? (
         <>
           {' '}
           <div className='top-act__group top-act__group--double'>
             <div className='top-act__btn-wrap'>
               <button className='top-act__btn'>
                 <img className='icon top-act__icon' src={HeartIcon} />
-                <span className='top-act__title'>03</span>
+                {/* <span className='top-act__title'>03</span> */}
               </button>
               <div className='act-dropdown'>
                 <div className='act-dropdown__inner'>
@@ -85,42 +87,41 @@ const TopAction = () => {
             <div className='top-act__btn-wrap'>
               <button className='top-act__btn'>
                 <img className='icon top-act__icon' src={CartIcon} />
-                <span className='top-act__title'>$65.54</span>
+                {cartList?.length > 0 && <span className='top-act__badge'>{cartList?.length || 0}</span>}
               </button>
               <div className='act-dropdown'>
                 <div className='act-dropdown__inner'>
                   <img src={ArrowUp} alt='' className='act-dropdown__arrow' />
                   <div className='act-dropdown__top'>
-                    <h2 className='act-dropdown__title'>You have 3 item(s)</h2>
+                    {cartList?.length > 0 && (
+                      <h2 className='act-dropdown__title'>You have {cartList?.length || 0} item(s)</h2>
+                    )}
                   </div>
-                  <div className='row row-cols-3 gx-2 act-dropdown__list'>
-                    {previewList.map((item, index) => (
-                      <div key={index} className='col'>
-                        <PreviewItem product={item} />
+                  {cartList?.length > 0 ? (
+                    <>
+                      <div className='row row-cols-3 gx-2 act-dropdown__list'>
+                        {cartList.map((item: CartItemType, index: number) => (
+                          <div key={index} className='col'>
+                            <PreviewItem cartItem={item} />
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                  <div className='act-dropdown__bottom'>
-                    <div className='act-dropdown__row'>
-                      <span className='act-dropdown__label'>Subtotal</span>
-                      <span className='act-dropdown__value'>$415.99</span>
-                    </div>
-                    <div className='act-dropdown__row'>
-                      <span className='act-dropdown__label'>Texes</span>
-                      <span className='act-dropdown__value'>Free</span>
-                    </div>
-                    <div className='act-dropdown__row'>
-                      <span className='act-dropdown__label'>Shipping</span>
-                      <span className='act-dropdown__value'>$10.00</span>
-                    </div>
-                    <div className='act-dropdown__row act-dropdown__row--bold'>
-                      <span className='act-dropdown__label'>Total Price</span>
-                      <span className='act-dropdown__value'>$425.99</span>
-                    </div>
-                  </div>
+                      <div className='act-dropdown__bottom'>
+                        <div className='act-dropdown__row act-dropdown__row--bold'>
+                          <span className='act-dropdown__label'>Total Price</span>
+                          <span className='act-dropdown__value'>${totalPrice} </span>
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <>Empty card</>
+                  )}
                   <div className='act-dropdown__checkout'>
-                    <Link to='/checkout' className='btn btn--primary btn--rounded act-dropdown__checkout-btn'>
-                      Check Out All
+                    <Link
+                      to={cartList?.length > 0 ? '/checkout' : '/products'}
+                      className='btn btn--primary btn--rounded act-dropdown__checkout-btn'
+                    >
+                      {cartList?.length > 0 ? 'Check Out All' : 'View product'}
                     </Link>
                   </div>
                 </div>

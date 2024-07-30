@@ -1,12 +1,12 @@
 @use '../../../../styles/abstracts';
 .prod-info {
-  padding: 60px;
+  padding: 20px;
   border-radius: 10px;
   background: var(--product-detail-info-bg);
 
-  @include abstracts.screen(xxl) {
-    padding: 40px;
-  }
+  // @include abstracts.screen(xxl) {
+  //   padding: 40px;
+  // }
 
   @include abstracts.screen(lg) {
     margin-top: 30px;
@@ -17,20 +17,28 @@
     padding: 0 16px 16px;
     margin-top: 0;
   }
+  &__brand {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+    text-decoration: underline;
+  }
 
   &__heading {
-    font-size: 2.6rem;
-    font-weight: 500;
-    line-height: 138.462%;
+    font-size: 2.4rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 8px;
   }
 
   &__label {
-    margin-top: 30px;
+    margin-top: 20px;
   }
 
-  & &__tag {
-    background: var(--product-detail-tag-bg);
-  }
+  // & &__tag {
+  //   background: var(--product-detail-tag-bg);
+  // }
 
   &__card {
     margin-top: 30px;
@@ -44,12 +52,45 @@
     align-items: center;
   }
 
+  &__price-wrap {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  &__old-price {
+    font-style: 1.4rem;
+    font-weight: 300;
+    text-decoration: line-through;
+  }
   &__price {
     font-size: 1.6rem;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 150%;
   }
-
+  &__taste {
+    font-size: 1.4rem;
+    font-weight: 300;
+    margin-bottom: 8px;
+  }
+  &__tags {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  &__tag {
+    padding: 4px 6px;
+    border: 1px solid;
+    border-radius: 4px;
+    font-size: 1.3rem;
+    font-weight: 300;
+    line-height: unset;
+  }
+  &__desc {
+    font-size: 1.3rem;
+    font-weight: 300;
+    line-height: 150%;
+  }
   &__tax {
     padding: 2px 8px;
     border-radius: 4px;

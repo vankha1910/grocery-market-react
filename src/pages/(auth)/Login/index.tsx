@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useState } from 'react'
-import useSignIn from '~/hooks/useLogin'
+import useSignIn from '~/features/auth/useLogin'
 const introDesc = `The best of luxury brand values, high quality products, and innovative services`
 const authHeading = `Hello Again!`
 const authDesc = `Welcome back to sign in. As a returning customer, you have access to your previously saved all information.`
