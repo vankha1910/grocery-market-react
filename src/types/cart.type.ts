@@ -1,3 +1,5 @@
+import { Address } from './address.type'
+
 export type CartItemType = {
   cartItemId: number
   productId: number
@@ -18,4 +20,11 @@ export type CartItemType = {
   }
   grindType: string[]
   selectedGrind: string
+}
+
+export type CartState = {
+  cart: CartItemType[]
+  totalPrice: number
+  address: Address
+  paymentMethod: string
 }

@@ -1,16 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { CartItemType } from '~/types/cart.type'
+import { CartItemType, CartState } from '~/types/cart.type'
 import { toast } from 'react-toastify'
 import { uniqueId } from 'lodash'
-type CartState = {
-  cart: CartItemType[]
-  totalPrice: number
-}
+import { Address } from '~/types/address.type'
+import { getProfileFromLS } from '~/utils'
 
-const initialState: CartState = {
-  cart: [],
-  totalPrice: 0
-}
 const handleUpdateTotalPrice = (cartList: CartItemType[]) => {
   return Number.parseFloat(
     cartList
@@ -23,6 +17,13 @@ const handleUpdateTotalPrice = (cartList: CartItemType[]) => {
       .toFixed(2)
   )
 }
+const initialState: CartState = {
+  cart: JSON.parse(localStorage.getItem('cart') || '[]'),
+  totalPrice: handleUpdateTotalPrice(JSON.parse(localStorage.getItem('cart') || '[]') || 0),
+  address: getProfileFromLS()?.addresses[0] || '{}',
+  paymentMethod: 'cod'
+}
+
 const cartSlide = createSlice({
   name: 'cart',
   initialState,
@@ -48,6 +49,7 @@ const cartSlide = createSlice({
       }
       state.totalPrice = handleUpdateTotalPrice(state.cart)
       toast.success('Add product to cart successful')
+      localStorage.setItem('cart', JSON.stringify(state.cart))
     },
     removeFromCart: (state, action) => {
       // return state.filter((item) => item.id !== action.payload)
@@ -59,6 +61,7 @@ const cartSlide = createSlice({
       existingProduct.selectedSize.quantity += 1
       state.cart = updatedCart
       state.totalPrice = handleUpdateTotalPrice(state.cart)
+      localStorage.setItem('cart', JSON.stringify(state.cart))
     },
     decreaseQuantity: (state, action) => {
       const index = state.cart.findIndex((item) => item.cartItemId === action.payload)
@@ -72,9 +75,17 @@ const cartSlide = createSlice({
       }
 
       state.totalPrice = handleUpdateTotalPrice(state.cart)
+      localStorage.setItem('cart', JSON.stringify(state.cart))
+    },
+    setAddress: (state, action) => {
+      state.address = action.payload
+    },
+    setPaymentMethod: (state, action) => {
+      state.paymentMethod = action.payload
     }
   }
 })
-export const { addToCart, removeFromCart, increaseQuantity, decreaseQuantity } = cartSlide.actions
+export const { addToCart, removeFromCart, increaseQuantity, decreaseQuantity, setAddress, setPaymentMethod } =
+  cartSlide.actions
 
 export default cartSlide.reducer

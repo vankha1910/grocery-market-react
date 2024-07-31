@@ -1,13 +1,40 @@
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { GiftIcon } from '~/assets'
+import useCreateOrder from '~/features/cart/useCreateOrder'
 import { RootState } from '~/store'
-import { CartItemType } from '~/types/cart.type'
+import { CartItemType, CartState } from '~/types/cart.type'
 
-const CartSummary = () => {
-  const totalPrice = useSelector<RootState>((state) => state.cart.totalPrice) as number
-  const cart = useSelector<RootState>((state) => state.cart.cart) as CartItemType[]
+type Props = {
+  lastStep?: boolean
+}
+
+const CartSummary = ({ lastStep }: Props) => {
+  const { createOrder } = useCreateOrder()
+  const state = useSelector<RootState>((state) => state.cart) as CartState
+  const { cart, totalPrice, address, paymentMethod } = state
+  // const cart = useSelector<RootState>((state) => state.cart.cart) as CartItemType[]
+  // const cart = useSelector<RootState>((state) => state.cart.cart) as CartItemType[]
   const SHIPPING_FEE = 10
+
+  const handleOrder = () => {
+    const refactorCart = cart.map((item) => {
+      return {
+        product: item.productId,
+        quantity: item.selectedSize.quantity,
+        price: item.selectedSize.price,
+        size: item.selectedSize.value,
+        grind: item.selectedGrind
+      }
+    })
+    const data = {
+      products: refactorCart,
+      shippingAddress: address,
+      paymentMethod: paymentMethod,
+      totalPrice
+    }
+    createOrder(data)
+  }
   return (
     <>
       <div className='cart-info'>
@@ -32,9 +59,17 @@ const CartSummary = () => {
           <span>Estimated Total</span>
           <span>${totalPrice + SHIPPING_FEE}</span>
         </div>
-        <Link to='/shipping' className='cart-info__next-btn btn btn--primary btn--rounded'>
-          Continue to checkout
-        </Link>
+        {lastStep ? (
+          <button onClick={handleOrder} className='cart-info__next-btn btn btn--primary btn--rounded'>
+            Order
+          </button>
+        ) : (
+          <>
+            <Link to='/shipping' className='cart-info__next-btn btn btn--primary btn--rounded'>
+              Continue to checkout
+            </Link>
+          </>
+        )}
       </div>
       <div className='cart-info'>
         <a href='#!'>

@@ -9,7 +9,6 @@ import useGetProductDetail from '~/features/product/useGetProductDetail'
 const ProductDetail = () => {
   const { data } = useGetProductDetail()
   const product = data?.data?.product
-
   const listProductImage = [productImage1, productImage2, productImage3, productImage4]
   const breadcrumbArray = ['Departments', 'Coffee', 'Coffee Beans', 'Lavazza']
   return (

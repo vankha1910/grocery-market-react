@@ -1,13 +1,10 @@
 import './products.scss'
 import ProductItem from '../../components/ProductItem'
-import { productImage1, productImage2, productImage3 } from '~/assets'
 import { Pagination, Select } from 'antd'
 import { useState } from 'react'
-import queryString from 'query-string'
 import useProducts from '~/features/product/useProduct'
 import { Product, ProductParams } from '~/types/product.type'
 import { useSearchParams } from 'react-router-dom'
-import { buildQueryParams } from '~/utils'
 
 const brandList = ['Lavazza', 'Welikecoffee', 'Nescafe', 'Cappuccino', 'Espresso']
 const categoryList = ['Category1', 'Category 2', 'Category 3']

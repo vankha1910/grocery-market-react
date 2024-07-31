@@ -1,0 +1,18 @@
+import { Address } from '~/types/address.type'
+import { getStoredToken } from '~/utils'
+
+const API_HOST = import.meta.env.VITE_API_HOST
+const headers = {
+  'Content-Type': 'application/json',
+  Authorization: `Bearer ${getStoredToken()}`
+}
+export async function createAddressApi(address: Omit<Address, '_id'>) {
+  const API_URL = `${API_HOST}/api/v1/address`
+  const response = await fetch(API_URL, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(address)
+  })
+
+  return response
+}

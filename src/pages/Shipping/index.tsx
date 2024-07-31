@@ -8,20 +8,23 @@ import { useState } from 'react'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
+import { getProfileFromLS } from '~/utils'
+import { Address } from '~/types/address.type'
+import useCreateAddress from '~/features/user/useCreateAddress'
+import PaymentMethod from './components/PaymentMethod'
 
-type FormData = {
-  name: string
-  address: string
-  phone?: string
-}
-
+const breadcrumbArray = ['Home', 'Checkout', 'Shipping']
+type FormData = Omit<Address, '_id'>
 const Shipping = () => {
-  const [showModal, setShowModal] = useState(true)
-
   const addressSchema = yup.object().shape({
     name: yup.string().required('Name is required !'),
     address: yup.string().required('Address is required !')
   })
+  const currentUser = getProfileFromLS()
+  const addressList = currentUser?.addresses
+
+  const { createAddress } = useCreateAddress()
+  const [showModal, setShowModal] = useState(false)
 
   const {
     register,
@@ -31,21 +34,8 @@ const Shipping = () => {
     resolver: yupResolver(addressSchema)
   })
 
-  const addressList = [
-    {
-      name: 'Imran Khan 1',
-      address: 'Museum of Rajas, Sylhet Sadar, Sylhet 3100',
-      defaultAddress: true
-    },
-    {
-      name: 'Imran Khan',
-      address: 'Al Hamra City (10th Floor), Hazrat Shahjalal Road, Sylhet, Sylhet, Bangladesh',
-      defaultAddress: false
-    }
-  ]
-  const breadcrumbArray = ['Home', 'Checkout', 'Shipping']
   const onSubmit = handleSubmit((data) => {
-    console.log(data)
+    createAddress(data)
   })
   return (
     <>
@@ -69,7 +59,7 @@ const Shipping = () => {
             <div className='row gy-xl-3'>
               <div className='col-8 col-xl-12'>
                 <div className='cart-info'>
-                  <h1 className='cart-info__heading'>1. Shipping, arrives between Mon, May 16—Tue, May 24</h1>
+                  <h2 className='cart-info__heading'>1. Shipping, arrives between Mon, May 16—Tue, May 24</h2>
                   <div className='cart-info__separate' />
                   {/* Checkout address */}
                   <div className='user-address'>
@@ -87,11 +77,18 @@ const Shipping = () => {
                       </button>
                     </div>
                     <div className='user-address__list'>
-                      {addressList.map((address) => (
-                        <AddressCard address={address} key={address.name}></AddressCard>
+                      {addressList.map((address: Address, index: number) => (
+                        <AddressCard index={index} address={address} key={address._id}></AddressCard>
                       ))}
                     </div>
                   </div>
+                </div>
+
+                <div className='cart-info'>
+                  <h2 className='cart-info__heading'>2. Payment method</h2>
+                  <PaymentMethod />
+                </div>
+                <div className='cart-info'>
                   <div className='cart-info__separate' />
                   <h2 className='cart-info__sub-heading'>Items details</h2>
                   <CartList></CartList>
@@ -99,7 +96,7 @@ const Shipping = () => {
                 </div>
               </div>
               <div className='col-4 col-xl-12'>
-                <CartSummary></CartSummary>
+                <CartSummary lastStep></CartSummary>
               </div>
             </div>
           </div>

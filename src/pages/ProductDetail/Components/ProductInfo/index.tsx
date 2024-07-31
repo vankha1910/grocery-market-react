@@ -9,8 +9,8 @@ import { addToCart } from '~/features/cart/cartSlice'
 import { useState } from 'react'
 import * as _ from 'lodash'
 const ProductInfo = ({ productInfo }: { productInfo: Product }) => {
-  const [grindType, setGrindType] = useState(productInfo?.grindType[0])
-  const [selectedSize, setSelectedSize] = useState(productInfo?.size[0]?.value)
+  const [grindType, setGrindType] = useState(productInfo?.grindType[0] || 'whole bean')
+  const [selectedSize, setSelectedSize] = useState(productInfo?.size[0]?.value || '250g')
   const [quantity, setQuantity] = useState(1)
   const selectedIndex = productInfo?.size.findIndex((item) => item.value === selectedSize)
   const currentProductPrice = productInfo?.size[selectedIndex]?.price || productInfo?.size[0]?.price
@@ -54,7 +54,7 @@ const ProductInfo = ({ productInfo }: { productInfo: Product }) => {
               ? (currentProductPrice - (currentProductPrice * productInfo?.discount) / 100).toFixed(2)
               : currentProductPrice
             : productInfo?.size[0]?.price}
-          {productInfo?.discount && <span className='prod-info__tax'>{productInfo?.discount}%</span>}
+          {productInfo?.discount !== 0 && <span className='prod-info__tax'>{productInfo?.discount}%</span>}
         </p>
       </div>
       <p className='prod-info__taste'>{productInfo?.taste}</p>
@@ -97,7 +97,7 @@ const ProductInfo = ({ productInfo }: { productInfo: Product }) => {
             </label>
             <div className=''>
               <Select
-                value={grindType || 'Whole Bean'}
+                value={grindType || 'whole bean'}
                 options={grindTypeOptions}
                 style={{ width: '100%', height: 45 }}
                 onChange={(value) => {

@@ -1,5 +1,10 @@
-const API_HOST = import.meta.env.VITE_API_HOST
+import { getStoredToken } from '~/utils'
 
+const API_HOST = import.meta.env.VITE_API_HOST
+const headers = {
+  'Content-Type': 'application/json',
+  Authorization: `Bearer ${getStoredToken()}`
+}
 export async function signUpApi(email: string, password: string, confirmPassword: string) {
   const API_URL = `${API_HOST}/api/v1/users/signup`
   const response = await fetch(API_URL, {
@@ -21,6 +26,15 @@ export async function signInApi(email: string, password: string) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ email, password })
+  })
+  return response
+}
+
+export async function checkLoginApi() {
+  const API_URL = `${API_HOST}/api/v1/users/check-login`
+  const response = await fetch(API_URL, {
+    method: 'GET',
+    headers
   })
   return response
 }
