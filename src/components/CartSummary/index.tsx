@@ -20,7 +20,7 @@ const CartSummary = ({ lastStep }: Props) => {
   const handleOrder = () => {
     const refactorCart = cart.map((item) => {
       return {
-        product: item.productId,
+        _id: item.productId,
         quantity: item.selectedSize.quantity,
         price: item.selectedSize.price,
         size: item.selectedSize.value,

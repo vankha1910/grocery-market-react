@@ -19,7 +19,7 @@ const Products = () => {
     brand: '',
     category: ''
   })
-  const { data, isFetching } = useProducts(params)
+  const { data } = useProducts(params)
   const productList: Product[] = data?.data?.products
 
   const selectOption = [
@@ -48,17 +48,17 @@ const Products = () => {
       label: 'Rating Low to High'
     }
   ]
-  const handleCateChange = (e) => {}
-  const handlePagination = (page) => {
+  const handleCateChange = () => {}
+  const handlePagination = (page: number) => {
     setParams((pre) => {
       return {
         ...pre,
         page
       }
     })
-    searchParams.set('page', page)
+    searchParams.set('page', page.toString())
     setSearchParams(searchParams)
-    handleSrcollToTop()
+    handleScrollToTop()
   }
   const handleSortBy = (value: string) => {
     setParams((pre) => {
@@ -72,7 +72,7 @@ const Products = () => {
     searchParams.set('page', '1')
     setSearchParams(searchParams)
   }
-  const handleSrcollToTop = () => {
+  const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
   return (

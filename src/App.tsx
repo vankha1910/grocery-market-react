@@ -16,6 +16,9 @@ import Checkout from './pages/Checkout'
 import Shipping from './pages/Shipping'
 import Favourite from './pages/Favourite'
 import Products from './pages/Products'
+import Ordered from './pages/Ordered'
+import MyOrder from './pages/MyOrder'
+import ProfileLayout from '~/layouts/ProfileLayout'
 import { ToastContainer } from 'react-toastify'
 import { useDarkMode } from './contexts/DarkModeContext'
 function App() {
@@ -49,10 +52,16 @@ function App() {
             <Route path='home' element={<HomePage />}></Route>
             <Route path='products' element={<Products />}></Route>
             <Route path='product/:productId' element={<ProductDetail />}></Route>
-            <Route path='profile' element={<Profile />}></Route>
             <Route path='checkout' element={<Checkout />}></Route>
             <Route path='shipping' element={<Shipping />}></Route>
             <Route path='favourite' element={<Favourite />}></Route>
+            <Route path='ordered' element={<Ordered />}></Route>
+
+            <Route element={<ProfileLayout />}>
+              <Route path='profile' element={<Profile />}>
+                <Route path='my-order' element={<MyOrder />}></Route>
+              </Route>
+            </Route>
           </Route>
 
           <Route path='login' element={<Login />}></Route>

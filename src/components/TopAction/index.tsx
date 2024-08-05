@@ -18,6 +18,7 @@ import { getProfileFromLS, getStoredToken } from '~/utils'
 import { useSelector } from 'react-redux'
 import { CartItemType } from '~/types/cart.type'
 import { RootState } from '~/store'
+import { useState } from 'react'
 const TopAction = () => {
   const { toggleDarkMode, isDarkMode } = useDarkMode()
   const cartList = useSelector<RootState>((state) => state.cart.cart) as CartItemType[]
@@ -43,15 +44,27 @@ const TopAction = () => {
   const token = getStoredToken()
   const user = getProfileFromLS()
   const handleLogout = () => {}
+
+  const [showSearch, setShowSearch] = useState(false)
   return (
     <div className='top-act'>
       <div className='top-act__group top-act__group--single'>
         <button className='top-act__btn'>
-          <img className='icon top-act__icon' src={SearchIcon} alt='Search icon' />
+          <input
+            type='text'
+            placeholder='Search for item'
+            className={`top-act__search-input ${showSearch ? 'show' : 'hide'}`}
+          />
+          <img
+            onClick={() => setShowSearch(!showSearch)}
+            className='icon top-act__icon'
+            src={SearchIcon}
+            alt='Search icon'
+          />
         </button>
       </div>
 
-      {true ? (
+      {token ? (
         <>
           {' '}
           <div className='top-act__group top-act__group--double'>
@@ -67,11 +80,11 @@ const TopAction = () => {
                     <h2 className='act-dropdown__title'>You have 3 item(s)</h2>
                   </div>
                   <div className='row row-cols-3 gx-2 act-dropdown__list'>
-                    {previewList.map((item, index) => (
+                    {/* {previewList.map((item, index) => (
                       <div key={index} className='col'>
                         <PreviewItem product={item} />
                       </div>
-                    ))}
+                    ))} */}
                   </div>
                   <div className='act-dropdown__separate' />
                   <div className='act-dropdown__checkout'>
@@ -137,7 +150,7 @@ const TopAction = () => {
                   <img src={user?.avatar || defaultAvatar} alt='Avatar' className='user-menu__avatar' />
                   <div>
                     <p className='user-menu__name'>{user?.name || user?.email}</p>
-                    <p>{`@${user?.email.split('@')[0]}`}</p>
+                    <p>{`@${user?.email?.split('@')[0]}`}</p>
                   </div>
                 </div>
                 <ul className='user-menu__list'>

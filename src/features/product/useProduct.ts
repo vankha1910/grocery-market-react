@@ -2,11 +2,11 @@ import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useSearchParams } from 'react-router-dom'
 import { getListProduct } from '~/api/product.api'
 import { ProductParams } from '~/types/product.type'
-import { buildQueryParams, parseParams } from '~/utils'
+import { buildQueryParams } from '~/utils'
 const RESULT_PER_PAGE = import.meta.env.VITE_RESULT_PER_PAGE
 const useProducts = (params: ProductParams) => {
   const queryClient = useQueryClient()
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams] = useSearchParams()
   const result = useQuery({
     queryKey: ['product-list', params],
     queryFn: () => getListProduct(buildQueryParams(params))

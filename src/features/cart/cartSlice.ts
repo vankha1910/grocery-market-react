@@ -20,7 +20,7 @@ const handleUpdateTotalPrice = (cartList: CartItemType[]) => {
 const initialState: CartState = {
   cart: JSON.parse(localStorage.getItem('cart') || '[]'),
   totalPrice: handleUpdateTotalPrice(JSON.parse(localStorage.getItem('cart') || '[]') || 0),
-  address: getProfileFromLS()?.addresses[0] || '{}',
+  address: (getProfileFromLS()?.addresses && getProfileFromLS()?.addresses[0]) || '{}',
   paymentMethod: 'cod'
 }
 

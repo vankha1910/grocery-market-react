@@ -25,7 +25,7 @@ export async function getProductDetail(productId: string) {
   return data
 }
 
-export async function getListProduct(params) {
+export async function getListProduct(params: string) {
   const API_URL = `${API_HOST}/api/v1/products?${params}`
   const response = await fetch(API_URL, {
     method: 'GET',
