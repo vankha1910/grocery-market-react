@@ -1,3 +1,4 @@
+@use '../abstracts';
 *,
 ::before,
 ::after {
@@ -78,6 +79,10 @@ select {
   font-weight: 500;
   white-space: nowrap;
   user-select: none;
+  @include abstracts.screen(sm) {
+    height: 36px;
+    padding: 0 12px;
+  }
 
   &--small {
     height: 40px;

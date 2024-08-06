@@ -42,6 +42,7 @@ import planeBgIcon from './imgs/card/plane-bg.svg'
 import leafIcon from './imgs/card/leaf.svg'
 import leafBgIcon from './imgs/card/leaf-bg.svg'
 import CheckCompleted from './icons/check_completed_img.png'
+import FilterIcon from './icons/filter.svg'
 
 import slideImage1 from './imgs/slideshow/slideshow-1.png'
 import slideImage1Mb from './imgs/slideshow/slideshow-1-mb.png'
@@ -123,5 +124,6 @@ export {
   ArrowUp,
   SunIcon,
   defaultAvatar,
-  CheckCompleted
+  CheckCompleted,
+  FilterIcon
 }

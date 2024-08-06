@@ -7,6 +7,7 @@ const useCheckLogin = () => {
     mutationFn: checkLoginApi,
     onSuccess: async (res) => {
       const data = await res.json()
+      console.log(data)
       if (data.status === 'success') {
         setProfileToLS(data.data.user)
         storedToken(data.token)

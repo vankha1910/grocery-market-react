@@ -8,7 +8,7 @@
 .top-act {
   @extend %flexItemsCenter;
   gap: 20px;
-  margin-left: auto;
+  // margin-left: auto;
 
   @include abstracts.screen(md) {
     // margin-left: 0;

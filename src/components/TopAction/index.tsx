@@ -48,7 +48,7 @@ const TopAction = () => {
   const [showSearch, setShowSearch] = useState(false)
   return (
     <div className='top-act'>
-      <div className='top-act__group top-act__group--single'>
+      <div className='top-act__group top-act__group--single d-sm-none '>
         <button className='top-act__btn'>
           <input
             type='text'
@@ -187,9 +187,15 @@ const TopAction = () => {
         </>
       ) : (
         <>
-          <Link to='/register' className='btn btn--text d-md-none'>
+          {/* <Link to='/register' className='btn btn--text d-md-none'>
             Sign In
-          </Link>
+          </Link> */}
+          <div className='top-act__btn-wrap'>
+            <Link to='/checkout' className='top-act__btn'>
+              <img className='icon top-act__icon' src={CartIcon} />
+              {cartList?.length > 0 && <span className='top-act__badge'>{cartList?.length || 0}</span>}
+            </Link>
+          </div>
           <Link to='/login' className='btn btn--primary btn--no-margin'>
             Sign Up
           </Link>

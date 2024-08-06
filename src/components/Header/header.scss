@@ -15,16 +15,18 @@
 }
 .top-bar {
   position: relative;
+  display: flex;
+  justify-content: space-between;
   @extend %flexItemsCenter;
   &__logo {
     @include abstracts.screen(lg) {
-      margin-left: 40px;
+      // margin-left: 55px;
     }
     @include abstracts.screen(md) {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
+      // position: absolute;
+      // left: 50%;
+      // top: 50%;
+      // transform: translate(-50%, -50%);
       margin-left: 0;
     }
   }
