@@ -10,6 +10,7 @@ import ProductDetail from './pages/ProductDetail'
 import Profile from './pages/Profile'
 import Login from './pages/(auth)/Login'
 import Register from './pages/(auth)/Register'
+import ChangePassword from './pages/(auth)/ChangePassword'
 import ForgotPassword from './pages/(auth)/ForgotPassword'
 import PageNotFound from './pages/PageNotFound'
 import Checkout from './pages/Checkout'
@@ -18,6 +19,7 @@ import Favourite from './pages/Favourite'
 import Products from './pages/Products'
 import Ordered from './pages/Ordered'
 import MyOrder from './pages/MyOrder'
+import AccountInfo from './pages/Profile/components/AccountInfo'
 import ProfileLayout from '~/layouts/ProfileLayout'
 import { ToastContainer } from 'react-toastify'
 import { useDarkMode } from './contexts/DarkModeContext'
@@ -58,15 +60,16 @@ function App() {
             <Route path='ordered' element={<Ordered />}></Route>
 
             <Route element={<ProfileLayout />}>
-              <Route path='profile' element={<Profile />}>
-                <Route path='my-order' element={<MyOrder />}></Route>
-              </Route>
+              <Route path='profile' element={<Profile />}></Route>
+              <Route path='/profile/my-orders' element={<MyOrder />}></Route>
+              <Route path='/profile/edit-info' element={<AccountInfo />}></Route>
             </Route>
           </Route>
 
           <Route path='login' element={<Login />}></Route>
           <Route path='register' element={<Register />}></Route>
           <Route path='forgot-password' element={<ForgotPassword />}></Route>
+          <Route path='change-password' element={<ChangePassword />}></Route>
           <Route path='*' element={<PageNotFound />}></Route>
         </Routes>
       </BrowserRouter>

@@ -6,13 +6,18 @@ const index = () => {
     <main className='profile'>
       <div className='container'>
         <div className='profile-container'>
-          <div className='row gy-md-3'>
-            <div className='col-3 col-xl-4 col-lg-5 col-md-12'>
-              <ProfileSidebar />
-            </div>
-            <div className='col-9 col-xl-8 col-lg-7 col-md-12'>
-              <Outlet />
-            </div>
+          <div
+            style={{
+              display: 'flex',
+              gap: '10px'
+            }}
+            className='gy-md-3'
+          >
+            <ProfileSidebar />
+            <Outlet />
+
+            {/* <div className='col-3 col-xl-4 col-lg-5 col-md-12'></div>
+            <div className='col-9 col-xl-8 col-lg-7 col-md-12'></div> */}
           </div>
         </div>
       </div>

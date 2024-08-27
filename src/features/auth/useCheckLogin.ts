@@ -1,4 +1,5 @@
 import { useMutation, useQuery } from '@tanstack/react-query'
+import { Session } from 'inspector'
 import { checkLoginApi } from '~/api/auth.api'
 import { setProfileToLS, storedToken } from '~/utils'
 
@@ -7,14 +8,13 @@ const useCheckLogin = () => {
     mutationFn: checkLoginApi,
     onSuccess: async (res) => {
       const data = await res.json()
-      console.log(data)
       if (data.status === 'success') {
         setProfileToLS(data.data.user)
         storedToken(data.token)
       }
     },
     onError: (error) => {
-      console.log(error)
+      // sessionStorage.removeItem('token')
     }
   })
   return { checkLogin }

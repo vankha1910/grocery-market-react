@@ -43,7 +43,10 @@ const TopAction = () => {
 
   const token = getStoredToken()
   const user = getProfileFromLS()
-  const handleLogout = () => {}
+  const handleLogout = () => {
+    sessionStorage.removeItem('token')
+    window.location.reload()
+  }
 
   const [showSearch, setShowSearch] = useState(false)
   return (
@@ -164,17 +167,18 @@ const TopAction = () => {
                       Favourite list
                     </Link>
                   </li>
+                  <li>
+                    <Link to='/change-password' className='user-menu__link'>
+                      Change password
+                    </Link>
+                  </li>
                   <li className='user-menu__separate'>
-                    <button onClick={toggleDarkMode} className='user-menu__link' id='switch-theme-btn'>
+                    <button onClick={toggleDarkMode} className='user-menu__link '>
                       <span>{!isDarkMode ? 'Dark mode' : 'Light mode'}</span>
                       <img src={SunIcon} alt='' className='icon user-menu__icon' />
                     </button>
                   </li>
-                  <li>
-                    <Link to='#!' className='user-menu__link'>
-                      Settings
-                    </Link>
-                  </li>
+
                   <li className='user-menu__separate'>
                     <button onClick={handleLogout} className='user-menu__link'>
                       Logout

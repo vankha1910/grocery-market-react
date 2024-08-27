@@ -17,6 +17,7 @@ const useSignIn = () => {
       if (res.ok) {
         setProfileToLS(data.data.user)
         storedToken(data.token)
+        queryClient.setQueryData(['user'], data.data.user)
         setTimeout(() => {
           navigate('/')
         }, 1000)

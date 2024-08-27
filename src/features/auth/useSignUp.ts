@@ -15,6 +15,7 @@ const useSignUp = () => {
         toast.success(`Register successfully`)
         setProfileToLS(data.data.user)
         storedToken(data.token)
+        queryClient.setQueryData(['user'], data.data.user)
         setTimeout(() => {
           navigate('/')
         }, 1000)

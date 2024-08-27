@@ -10,7 +10,7 @@ const Header = () => {
   const { checkLogin } = useCheckLogin()
   const [showNavbar, setShowNavbar] = useState(false)
   useEffect(() => {
-    checkLogin()
+    getStoredToken() && checkLogin()
   }, [])
   return (
     <header id='header' className='header'>
