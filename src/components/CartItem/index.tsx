@@ -2,18 +2,26 @@ import './CartItem.scss'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { ArrowDown2, HeartIcon2, MinusIcon, PlusIcon, TrashIcon } from '~/assets'
+import { HeartIcon2, TrashIcon } from '~/assets'
 import { CartItemType } from '~/types/cart.type'
 import ButtonIncrease from '~/components/ButtonIncrease'
-import { decreaseQuantity, increaseQuantity } from '~/features/cart/cartSlice'
+import { decreaseQuantity, increaseQuantity, removeFromCart } from '~/features/cart/cartSlice'
+import { Modal } from 'antd'
 const CartItem = ({ cartItem }: { cartItem: CartItemType }) => {
-  // const [quantity, setQuantity] = useState(cartItem?.selectedSize.quantity)
+  const [showModal, setShowModal] = useState(false)
   const dispatch = useDispatch()
   const handleIncrease = () => {
     dispatch(increaseQuantity(cartItem.cartItemId))
   }
   const handleDecrease = () => {
     dispatch(decreaseQuantity(cartItem.cartItemId))
+  }
+  const handleRemoveCartItem = () => {
+    setShowModal(true)
+  }
+  const onRemove = () => {
+    dispatch(removeFromCart(cartItem.cartItemId))
+    setShowModal(false)
   }
   return (
     <article className='cart-item'>
@@ -29,8 +37,11 @@ const CartItem = ({ cartItem }: { cartItem: CartItemType }) => {
             ${(cartItem?.selectedSize?.price - cartItem?.selectedSize?.price * (cartItem?.discount / 100)).toFixed(2)} |{' '}
             <span className='cart-item__status'>In Stock</span>
           </p>
-          <p className='cart-item__size'>{cartItem?.selectedSize?.value}</p>
-          <p className='cart-item__grind'>{cartItem.selectedGrind}</p>
+          <p className='cart-item__size'>
+            {cartItem?.selectedSize?.value}
+            {' / '}
+            <span className='cart-item__grind'>{cartItem.selectedGrind}</span>
+          </p>
           <div className='cart-item__ctrl cart-item__ctrl--md-block'>
             <ButtonIncrease
               quantity={cartItem?.selectedSize?.quantity}
@@ -45,12 +56,26 @@ const CartItem = ({ cartItem }: { cartItem: CartItemType }) => {
             <button className='cart-item__ctrl-btn'>
               <img src={HeartIcon2} alt='' />
             </button>
-            <button className='cart-item__ctrl-btn js-toggle' toggle-target='#delete-confirm'>
+            <button
+              onClick={handleRemoveCartItem}
+              className='cart-item__ctrl-btn js-toggle'
+              toggle-target='#delete-confirm'
+            >
               <img src={TrashIcon} alt='' />
             </button>
           </div>
         </div>
       </div>
+      <Modal
+        title='Confirmation'
+        open={showModal}
+        onOk={onRemove}
+        onCancel={() => setShowModal(false)}
+        width={400}
+        centered
+      >
+        <p>Are you sure you want to delete this item?</p>
+      </Modal>
     </article>
   )
 }

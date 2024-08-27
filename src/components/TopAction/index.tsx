@@ -1,16 +1,5 @@
 import { Link } from 'react-router-dom'
-import {
-  ArrowUp,
-  Avatar,
-  CartIcon,
-  HeartIcon,
-  SearchIcon,
-  SunIcon,
-  productImage1,
-  productImage2,
-  productImage3,
-  defaultAvatar
-} from '~/assets'
+import { ArrowUp, CartIcon, HeartIcon, SearchIcon, SunIcon, defaultAvatar } from '~/assets'
 import './topAction.scss'
 import PreviewItem from '../PreviewItem'
 import { useDarkMode } from '../../contexts/DarkModeContext'
@@ -23,23 +12,23 @@ const TopAction = () => {
   const { toggleDarkMode, isDarkMode } = useDarkMode()
   const cartList = useSelector<RootState>((state) => state.cart.cart) as CartItemType[]
   const totalPrice = useSelector<RootState>((state) => state.cart.totalPrice) as number
-  const previewList = [
-    {
-      productImage: productImage1,
-      productName: 'Coffee Beans - Espresso Arabica and Robusta Beans',
-      productPrice: 47.0
-    },
-    {
-      productImage: productImage2,
-      productName: 'Lavazza Coffee Blends - Try the Italian Espresso',
-      productPrice: 10.15
-    },
-    {
-      productImage: productImage3,
-      productName: 'Lavazza - Caffè Espresso Black Tin - Ground coffee',
-      productPrice: 23.6
-    }
-  ]
+  // const previewList = [
+  //   {
+  //     productImage: productImage1,
+  //     productName: 'Coffee Beans - Espresso Arabica and Robusta Beans',
+  //     productPrice: 47.0
+  //   },
+  //   {
+  //     productImage: productImage2,
+  //     productName: 'Lavazza Coffee Blends - Try the Italian Espresso',
+  //     productPrice: 10.15
+  //   },
+  //   {
+  //     productImage: productImage3,
+  //     productName: 'Lavazza - Caffè Espresso Black Tin - Ground coffee',
+  //     productPrice: 23.6
+  //   }
+  // ]
 
   const token = getStoredToken()
   const user = getProfileFromLS()

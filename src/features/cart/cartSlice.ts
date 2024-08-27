@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit'
 import { CartItemType, CartState } from '~/types/cart.type'
 import { toast } from 'react-toastify'
 import { uniqueId } from 'lodash'
-import { Address } from '~/types/address.type'
 import { getProfileFromLS } from '~/utils'
 
 const handleUpdateTotalPrice = (cartList: CartItemType[]) => {
@@ -52,7 +51,9 @@ const cartSlide = createSlice({
       localStorage.setItem('cart', JSON.stringify(state.cart))
     },
     removeFromCart: (state, action) => {
-      // return state.filter((item) => item.id !== action.payload)
+      state.cart = state.cart.filter((item) => item.cartItemId !== action.payload)
+      localStorage.setItem('cart', JSON.stringify(state.cart))
+      state.totalPrice = handleUpdateTotalPrice(state.cart)
     },
     increaseQuantity: (state, action) => {
       const index = state.cart.findIndex((item) => item.cartItemId === action.payload)
