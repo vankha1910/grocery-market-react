@@ -7,7 +7,7 @@ const useCreateAddress = () => {
   const queryClient = useQueryClient()
   const { mutate: createAddress } = useMutation({
     mutationFn: createAddressApi,
-    onSuccess: (data) => {
+    onSuccess: () => {
       toast.success('Add address successfully')
       queryClient.invalidateQueries({ queryKey: ['user'] })
     },

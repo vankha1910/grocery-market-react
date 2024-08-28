@@ -1,6 +1,5 @@
-import { Link } from 'react-router-dom'
 import AuthLayout from '../../../layouts/AuthLayout'
-import { GoogleIcon, LockIcon, LoginIntro, MessageIcon } from '~/assets'
+import { LockIcon, LoginIntro } from '~/assets'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'

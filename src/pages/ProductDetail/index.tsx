@@ -4,7 +4,6 @@ import ImageReview from './Components/ImageReview'
 import ProductInfo from './Components/ProductInfo'
 import ProductTabInfo from './Components/ProductTabInfo'
 import './productDetail.scss'
-import productList from '~/data/product'
 import useGetProductDetail from '~/features/product/useGetProductDetail'
 const ProductDetail = () => {
   const { data } = useGetProductDetail()

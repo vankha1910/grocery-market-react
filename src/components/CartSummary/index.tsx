@@ -3,14 +3,15 @@ import { Link } from 'react-router-dom'
 import { GiftIcon } from '~/assets'
 import useCreateOrder from '~/features/cart/useCreateOrder'
 import { RootState } from '~/store'
-import { CartItemType, CartState } from '~/types/cart.type'
+import { CartState } from '~/types/cart.type'
+import FullPageSpin from '../FullPageSpin'
 
 type Props = {
   lastStep?: boolean
 }
 
 const CartSummary = ({ lastStep }: Props) => {
-  const { createOrder } = useCreateOrder()
+  const { createOrder, isPending } = useCreateOrder()
   const state = useSelector<RootState>((state) => state.cart) as CartState
   const { cart, totalPrice, address, paymentMethod } = state
   // const cart = useSelector<RootState>((state) => state.cart.cart) as CartItemType[]
@@ -37,6 +38,7 @@ const CartSummary = ({ lastStep }: Props) => {
   }
   return (
     <>
+      <FullPageSpin isSpinning={isPending}></FullPageSpin>
       <div className='cart-info'>
         <div className='cart-info__row'>
           <span>

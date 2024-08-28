@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ProductItem from '~/components/ProductItem'
 // import productList from '~/data/product'
@@ -6,7 +5,7 @@ import useGetTopRatedProduct from '~/features/product/useGetTopRatedProduct'
 import { Product } from '~/types/product.type'
 
 const ProductList = () => {
-  const { data, isPending } = useGetTopRatedProduct()
+  const { data } = useGetTopRatedProduct()
   const productList: Product[] = data?.data?.products || []
 
   return (

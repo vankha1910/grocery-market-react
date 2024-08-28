@@ -83,10 +83,22 @@ const cartSlide = createSlice({
     },
     setPaymentMethod: (state, action) => {
       state.paymentMethod = action.payload
+    },
+    clearCart: (state) => {
+      state.cart = []
+      localStorage.setItem('cart', JSON.stringify(state.cart))
+      state.totalPrice = 0
     }
   }
 })
-export const { addToCart, removeFromCart, increaseQuantity, decreaseQuantity, setAddress, setPaymentMethod } =
-  cartSlide.actions
+export const {
+  addToCart,
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+  setAddress,
+  setPaymentMethod,
+  clearCart
+} = cartSlide.actions
 
 export default cartSlide.reducer

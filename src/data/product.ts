@@ -145,7 +145,6 @@ const productList: Product[] = [
       "Gentle, refreshing, light - we'd be thrilled to drink this blend any time of year but it's truly perfect for the summer."
   },
   {
-    id: 5,
     name: 'Decaf Coffee - French Vanilla Roast',
     brand: 'Death Wish Coffee',
     taste: 'Rich & Creamy',

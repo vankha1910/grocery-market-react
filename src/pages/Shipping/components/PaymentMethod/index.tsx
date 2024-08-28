@@ -1,4 +1,3 @@
-import React from 'react'
 import { FaPaypal, FaMoneyBill, FaStripe } from 'react-icons/fa'
 
 const PaymentMethod = () => {
@@ -40,6 +39,7 @@ const PaymentMethod = () => {
                   name='delivery-method'
                   className='cart-info__checkbox-input payment-item__checkbox-input'
                   disabled={!item.isAvailable}
+                  checked={item.isAvailable}
                 />
                 <span className='payment-item__cost'>{!item.isAvailable && 'On progress'}</span>
               </span>

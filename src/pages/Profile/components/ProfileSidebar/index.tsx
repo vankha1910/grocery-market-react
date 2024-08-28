@@ -4,14 +4,15 @@ import { getProfileFromLS } from '~/utils'
 import { FaCamera } from 'react-icons/fa6'
 import './profileSidebar.scss'
 import useUpdateAvatar from '~/features/user/useUpdateAvatar'
-import { Spin, Layout, Menu } from 'antd'
+import { Layout, Menu } from 'antd'
 import { useState } from 'react'
+import FullPageSpin from '~/components/FullPageSpin'
 const { Sider } = Layout
-interface AvatarState {
-  avatar: File | null
-}
+// interface AvatarState {
+//   avatar: File | null
+// }
 const ProfileSidebar = () => {
-  const [showSider, setShowSider] = useState()
+  const [showSider, setShowSider] = useState<boolean>()
   const { updateAvatar, isPending } = useUpdateAvatar()
   const user = getProfileFromLS()
   const menuItem = [
@@ -96,7 +97,7 @@ const ProfileSidebar = () => {
   ]
   return (
     <>
-      <Spin fullscreen spinning={isPending} size='large'></Spin>
+      <FullPageSpin isSpinning={isPending}></FullPageSpin>
 
       <Sider
         style={{

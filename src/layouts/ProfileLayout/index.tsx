@@ -1,4 +1,3 @@
-import React from 'react'
 import ProfileSidebar from '~/pages/Profile/components/ProfileSidebar'
 import { Outlet } from 'react-router-dom'
 const index = () => {

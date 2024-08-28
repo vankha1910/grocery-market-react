@@ -1,5 +1,4 @@
-import { useMutation, useQuery } from '@tanstack/react-query'
-import { Session } from 'inspector'
+import { useMutation } from '@tanstack/react-query'
 import { checkLoginApi } from '~/api/auth.api'
 import { setProfileToLS, storedToken } from '~/utils'
 
@@ -14,6 +13,7 @@ const useCheckLogin = () => {
       }
     },
     onError: (error) => {
+      console.log(error)
       // sessionStorage.removeItem('token')
     }
   })

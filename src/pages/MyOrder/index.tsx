@@ -1,19 +1,17 @@
-import React from 'react'
 import useGetMyOrder from '~/features/user/useGetMyOrder'
 import { Table } from 'antd'
 const MyOrder = () => {
   const { data } = useGetMyOrder()
   console.log(data)
-  const orders = data?.data?.order
-  console.log(orders)
-  const dataOrder = orders?.map((item, index) => {
-    return {
-      number: index + 1,
-      totalPrice: item.totalPrice,
-      date: item.orderDate,
-      status: item.status
-    }
-  })
+  // const orders = data?.data?.order
+  // const dataOrder = orders?.map((item, index) => {
+  //   return {
+  //     number: index + 1,
+  //     totalPrice: item.totalPrice,
+  //     date: item.orderDate,
+  //     status: item.status
+  //   }
+  // })
   const columns = [
     {
       title: 'Number',
@@ -46,9 +44,8 @@ const MyOrder = () => {
       <div className='row gy-1'>
         <div className='col-12'>
           <h2 className='cart-info__heading'>My Order</h2>
-          <p className='cart-info__desc profile__desc'>Payment methods</p>
         </div>
-        <Table dataSource={dataOrder} style={{ width: '100%' }} columns={columns}></Table>
+        <Table dataSource={[]} style={{ width: '100%' }} columns={columns}></Table>
       </div>
     </div>
   )

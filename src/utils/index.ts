@@ -18,7 +18,7 @@ export const getStoredToken = () => {
 }
 
 export const buildQueryParams = (params: ProductParams) => {
-  const filteredParams = Object.fromEntries(Object.entries(params).filter(([key, value]) => value !== ''))
+  const filteredParams = Object.fromEntries(Object.entries(params).filter(([_, value]) => value !== ''))
   return queryString.stringify(filteredParams)
 }
 

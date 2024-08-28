@@ -1,10 +1,10 @@
 import './products.scss'
 import ProductItem from '../../components/ProductItem'
 import { Pagination, Select } from 'antd'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import useProducts from '~/features/product/useProduct'
 import { Product, ProductParams } from '~/types/product.type'
-import { useSearchParams } from 'react-router-dom'
+import { useLocation, useSearchParams } from 'react-router-dom'
 import { FilterIcon } from '~/assets'
 import { FaTimes } from 'react-icons/fa'
 import useClickOutside from '~/hooks/useClickOutside'
@@ -82,6 +82,12 @@ const Products = () => {
   }
 
   useClickOutside(filterRef, () => setIsFilterOpen(false))
+
+  const location = useLocation()
+  useEffect(() => {
+    console.log(location.search)
+    console.log(searchParams)
+  }, [])
   return (
     <>
       <main className='products-page'>

@@ -1,5 +1,5 @@
-import { Address } from '~/types/address.type'
-import { CartState } from '~/types/cart.type'
+// import { Address } from '~/types/address.type'
+// import { CartState } from '~/types/cart.type'
 import { getStoredToken } from '~/utils'
 
 const API_HOST = import.meta.env.VITE_API_HOST

@@ -1,8 +1,8 @@
-type Role = 'User' | 'Admin'
-enum Roles {
-  User = 'user',
-  Admin = 'admin'
-}
+// type Role = 'User' | 'Admin'
+// enum Roles {
+//   User = 'user',
+//   Admin = 'admin'
+// }
 export type FormRegisterData = {
   email: string
   password: string

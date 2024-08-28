@@ -1,5 +1,5 @@
 import './profile.scss'
-import ProfileSidebar from './components/ProfileSidebar'
+// import ProfileSidebar from './components/ProfileSidebar'
 import ProfileContent from './components/ProfileContent'
 const index = () => {
   return <ProfileContent />

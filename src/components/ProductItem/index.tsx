@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { HeartIcon, StarIcon } from '~/assets'
 import './productItem.scss'
-import { useEffect, useState } from 'react'
 import { Product } from '~/types/product.type'
 
 const ProductItem = ({ product }: { product?: Product }) => {
