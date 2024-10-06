@@ -13,7 +13,21 @@ import { Address } from '~/types/address.type'
 import useCreateAddress from '~/features/user/useCreateAddress'
 import PaymentMethod from './components/PaymentMethod'
 
-const breadcrumbArray = ['Home', 'Checkout', 'Shipping']
+const breadcrumbArray = [
+  {
+    name: 'Home',
+    path: '/'
+  },
+  {
+    name: 'Checkout',
+    path: 'checkout'
+  },
+
+  {
+    name: 'Shipping',
+    path: 'shipping'
+  }
+]
 type FormData = Omit<Address, '_id'>
 const Shipping = () => {
   const addressSchema = yup.object().shape({

@@ -1,0 +1,13 @@
+.product-card {
+  &__img-skeleton {
+    position: absolute;
+    top: 0;
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+.product-card__row {
+  .product-card__price {
+    width: 100%;
+  }
+}

@@ -1,4 +1,4 @@
-import { productImage1, productImage2, productImage3, productImage4 } from '~/assets'
+// import { productImage1, productImage2, productImage3, productImage4 } from '~/assets'
 import Breadcrumb from '../../components/Breadcrumb'
 import ImageReview from './Components/ImageReview'
 import ProductInfo from './Components/ProductInfo'
@@ -8,8 +8,22 @@ import useGetProductDetail from '~/features/product/useGetProductDetail'
 const ProductDetail = () => {
   const { data } = useGetProductDetail()
   const product = data?.data?.product
-  const listProductImage = [productImage1, productImage2, productImage3, productImage4]
-  const breadcrumbArray = ['Departments', 'Coffee', 'Coffee Beans', 'Lavazza']
+  // const listProductImage = [productImage1, productImage2, productImage3, productImage4]
+  const breadcrumbArray = [
+    // 'Departments', 'Coffee', 'Coffee Beans', 'Lavazza'
+    {
+      name: 'Home',
+      path: '/'
+    },
+    {
+      name: 'Products',
+      path: 'products'
+    },
+    {
+      name: product?.brand,
+      path: `products?brand=${product?.brand}`
+    }
+  ]
   return (
     <main className='product-page'>
       <div className='container'>
@@ -27,7 +41,7 @@ const ProductDetail = () => {
         <div className='product-container prod-info-content'>
           <div className='row'>
             <div className='col-5 col-xl-6 col-lg-12'>
-              <ImageReview listProductImage={listProductImage}></ImageReview>
+              <ImageReview listProductImage={product?.images}></ImageReview>
             </div>
             <div className='col-7 col-xl-6 col-lg-12'>
               <ProductInfo productInfo={product}></ProductInfo>
@@ -35,7 +49,7 @@ const ProductDetail = () => {
           </div>
         </div>
         <div className='product-container'>
-          <ProductTabInfo></ProductTabInfo>
+          <ProductTabInfo productInfo={product}></ProductTabInfo>
         </div>
       </div>
     </main>

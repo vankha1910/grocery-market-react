@@ -28,15 +28,16 @@ const index = (props: NavbarProps) => {
         </div>
         <ul className='navbar__list js-dropdown-list'>
           <li className='navbar__item'>
+            <Link to='/' className='navbar__link'>
+              Home
+            </Link>
+          </li>
+          <li className='navbar__item'>
             <Link to='products' className='navbar__link'>
               Product <img src={ArrowDown} alt='' className='navbar__arrow icon' />
             </Link>
           </li>
-          <li className='navbar__item'>
-            <Link to='blog' className='navbar__link'>
-              Blog
-            </Link>
-          </li>
+
           <li className='navbar__item'>
             <Link to='contact' className='navbar__link'>
               Contact

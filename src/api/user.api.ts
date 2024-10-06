@@ -19,8 +19,8 @@ export async function createAddressApi(address: Omit<Address, '_id'>) {
   return response
 }
 
-export async function getMyOrderApi() {
-  const API_URL = `${API_HOST}/api/v1/orders/my-orders`
+export async function getMyOrderApi(params?: string) {
+  const API_URL = `${API_HOST}/api/v1/orders/my-orders?${params}`
   const response = await fetch(API_URL, {
     method: 'GET',
     headers

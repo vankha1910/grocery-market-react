@@ -7,7 +7,6 @@ const useUpdateAvatar = () => {
   const { mutate: updateAvatar, isPending } = useMutation({
     mutationFn: updateAvatarApi,
     onSuccess: (data) => {
-      console.log(data)
       if (data.status === 'success') {
         toast.success('Update avatar successfully')
         const { user } = data.data

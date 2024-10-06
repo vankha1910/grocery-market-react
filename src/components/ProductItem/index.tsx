@@ -19,7 +19,14 @@ const ProductItem = ({ product }: { product?: Product }) => {
       </Link>
       <p className='product-card__brand'>{product?.brand}</p>
       <div className='product-card__row'>
-        {<p className='product-card__price'>${product?.size[0]?.price ?? ''}</p>}
+        {/* {<p className='product-card__price'>${product?.size[0]?.price ?? ''}</p>} */}
+        <p className='product-card__price'>
+          $
+          {product?.discount
+            ? (product?.size[0]?.price - (product?.size[0]?.price * product?.discount) / 100).toFixed(2)
+            : product?.size[0]?.price}
+          {product?.discount !== 0 && <span className='prod-info__tax'>{product?.discount}%</span>}
+        </p>
         <img className='product-card__icon' src={StarIcon} alt='' />
         <p className='product-card__score'>{product?.rated}</p>
       </div>

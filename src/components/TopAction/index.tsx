@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowUp, CartIcon, HeartIcon, SearchIcon, SunIcon, defaultAvatar } from '~/assets'
+import { ArrowUp, CartIcon, HeartIcon, SunIcon, defaultAvatar } from '~/assets'
 import './topAction.scss'
 import PreviewItem from '../PreviewItem'
 import { useDarkMode } from '../../contexts/DarkModeContext'
@@ -7,7 +7,10 @@ import { getProfileFromLS, getStoredToken } from '~/utils'
 import { useSelector } from 'react-redux'
 import { CartItemType } from '~/types/cart.type'
 import { RootState } from '~/store'
-import { useState } from 'react'
+import SearchInput from '../SearchInput'
+import { FaShoppingCart } from 'react-icons/fa'
+
+import NotFound from '../NotFound'
 const TopAction = () => {
   const { toggleDarkMode, isDarkMode } = useDarkMode()
   const cartList = useSelector<RootState>((state) => state.cart.cart) as CartItemType[]
@@ -36,24 +39,12 @@ const TopAction = () => {
     sessionStorage.removeItem('token')
     window.location.reload()
   }
+  console.log(token)
 
-  const [showSearch, setShowSearch] = useState(false)
   return (
     <div className='top-act'>
       <div className='top-act__group top-act__group--single d-sm-none '>
-        <button className='top-act__btn'>
-          <input
-            type='text'
-            placeholder='Search for item'
-            className={`top-act__search-input ${showSearch ? 'show' : 'hide'}`}
-          />
-          <img
-            onClick={() => setShowSearch(!showSearch)}
-            className='icon top-act__icon'
-            src={SearchIcon}
-            alt='Search icon'
-          />
-        </button>
+        <SearchInput></SearchInput>
       </div>
 
       {token ? (
@@ -119,14 +110,21 @@ const TopAction = () => {
                       </div>
                     </>
                   ) : (
-                    <>Empty card</>
+                    <>
+                      {' '}
+                      <NotFound
+                        icon={<FaShoppingCart className='not-found__icon' />}
+                        title='Empty cart'
+                        description='Shopping cart is empty'
+                      ></NotFound>
+                    </>
                   )}
                   <div className='act-dropdown__checkout'>
                     <Link
                       to={cartList?.length > 0 ? '/checkout' : '/products'}
                       className='btn btn--primary btn--rounded act-dropdown__checkout-btn'
                     >
-                      {cartList?.length > 0 ? 'Check Out All' : 'View product'}
+                      {cartList?.length > 0 ? 'Check Out All' : 'Buy Now'}
                     </Link>
                   </div>
                 </div>

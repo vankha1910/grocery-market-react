@@ -1,16 +1,20 @@
 import './products.scss'
 import ProductItem from '../../components/ProductItem'
 import { Pagination, Select } from 'antd'
-import { useEffect, useRef, useState } from 'react'
+import { ChangeEvent, useEffect, useRef, useState } from 'react'
 import useProducts from '~/features/product/useProduct'
 import { Product, ProductParams } from '~/types/product.type'
-import { useLocation, useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import { FilterIcon } from '~/assets'
 import { FaTimes } from 'react-icons/fa'
 import useClickOutside from '~/hooks/useClickOutside'
+import ProductSkeleton from '~/components/ProductSkeleton'
+import NotFound from '~/components/NotFound'
+import { LuPackageX } from 'react-icons/lu'
 
-const brandList = ['Lavazza', 'Welikecoffee', 'Nescafe', 'Cappuccino', 'Espresso']
+const brandList = ['Lavazza', 'Welikecoffee', 'Nescafe', 'Cappuccino', 'Highland Coffee']
 const categoryList = ['Available Ground', 'Decaf', 'Espresso', 'Blends', 'Single Origins']
+const originList = ['Brazil', 'Colombia', 'Ethiopia', 'Kenya', 'Vietnam']
 const selectOption = [
   {
     value: '-createdAt',
@@ -48,12 +52,17 @@ const Products = () => {
     limit: RESULT_PER_PAGE,
     sort: '-createdAt',
     brand: '',
-    category: ''
+    category: '',
+    search: ''
   })
-  const { data } = useProducts(params)
+  const [selectedFilter, setSelectedFilter] = useState({
+    brand: '',
+    category: '',
+    origin: ''
+  })
+  const { data, isFetching } = useProducts(params)
   const productList: Product[] = data?.data?.products
 
-  const handleCateChange = () => {}
   const handlePagination = (page: number) => {
     setParams((pre) => {
       return {
@@ -83,10 +92,62 @@ const Products = () => {
 
   useClickOutside(filterRef, () => setIsFilterOpen(false))
 
-  const location = useLocation()
+  const handleCateChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, id } = e.target
+    setSelectedFilter((pre) => ({
+      ...pre,
+      [name]: id
+    }))
+    setParams((pre) => {
+      return {
+        ...pre,
+        page: 1,
+        [name]: id
+      }
+    })
+    searchParams.set(name, id)
+    searchParams.set('page', '1')
+    setSearchParams(searchParams)
+    handleScrollToTop()
+  }
+
+  const handleClearFilter = () => {
+    setSelectedFilter({
+      brand: '',
+      category: '',
+      origin: ''
+    })
+    setParams((pre) => {
+      return {
+        ...pre,
+        brand: '',
+        category: '',
+        origin: '',
+        search: ''
+      }
+    })
+    searchParams.delete('brand')
+    searchParams.delete('category')
+    searchParams.delete('origin')
+    searchParams.delete('search')
+    setSearchParams(searchParams)
+  }
+
   useEffect(() => {
-    console.log(location.search)
-    console.log(searchParams)
+    // Continue tomorowww
+    const searchValue = new URLSearchParams(window.location.search).get('search')
+    const brandValue = new URLSearchParams(window.location.search).get('brand')
+    const categoryValue = new URLSearchParams(window.location.search).get('category')
+    if (searchValue || brandValue || categoryValue) {
+      setParams((pre) => {
+        return {
+          ...pre,
+          search: searchValue || '',
+          brand: brandValue || '',
+          category: categoryValue || ''
+        }
+      })
+    }
   }, [])
   return (
     <>
@@ -101,7 +162,9 @@ const Products = () => {
                     <img src={FilterIcon} alt='filter-icon' className='filter_icon icon' />
                     Filter
                   </h3>
-                  <button className='filter__header-clear'>Clear</button>
+                  <button onClick={handleClearFilter} className='filter__header-clear'>
+                    Clear
+                  </button>
                 </div>
                 <div className='filter-item product-sort d-none d-md-block'>
                   <span>Sort by: </span>
@@ -115,7 +178,7 @@ const Products = () => {
                     value={params.sort}
                   ></Select>
                 </div>
-                <div className='separate'></div>
+                {/* <div className='separate'></div> */}
                 <div className='filter-item filter-category'>
                   <p className='filter__title'>Type</p>
                   <ul className='filter__list'>
@@ -127,6 +190,7 @@ const Products = () => {
                           type='radio'
                           name='category'
                           id={item}
+                          checked={selectedFilter.category === item}
                         />
                         <label className='filter__label' htmlFor={item}>
                           {item}
@@ -147,6 +211,7 @@ const Products = () => {
                           type='radio'
                           name='brand'
                           id={item}
+                          checked={selectedFilter.brand === item}
                         />
                         <label className='filter__label' htmlFor={item}>
                           {item}
@@ -156,6 +221,26 @@ const Products = () => {
                   </ul>
                 </div>
                 <div className='separate'></div>
+                <div className='filter-item filter-brand'>
+                  <p className='filter__title'>Origin</p>
+                  <ul className='filter__list'>
+                    {originList?.map((item) => (
+                      <li key={item} className='filter__item'>
+                        <input
+                          onChange={handleCateChange}
+                          className='filter__input'
+                          type='radio'
+                          name='origin'
+                          id={item}
+                          checked={selectedFilter.origin === item}
+                        />
+                        <label className='filter__label' htmlFor={item}>
+                          {item}
+                        </label>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
               <div className='filter__overlay d-none d-lg-block' />
             </div>
@@ -177,16 +262,33 @@ const Products = () => {
                     ></Select>
                   </div>
                 </div>
-                <div className='product-list row row-cols-4 row-cols-lg-2 row-cols-sm-2 g-3'>
-                  {productList?.map((item, index) => (
-                    <div key={index} className='col'>
-                      <ProductItem product={item} />
-                    </div>
-                  ))}
+                <div className='product-list row row-cols-4 row-cols-lg-2 row-cols-md-2 row-cols-sm-1 g-3'>
+                  {isFetching ? (
+                    <>
+                      <ProductSkeleton />
+                    </>
+                  ) : (
+                    <>
+                      {productList?.map((item, index) => (
+                        <div key={index} className='col'>
+                          <ProductItem product={item} />
+                        </div>
+                      ))}
+                    </>
+                  )}
                 </div>
-                <div className='product-pagination'>
+                {productList?.length === 0 && (
+                  <NotFound
+                    icon={<LuPackageX className='not-found__icon' />}
+                    title='No product found'
+                    description="We couldn't find any products matching your criteria"
+                  ></NotFound>
+                )}
+              </div>
+              <div className='product-pagination'>
+                {productList?.length > 0 && (
                   <Pagination current={params.page} total={data?.total} pageSize={8} onChange={handlePagination} />
-                </div>
+                )}
               </div>
             </div>
           </div>

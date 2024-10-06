@@ -57,7 +57,6 @@ const ProductInfo = ({ productInfo }: { productInfo: Product }) => {
           {productInfo?.discount !== 0 && <span className='prod-info__tax'>{productInfo?.discount}%</span>}
         </p>
       </div>
-      <p className='prod-info__taste'>{productInfo?.taste}</p>
       <div className='prod-info__tags'>
         {productInfo?.tags.map((tag, index) => (
           <span className='prod-info__tag form__tag' key={index}>
@@ -65,6 +64,7 @@ const ProductInfo = ({ productInfo }: { productInfo: Product }) => {
           </span>
         ))}
       </div>
+      <p className='prod-info__taste'>{productInfo?.taste}</p>
       <p className='prod-info__desc'>{productInfo?.description}</p>
       <div className='row'>
         <div className='col-5 col-xxl-6 col-xl-12'>

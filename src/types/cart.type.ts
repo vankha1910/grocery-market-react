@@ -2,7 +2,7 @@ import { Address } from './address.type'
 
 export type CartItemType = {
   cartItemId: number
-  productId: number
+  productId: string
   name: string
   thumbImg: string
   discount: number

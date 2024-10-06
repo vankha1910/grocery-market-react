@@ -1,13 +1,19 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './imageReview.scss'
 interface ImageReviewProps {
   listProductImage: string[]
 }
 const ImageReview = ({ listProductImage }: ImageReviewProps) => {
-  const [currentImage, setCurrentImage] = useState(listProductImage[0])
+  const [currentImage, setCurrentImage] = useState('')
   const handleHover = (image: string) => {
     setCurrentImage(image)
   }
+
+  useEffect(() => {
+    if (listProductImage) {
+      setCurrentImage(listProductImage[0])
+    }
+  }, [listProductImage])
   return (
     <div className='prod-preview'>
       <div className='prod-preview__list'>

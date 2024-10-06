@@ -27,4 +27,6 @@ export type ProductParams = {
   sort?: string
   brand?: string
   category?: string
+  search?: string
+  origin?: string
 }

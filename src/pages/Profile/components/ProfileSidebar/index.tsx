@@ -24,7 +24,7 @@ const ProfileSidebar = () => {
         </span>
       ),
       label: (
-        <Link className='profile-menu__link' to='/profile/edit-info'>
+        <Link className='profile-menu__link' to='/profile'>
           Personal info
         </Link>
       )

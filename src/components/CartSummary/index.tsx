@@ -5,6 +5,7 @@ import useCreateOrder from '~/features/cart/useCreateOrder'
 import { RootState } from '~/store'
 import { CartState } from '~/types/cart.type'
 import FullPageSpin from '../FullPageSpin'
+import { Order } from '~/types/order.type'
 
 type Props = {
   lastStep?: boolean
@@ -14,21 +15,23 @@ const CartSummary = ({ lastStep }: Props) => {
   const { createOrder, isPending } = useCreateOrder()
   const state = useSelector<RootState>((state) => state.cart) as CartState
   const { cart, totalPrice, address, paymentMethod } = state
-  // const cart = useSelector<RootState>((state) => state.cart.cart) as CartItemType[]
-  // const cart = useSelector<RootState>((state) => state.cart.cart) as CartItemType[]
   const SHIPPING_FEE = 10
 
   const handleOrder = () => {
+    if (cart.length === 0) return
+
     const refactorCart = cart.map((item) => {
       return {
         _id: item.productId,
         quantity: item.selectedSize.quantity,
         price: item.selectedSize.price,
         size: item.selectedSize.value,
-        grind: item.selectedGrind
+        grind: item.selectedGrind,
+        discount: item?.discount || 0,
+        name: item.name
       }
     })
-    const data = {
+    const data: Order = {
       products: refactorCart,
       shippingAddress: address,
       paymentMethod: paymentMethod,
