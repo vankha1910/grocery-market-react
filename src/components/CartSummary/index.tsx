@@ -1,17 +1,21 @@
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { GiftIcon } from '~/assets'
 import useCreateOrder from '~/features/cart/useCreateOrder'
 import { RootState } from '~/store'
 import { CartState } from '~/types/cart.type'
 import FullPageSpin from '../FullPageSpin'
 import { Order } from '~/types/order.type'
+import { getStoredToken } from '~/utils'
+import { toast } from 'react-toastify'
 
 type Props = {
   lastStep?: boolean
 }
 
 const CartSummary = ({ lastStep }: Props) => {
+  const token = getStoredToken()
+  const navigate = useNavigate()
   const { createOrder, isPending } = useCreateOrder()
   const state = useSelector<RootState>((state) => state.cart) as CartState
   const { cart, totalPrice, address, paymentMethod } = state
@@ -38,6 +42,14 @@ const CartSummary = ({ lastStep }: Props) => {
       totalPrice
     }
     createOrder(data)
+  }
+
+  const navigateToLogin = () => {
+    toast.warning('You need to login first')
+
+    setTimeout(() => {
+      navigate('/login')
+    }, 1500)
   }
   return (
     <>
@@ -70,9 +82,19 @@ const CartSummary = ({ lastStep }: Props) => {
           </button>
         ) : (
           <>
-            <Link to='/shipping' className='cart-info__next-btn btn btn--primary btn--rounded'>
-              Continue to checkout
-            </Link>
+            {token ? (
+              <>
+                <Link to='/shipping' className='cart-info__next-btn btn btn--primary btn--rounded'>
+                  Continue to checkout
+                </Link>
+              </>
+            ) : (
+              <>
+                <button onClick={navigateToLogin} className='cart-info__next-btn btn btn--primary btn--rounded'>
+                  Continue to checkout
+                </button>
+              </>
+            )}
           </>
         )}
       </div>

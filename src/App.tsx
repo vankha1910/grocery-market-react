@@ -23,6 +23,7 @@ import AccountInfo from './pages/Profile/components/AccountInfo'
 import ProfileLayout from '~/layouts/ProfileLayout'
 import { ToastContainer } from 'react-toastify'
 import { useDarkMode } from './contexts/DarkModeContext'
+import ProtectRoute from './components/ProtectRoute'
 function App() {
   const { isDarkMode } = useDarkMode()
   const queryClient = new QueryClient({
@@ -37,7 +38,7 @@ function App() {
       <ReactQueryDevtools initialIsOpen={false} />
       <ToastContainer
         position='top-right'
-        autoClose={3000}
+        autoClose={1500}
         hideProgressBar={true}
         newestOnTop={false}
         closeOnClick
@@ -55,11 +56,24 @@ function App() {
             <Route path='products' element={<Products />}></Route>
             <Route path='product/:productId' element={<ProductDetail />}></Route>
             <Route path='checkout' element={<Checkout />}></Route>
-            <Route path='shipping' element={<Shipping />}></Route>
+            <Route
+              path='shipping'
+              element={
+                <ProtectRoute>
+                  <Shipping />
+                </ProtectRoute>
+              }
+            ></Route>
             <Route path='favourite' element={<Favourite />}></Route>
             <Route path='ordered' element={<Ordered />}></Route>
 
-            <Route element={<ProfileLayout />}>
+            <Route
+              element={
+                <ProtectRoute>
+                  <ProfileLayout />
+                </ProtectRoute>
+              }
+            >
               <Route path='profile' element={<Profile />}></Route>
               <Route path='/profile/my-orders' element={<MyOrder />}></Route>
               <Route path='/profile/edit-info' element={<AccountInfo />}></Route>
@@ -69,7 +83,14 @@ function App() {
           <Route path='login' element={<Login />}></Route>
           <Route path='register' element={<Register />}></Route>
           <Route path='forgot-password' element={<ForgotPassword />}></Route>
-          <Route path='change-password' element={<ChangePassword />}></Route>
+          <Route
+            path='change-password'
+            element={
+              <ProtectRoute>
+                <ChangePassword />
+              </ProtectRoute>
+            }
+          ></Route>
           <Route path='*' element={<PageNotFound />}></Route>
         </Routes>
       </BrowserRouter>
