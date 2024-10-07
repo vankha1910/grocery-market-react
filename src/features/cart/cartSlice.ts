@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit'
 import { CartItemType, CartState } from '~/types/cart.type'
 import { toast } from 'react-toastify'
 import { uniqueId } from 'lodash'
-import { getProfileFromLS } from '~/utils'
 
 const handleUpdateTotalPrice = (cartList: CartItemType[]) => {
   return Number.parseFloat(
@@ -18,9 +17,9 @@ const handleUpdateTotalPrice = (cartList: CartItemType[]) => {
 }
 const initialState: CartState = {
   cart: JSON.parse(localStorage.getItem('cart') || '[]'),
-  totalPrice: handleUpdateTotalPrice(JSON.parse(localStorage.getItem('cart') || '[]') || 0),
-  address: (getProfileFromLS()?.addresses && getProfileFromLS()?.addresses[0]) || '{}',
-  paymentMethod: 'cod'
+  totalPrice: handleUpdateTotalPrice(JSON.parse(localStorage.getItem('cart') || '[]') || 0)
+  // address: (getProfileFromLS()?.addresses && getProfileFromLS()?.addresses[0]) || '{}',
+  // paymentMethod: 'cod'
 }
 
 const cartSlide = createSlice({
@@ -78,12 +77,13 @@ const cartSlide = createSlice({
       state.totalPrice = handleUpdateTotalPrice(state.cart)
       localStorage.setItem('cart', JSON.stringify(state.cart))
     },
-    setAddress: (state, action) => {
-      state.address = action.payload
-    },
-    setPaymentMethod: (state, action) => {
-      state.paymentMethod = action.payload
-    },
+    // setAddress: (state, action) => {
+    //   state.address = action.payload
+    // },
+
+    // setPaymentMethod: (state, action) => {
+    //   state.paymentMethod = action.payload
+    // },
     clearCart: (state) => {
       state.cart = []
       localStorage.setItem('cart', JSON.stringify(state.cart))
@@ -96,8 +96,8 @@ export const {
   removeFromCart,
   increaseQuantity,
   decreaseQuantity,
-  setAddress,
-  setPaymentMethod,
+  // setAddress,
+  // setPaymentMethod,
   clearCart
 } = cartSlide.actions
 

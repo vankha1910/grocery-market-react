@@ -25,6 +25,11 @@ export type CartItemType = {
 export type CartState = {
   cart: CartItemType[]
   totalPrice: number
-  address: Address
+  // address: Address
+  // paymentMethod: string
+}
+
+export type AddressState = {
+  currentAddress: Address
   paymentMethod: string
 }

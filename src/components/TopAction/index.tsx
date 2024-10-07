@@ -39,7 +39,6 @@ const TopAction = () => {
     sessionStorage.removeItem('token')
     window.location.reload()
   }
-  console.log(token)
 
   return (
     <div className='top-act'>

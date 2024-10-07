@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { GiftIcon } from '~/assets'
 import useCreateOrder from '~/features/cart/useCreateOrder'
 import { RootState } from '~/store'
-import { CartState } from '~/types/cart.type'
+import { AddressState, CartState } from '~/types/cart.type'
 import FullPageSpin from '../FullPageSpin'
 import { Order } from '~/types/order.type'
 import { getStoredToken } from '~/utils'
@@ -17,8 +17,10 @@ const CartSummary = ({ lastStep }: Props) => {
   const token = getStoredToken()
   const navigate = useNavigate()
   const { createOrder, isPending } = useCreateOrder()
-  const state = useSelector<RootState>((state) => state.cart) as CartState
-  const { cart, totalPrice, address, paymentMethod } = state
+  const cartState = useSelector<RootState>((state) => state.cart) as CartState
+  const addressState = useSelector<RootState>((state) => state.address) as AddressState
+  const { cart, totalPrice } = cartState
+  const { currentAddress, paymentMethod } = addressState
   const SHIPPING_FEE = 10
 
   const handleOrder = () => {
@@ -37,7 +39,7 @@ const CartSummary = ({ lastStep }: Props) => {
     })
     const data: Order = {
       products: refactorCart,
-      shippingAddress: address,
+      shippingAddress: currentAddress,
       paymentMethod: paymentMethod,
       totalPrice
     }

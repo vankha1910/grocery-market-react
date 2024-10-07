@@ -4,14 +4,15 @@ import CartBottom from '../../components/CartBottom'
 import CartSummary from '../../components/CartSummary'
 import AddressCard from './components/AddressCard'
 import { Modal } from 'antd'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
-import { getProfileFromLS } from '~/utils'
-import { Address } from '~/types/address.type'
-import useCreateAddress from '~/features/user/useCreateAddress'
+import { Address, AddressStateType } from '~/types/address.type'
+import useCreateAddress from '~/features/address/useCreateAddress'
 import PaymentMethod from './components/PaymentMethod'
+import { useSelector } from 'react-redux'
+import { RootState } from '~/store'
 
 const breadcrumbArray = [
   {
@@ -30,14 +31,16 @@ const breadcrumbArray = [
 ]
 type FormData = Omit<Address, '_id'>
 const Shipping = () => {
+  const { addressList } = useSelector<RootState>((state: RootState) => state.address) as AddressStateType
+
   const addressSchema = yup.object().shape({
     name: yup.string().required('Name is required !'),
     address: yup.string().required('Address is required !')
   })
-  const currentUser = getProfileFromLS()
-  const addressList = currentUser?.addresses
+  // const currentUser = getProfileFromLS()
+  // const addressList = currentUser?.addresses
 
-  const { createAddress } = useCreateAddress()
+  const { createAddress, isSuccess } = useCreateAddress()
   const [showModal, setShowModal] = useState(false)
 
   const {
@@ -51,6 +54,12 @@ const Shipping = () => {
   const onSubmit = handleSubmit((data) => {
     createAddress(data)
   })
+
+  useEffect(() => {
+    if (isSuccess) {
+      setShowModal(false)
+    }
+  }, [isSuccess])
   return (
     <>
       <main className='checkout-page'>

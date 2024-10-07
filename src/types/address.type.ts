@@ -4,3 +4,9 @@ export type Address = {
   address: string
   phone?: string
 }
+
+export type AddressStateType = {
+  addressList: Address[]
+  currentAddress: Address | null
+  paymentMethod: string
+}

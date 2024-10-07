@@ -12,7 +12,7 @@ import ProductSkeleton from '~/components/ProductSkeleton'
 import NotFound from '~/components/NotFound'
 import { LuPackageX } from 'react-icons/lu'
 
-const brandList = ['Lavazza', 'Welikecoffee', 'Nescafe', 'Cappuccino', 'Highland Coffee']
+const brandList = ['Volcanica Coffee', 'Sumatra Gold', 'Santos Roastery', 'Valley Coffee Roasters', 'Highland Coffee']
 const categoryList = ['Available Ground', 'Decaf', 'Espresso', 'Blends', 'Single Origins']
 const originList = ['Brazil', 'Colombia', 'Ethiopia', 'Kenya', 'Vietnam']
 const selectOption = [
@@ -138,13 +138,15 @@ const Products = () => {
     const searchValue = new URLSearchParams(window.location.search).get('search')
     const brandValue = new URLSearchParams(window.location.search).get('brand')
     const categoryValue = new URLSearchParams(window.location.search).get('category')
-    if (searchValue || brandValue || categoryValue) {
+    const sortValue = new URLSearchParams(window.location.search).get('sort')
+    if (searchValue || brandValue || categoryValue || sortValue) {
       setParams((pre) => {
         return {
           ...pre,
           search: searchValue || '',
           brand: brandValue || '',
-          category: categoryValue || ''
+          category: categoryValue || '',
+          sort: sortValue || '-createdAt'
         }
       })
     }
