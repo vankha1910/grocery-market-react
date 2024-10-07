@@ -24,6 +24,7 @@ import ProfileLayout from '~/layouts/ProfileLayout'
 import { ToastContainer } from 'react-toastify'
 import { useDarkMode } from './contexts/DarkModeContext'
 import ProtectRoute from './components/ProtectRoute'
+import ScrollToTop from './components/ScrollToTop'
 function App() {
   const { isDarkMode } = useDarkMode()
   const queryClient = new QueryClient({
@@ -49,6 +50,8 @@ function App() {
         theme={isDarkMode ? 'dark' : 'light'}
       ></ToastContainer>
       <BrowserRouter>
+        <ScrollToTop />
+
         <Routes>
           <Route element={<MainLayout></MainLayout>}>
             <Route index element={<HomePage />}></Route>
