@@ -10,13 +10,13 @@ const PaymentMethod = () => {
     },
     {
       id: 1,
-      name: 'Paypal',
+      name: '',
       icon: <FaPaypal className='icon payment-item__thumb' />,
       isAvailable: false
     },
     {
       id: 2,
-      name: 'Stripe',
+      name: '',
       icon: <FaStripe className='icon payment-item__thumb' />,
       isAvailable: false
     }

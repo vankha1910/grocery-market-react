@@ -17,6 +17,7 @@
     height: 172px;
     margin: 0 30px 0 20px;
     object-fit: contain;
+    border-radius: 8px;
 
     @include abstracts.screen(xxl) {
       width: 150px;

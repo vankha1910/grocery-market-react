@@ -24,7 +24,15 @@ const CartSummary = ({ lastStep }: Props) => {
   const SHIPPING_FEE = 10
 
   const handleOrder = () => {
-    if (cart.length === 0) return
+    if (cart.length === 0) {
+      toast.warning('Your cart is empty')
+      return
+    }
+
+    if (!currentAddress) {
+      toast.warning('Please choose your address')
+      return
+    }
 
     const refactorCart = cart.map((item) => {
       return {

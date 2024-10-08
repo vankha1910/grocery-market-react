@@ -19,7 +19,7 @@ import Favourite from './pages/Favourite'
 import Products from './pages/Products'
 import Ordered from './pages/Ordered'
 import MyOrder from './pages/MyOrder'
-import AccountInfo from './pages/Profile/components/AccountInfo'
+import EditProfile from './pages/EditProfile'
 import ProfileLayout from '~/layouts/ProfileLayout'
 import { ToastContainer } from 'react-toastify'
 import { useDarkMode } from './contexts/DarkModeContext'
@@ -79,7 +79,7 @@ function App() {
             >
               <Route path='profile' element={<Profile />}></Route>
               <Route path='/profile/my-orders' element={<MyOrder />}></Route>
-              <Route path='/profile/edit-info' element={<AccountInfo />}></Route>
+              <Route path='/profile/edit-profile' element={<EditProfile />}></Route>
             </Route>
           </Route>
 

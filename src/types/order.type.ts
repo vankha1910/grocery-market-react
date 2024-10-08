@@ -9,7 +9,7 @@ export type ProductOrder = {
 
 export type OrderType = {
   _id: string
-  date: string
+  orderDate: string
   totalPrice: number
   status: string
   orderCode?: string

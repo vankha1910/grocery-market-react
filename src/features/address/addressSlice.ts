@@ -19,12 +19,15 @@ const addressSlide = createSlice({
       state.addressList = action.payload
     },
     addNewAddress: (state, action) => {
+      if (!state.currentAddress) state.currentAddress = action.payload
+
       state.addressList.push(action.payload)
     },
     setCurrentAddress: (state, action) => {
       state.currentAddress = action.payload
     },
     deleteAddress: (state, action) => {
+      if (state.currentAddress?._id === action.payload) state.currentAddress = null
       state.addressList = state.addressList.filter((address) => address._id !== action.payload)
     }
   }

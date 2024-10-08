@@ -35,7 +35,7 @@ const ProfileSidebar = () => {
       key: '1',
       icon: <IoPersonSharp className='profile-menu__icon' />,
       label: (
-        <Link className='profile-menu__link' to='/profile'>
+        <Link className='profile-menu__link' to='/profile/edit-profile'>
           Personal info
         </Link>
       )

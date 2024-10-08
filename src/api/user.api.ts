@@ -71,3 +71,17 @@ export async function updateAvatarApi(avatar: File) {
   const data = await response.json()
   return data
 }
+
+export async function updateUserInfoApi(userInfo: { name: string; phoneNumber: string; address: string }) {
+  const API_URL = `${API_HOST}/api/v1/users/update-user`
+  const response = await fetch(API_URL, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${getStoredToken()}`
+    },
+    body: JSON.stringify(userInfo)
+  })
+  const data = await response.json()
+  return data
+}
