@@ -1,0 +1,35 @@
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 16px;
+}
+
+// .ant-card {
+//   background-color: #fff;
+// }
+
+// .dark .ant-card {
+//   background-color: #1f1f1f;
+// }
+
+// .dark .ant-skeleton-input {
+//   background: linear-gradient(
+//     90deg,
+//     rgba(0, 0, 0, 0.06) 25%,
+//     rgba(0, 0, 0, 0.15) 37%,
+//     rgba(0, 0, 0, 0.06) 63%
+//   ) !important;
+// }
+
+// .dark .ant-skeleton-title,
+// .dark .ant-skeleton-paragraph {
+//   background-color: #333;
+// }
+
+// .dark .ant-skeleton-button,
+// .dark .ant-skeleton-input,
+// .dark .ant-skeleton-avatar,
+// .dark .ant-skeleton-image {
+//   background-color: #444;
+// }

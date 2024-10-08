@@ -20,7 +20,7 @@ const index = ({ children, ...props }: AuthLayoutProps) => {
       {/* Auth content */}
       <div className='auth__content'>
         <div className='auth__content-inner'>
-          <Logo></Logo>
+          <Logo isFooter={true}></Logo>
           <h1 className='auth__heading'>{props?.authHeading}</h1>
           <p className='auth__desc'>{props?.authDesc}</p>
           {children}

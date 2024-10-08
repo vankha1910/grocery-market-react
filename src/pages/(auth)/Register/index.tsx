@@ -1,62 +1,83 @@
 import { Link } from 'react-router-dom'
 import AuthLayout from '../../../layouts/AuthLayout'
-import { FormErrorIcon, GoogleIcon, LockIcon, LoginIntro, MessageIcon } from '~/assets'
-const index = () => {
-  const introDesc = `The best of luxury brand values, high quality products, and innovative services`
-  const authHeading = `Sign Up`
-  const authDesc = `Let’s create your account and Shop like a pro and save money.`
+import { GoogleIcon, LockIcon, LoginIntro, MessageIcon } from '~/assets'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
+import useSignUp from '~/features/auth/useSignUp'
+import { Spin } from 'antd'
+const introDesc = `The best of luxury brand values, high quality products, and innovative services`
+const authHeading = `Sign Up`
+const authDesc = `Let’s create your account and Shop like a pro and save money.`
+
+type FormData = {
+  email: string
+  password: string
+  confirmPassword: string
+}
+const Register = () => {
+  const signup = useSignUp()
+
+  const registerSchema = yup.object().shape({
+    email: yup.string().email('Email is not in correct format !').required('Email is required !'),
+    password: yup.string().required('Password is required !').min(6, 'Password must be at least 6 characters !'),
+    confirmPassword: yup.string().required('Password is required !').min(6, 'Password must be at least 6 characters !')
+    // .equals([yup.ref('password')], 'Passwords must match !')
+  })
+  const {
+    register,
+    formState: { errors },
+    handleSubmit
+  } = useForm<FormData>({
+    resolver: yupResolver(registerSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+      confirmPassword: ''
+    }
+  })
+
+  const onSubmit = handleSubmit((data) => {
+    signup.mutate(data)
+  })
   return (
     <AuthLayout introImg={LoginIntro} introDesc={introDesc} authHeading={authHeading} authDesc={authDesc}>
       <>
-        <form action='/' className='form auth__form'>
+        <form autoComplete='off' onSubmit={onSubmit} action='/' className='form auth__form'>
           <div className='form__group'>
             <div className='form__text-input'>
-              <input type='email' name='' id='' placeholder='Email' className='form__input' autoFocus required />
+              <input type='email' placeholder='Email' className='form__input' autoFocus {...register('email')} />
               <img src={MessageIcon} alt='' className='form__input-icon' />
-              <img src={FormErrorIcon} alt='' className='form__input-icon-error' />
+              {/* <img src={FormErrorIcon} alt='' className='form__input-icon-error' /> */}
             </div>
-            <p className='form__error'>Email is not in correct format</p>
+            {errors?.email && <p className='form__error'>{errors?.email?.message}</p>}
           </div>
           <div className='form__group'>
             <div className='form__text-input'>
-              <input
-                type='password'
-                name=''
-                id=''
-                placeholder='Password'
-                className='form__input'
-                required
-                minLength={6}
-              />
+              <input type='password' placeholder='Password' className='form__input' {...register('password')} />
               <img src={LockIcon} alt='' className='form__input-icon' />
-              <img src={FormErrorIcon} alt='' className='form__input-icon-error' />
+              {/* <img src={FormErrorIcon} alt='' className='form__input-icon-error' /> */}
             </div>
-            <p className='form__error'>Password must be at least 6 characters</p>
+            {errors?.password && <p className='form__error'>{errors?.password?.message}</p>}
           </div>
           <div className='form__group'>
             <div className='form__text-input'>
               <input
                 type='password'
-                name=''
-                id=''
                 placeholder='Confirm password'
                 className='form__input'
-                required
-                minLength={6}
+                {...register('confirmPassword')}
               />
               <img src={LockIcon} alt='' className='form__input-icon' />
-              <img src={FormErrorIcon} alt='' className='form__input-icon-error' />
+              {/* <img src={FormErrorIcon} alt='' className='form__input-icon-error' /> */}
             </div>
-            <p className='form__error'>Password must be at least 6 characters</p>
+            {errors?.confirmPassword && <p className='form__error'>{errors?.confirmPassword?.message}</p>}
           </div>
-          <div className='form__group form__group--inline'>
-            <label className='form__checkbox'>
-              <input type='checkbox' name='' id='' className='form__checkbox-input d-none' />
-              <span className='form__checkbox-label'>Set as default card</span>
-            </label>
-          </div>
+          <div className='form__group form__group--inline'></div>
           <div className='form__group auth__btn-group'>
-            <button className='btn btn--primary auth__btn form__submit-btn'>Sign Up</button>
+            <button disabled={signup?.isPending} className='btn btn--primary auth__btn form__submit-btn'>
+              {signup?.isPending ? <Spin></Spin> : 'Sign Up'}
+            </button>
             <button className='btn btn--outline auth__btn btn--no-margin'>
               <img src={GoogleIcon} alt='' className='btn__icon icon' />
               Sign up with Google
@@ -75,4 +96,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Register

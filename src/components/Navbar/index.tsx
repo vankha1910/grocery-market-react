@@ -1,126 +1,55 @@
-import { ArrowDown, ArrowLeft, CartIcon, HeartIcon } from '~/assets'
 import './navbar.scss'
-const index = () => {
-  // const navbarList = [
-  //   {
-  //     navItem: 'Departments',
-  //     link: '#!',
-  //     dropdown: {
-  //       leftContent: {
-  //         title: 'All Departments',
-  //         icon: '',
-  //         children: [
-  //           {
-  //             title: 'Savings & Featured Businesses',
-  //             content: [
-  //               {
-  //                 icon: '',
-  //                 title: 'Fashion Deals',
-  //                 content: ['Clothing', ' Shoes', 'Accessories', 'Bags', '  Jewelry']
-  //               },
-  //               {
-  //                 icon: '',
-  //                 title: 'Electronics Discounts',
-  //                 content: ['Smartphones', 'Laptops', 'Headphones', 'Cameras', 'Tablets', 'Speakers', 'Wearable Tech']
-  //               }
-  //             ]
-  //           },
-  //           {
-  //             title: 'Electronics',
-  //             content: [
-  //               {
-  //                 icon: '',
-  //                 title: 'Fashion Deals',
-  //                 content: ['Clothing', ' Shoes', 'Accessories', 'Bags', '  Jewelry']
-  //               },
-  //               {
-  //                 icon: '',
-  //                 title: 'Electronics Discounts',
-  //                 content: ['Smartphones', 'Laptops', 'Headphones', 'Cameras', 'Tablets', 'Speakers', 'Wearable Tech']
-  //               }
-  //             ]
-  //           },
-  //           {
-  //             title: 'Clothing, Shoes & Accessories',
-  //             content: [
-  //               {
-  //                 icon: '',
-  //                 title: 'Fashion Deals',
-  //                 content: ['Clothing', ' Shoes', 'Accessories', 'Bags', '  Jewelry']
-  //               },
-  //               {
-  //                 icon: '',
-  //                 title: 'Electronics Discounts',
-  //                 content: ['Smartphones', 'Laptops', 'Headphones', 'Cameras', 'Tablets', 'Speakers', 'Wearable Tech']
-  //               }
-  //             ]
-  //           }
-  //           // 'Home, Furniture & Appliances',
-  //           // 'Toys & Video Games',
-  //           // 'Home Improvement',
-  //           // 'Baby',
-  //           // 'Household Essentials',
-  //           // 'Personal Care',
-  //           // 'Patio & Garden',
-  //           // 'Sports & Outdoors',
-  //           // 'Gift Cards'
-  //         ]
-  //       }
-  //     }
-  //   },
-  //   {
-  //     title: 'Grocery',
-  //     link: '#!',
-  //     dropdown: {
-  //       leftContent: null,
-  //       content: [
-  //         {
-  //           title: 'Grocery',
-  //           icon: '',
-  //           content: ['Shop All', 'Grilling Foods', 'Spring Flavors']
-  //         },
-  //         {
-  //           title: 'Fresh Produce',
-  //           icon: '',
-  //           content: ['Shop All', 'Grilling Foods', 'Spring Flavors']
-  //         }
-  //       ]
-  //     }
-  //   }
-  // ]
+import { ArrowDown, ArrowLeft, CartIcon, HeartIcon } from '~/assets'
+import { Link } from 'react-router-dom'
+type NavbarProps = {
+  showNavbar: boolean
+  setShowNavbar: React.Dispatch<React.SetStateAction<boolean>>
+}
+const index = (props: NavbarProps) => {
+  const { showNavbar, setShowNavbar } = props
+  const hanldeScrollToContact = () => {
+    const contact = document.getElementById('contact')
+    if (contact) {
+      contact.scrollIntoView({
+        behavior: 'smooth'
+      })
+      if (showNavbar) setShowNavbar(false)
+    }
+  }
   return (
     <>
-      <nav id='navbar' className='navbar hide'>
-        <button toggle-target='#navbar' className='navbar__close js-toggle d-none d-lg-block'>
-          <img className='icon navbar__close-icon' src={ArrowLeft} alt='' />
+      <nav id='navbar' className={`navbar ${showNavbar ? 'show' : 'hide'}`}>
+        <button onClick={() => setShowNavbar(false)} className='navbar__close js-toggle d-none d-md-block '>
+          <img className='icon navbar__close-icon ' src={ArrowLeft} alt='' />
         </button>
         <div className='d-none d-md-flex nav-act'>
-          <a href='./checkout.html' className='nav-btn'>
-            <img className='nav-btn__icon' src={CartIcon} alt='' />
+          <Link to='checkout' className='nav-btn'>
+            <img className='nav-btn__icon icon' src={CartIcon} alt='' />
             <span className='nav-btn__title'>Cart</span>
             <span className='nav-btn__qnt'>3</span>
-          </a>
-          <a href='./favorite.html' className='nav-btn'>
-            <img className='nav-btn__icon' src={HeartIcon} alt='' />
+          </Link>
+          <Link to='favorite' className='nav-btn'>
+            <img className='nav-btn__icon icon' src={HeartIcon} alt='' />
             <span className='nav-btn__title'>Favorite</span>
             <span className='nav-btn__qnt'>3</span>
-          </a>
+          </Link>
         </div>
         <ul className='navbar__list js-dropdown-list'>
           <li className='navbar__item'>
-            <a href='#!' className='navbar__link'>
-              Departments <img src={ArrowDown} alt='' className='navbar__arrow' />
-            </a>
+            <Link to='/' className='navbar__link'>
+              Home
+            </Link>
           </li>
           <li className='navbar__item'>
-            <a href='#!' className='navbar__link'>
-              Grocery <img src={ArrowDown} alt='' className='navbar__arrow' />
-            </a>
+            <Link to='products' className='navbar__link'>
+              Product <img src={ArrowDown} alt='' className='navbar__arrow icon' />
+            </Link>
           </li>
+
           <li className='navbar__item'>
-            <a href='#!' className='navbar__link'>
-              Beauty <img src={ArrowDown} alt='' className='navbar__arrow' />
-            </a>
+            <button onClick={hanldeScrollToContact} className='navbar__link'>
+              Contact
+            </button>
           </li>
         </ul>
       </nav>

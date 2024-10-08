@@ -19,7 +19,16 @@ const index = () => {
       productPrice: 27.0
     }
   ]
-  const breadcrumbArray = ['Home', 'Favorite']
+  const breadcrumbArray = [
+    {
+      name: 'Home',
+      path: '/'
+    },
+    {
+      name: 'Favourite List',
+      path: 'favourite'
+    }
+  ]
   return (
     <main className='checkout-page'>
       <div className='container'>

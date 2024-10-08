@@ -1,0 +1,36 @@
+@use '../../../../styles/abstracts';
+.hero {
+  // margin-top: 74px;
+  position: relative;
+
+  &__content {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+  &__content__wrapper {
+    max-width: 48rem;
+  }
+  &__description {
+    font-size: 4rem;
+    text-align: center;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #fff;
+    @include abstracts.screen(lg) {
+      font-size: 3rem;
+    }
+    @include abstracts.screen(md) {
+      font-size: 2.4rem;
+    }
+    @include abstracts.screen(sm) {
+      font-size: 1.8rem;
+    }
+  }
+  &__btn {
+    max-width: 24rem;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+}

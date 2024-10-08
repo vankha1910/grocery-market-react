@@ -1,0 +1,80 @@
+@use '../../styles/abstracts';
+.order {
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  &__title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    // margin-bottom: 4px;
+    @include abstracts.screen(sm) {
+      font-size: 1.8rem;
+    }
+  }
+  &__price {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    display: flex;
+    &-value {
+      font-size: 2rem;
+      margin-left: auto;
+    }
+  }
+  &__products {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+.order-item {
+  display: flex;
+  align-items: center;
+  &__img {
+    width: 80px;
+    border-radius: 8px;
+    margin-right: 4px;
+  }
+
+  &__total-price {
+    margin-left: auto;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+  &__title {
+    margin-bottom: 8px;
+    font-size: 1.6rem;
+    font-weight: 800;
+  }
+}
+
+.order__status {
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 1.4rem;
+  font-weight: 800;
+  width: fit-content;
+  text-transform: uppercase;
+  margin-left: auto;
+  &--pending {
+    background-color: #f39c12;
+  }
+  &--processing {
+    background-color: #2ecc71;
+  }
+  &--shipped {
+    background-color: #3498db;
+  }
+  &--delivered {
+    background-color: #8e44ad;
+  }
+  &--cancelled {
+    background-color: #e74c3c;
+  }
+}

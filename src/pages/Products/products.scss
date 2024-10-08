@@ -1,0 +1,116 @@
+@use '../../styles/abstracts';
+.products-page {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.filter__overlay {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  inset: 0 0 0 0;
+  background: rgba($color: #000000, $alpha: 0.3);
+  z-index: 8;
+  transition: all 0.3 ease-in;
+}
+
+.product-filter {
+  @include abstracts.screen(md) {
+    padding: 40px 20px;
+    position: fixed;
+    background: var(--sidebar-bg);
+    inset: 0 50% 0 0;
+    margin-left: 0;
+    z-index: 9;
+    border-radius: 0 20px 20px 0;
+    translate: -100%;
+    transition: translate 0.5s;
+    &.show {
+      translate: 0;
+      box-shadow: 0px 40px 90px 20px var(--sidebar-shadow);
+
+      & ~ .filter__overlay {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+  @include abstracts.screen(sm) {
+    inset: 0 20% 0 0;
+  }
+  & .filter {
+    &__title {
+      font-size: 1.6rem;
+      // font-weight: 600;
+      margin-bottom: 16px;
+    }
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    &__item {
+      display: flex;
+      gap: 6px;
+      cursor: pointer;
+    }
+    &__label {
+      flex: 1;
+      cursor: pointer;
+    }
+  }
+  .filter-item {
+    margin-bottom: 20px;
+  }
+}
+.filter__header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  justify-content: space-between;
+  border-bottom: 1px solid;
+  font-weight: 700;
+
+  &-title {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    gap: 4px;
+  }
+  &-clear {
+    font-weight: 700;
+  }
+}
+.filter_icon {
+  width: 18px;
+}
+.product-content {
+  &__title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    // margin-bottom: 16px;
+  }
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    align-items: center;
+    @include abstracts.screen(md) {
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+.product-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}

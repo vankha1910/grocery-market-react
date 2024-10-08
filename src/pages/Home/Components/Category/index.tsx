@@ -21,7 +21,7 @@ const categoryList = [
 ]
 const index = () => {
   return (
-    <section className='home__container category'>
+    <section className='home__container category container'>
       <h2 className='category__heading'>Browse Categories</h2>
       <div className='home__cate row row-cols-3 row-cols-md-1'>
         {categoryList.map((item, index) => (

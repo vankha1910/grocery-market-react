@@ -1,34 +1,112 @@
-import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
 import { GiftIcon } from '~/assets'
+import useCreateOrder from '~/features/cart/useCreateOrder'
+import { RootState } from '~/store'
+import { AddressState, CartState } from '~/types/cart.type'
+import FullPageSpin from '../FullPageSpin'
+import { Order } from '~/types/order.type'
+import { getStoredToken } from '~/utils'
+import { toast } from 'react-toastify'
 
-const index = () => {
+type Props = {
+  lastStep?: boolean
+}
+
+const CartSummary = ({ lastStep }: Props) => {
+  const token = getStoredToken()
+  const navigate = useNavigate()
+  const { createOrder, isPending } = useCreateOrder()
+  const cartState = useSelector<RootState>((state) => state.cart) as CartState
+  const addressState = useSelector<RootState>((state) => state.address) as AddressState
+  const { cart, totalPrice } = cartState
+  const { currentAddress, paymentMethod } = addressState
+  const SHIPPING_FEE = 10
+
+  const handleOrder = () => {
+    if (cart.length === 0) {
+      toast.warning('Your cart is empty')
+      return
+    }
+
+    if (!currentAddress) {
+      toast.warning('Please choose your address')
+      return
+    }
+
+    const refactorCart = cart.map((item) => {
+      return {
+        _id: item.productId,
+        quantity: item.selectedSize.quantity,
+        price: item.selectedSize.price,
+        size: item.selectedSize.value,
+        grind: item.selectedGrind,
+        discount: item?.discount || 0,
+        name: item.name
+      }
+    })
+    const data: Order = {
+      products: refactorCart,
+      shippingAddress: currentAddress,
+      paymentMethod: paymentMethod,
+      totalPrice
+    }
+    createOrder(data)
+  }
+
+  const navigateToLogin = () => {
+    toast.warning('You need to login first')
+
+    setTimeout(() => {
+      navigate('/login')
+    }, 1500)
+  }
   return (
     <>
+      <FullPageSpin isSpinning={isPending}></FullPageSpin>
       <div className='cart-info'>
         <div className='cart-info__row'>
           <span>
             Subtotal <span className='cart-info__sub-label'>(items)</span>
           </span>
-          <span>3</span>
+          <span>{cart?.length || 0}</span>
         </div>
         <div className='cart-info__row'>
           <span>
             Price <span className='cart-info__sub-label'>(Total)</span>
           </span>
-          <span>$191.65</span>
+          <span>${totalPrice || 0}</span>
         </div>
         <div className='cart-info__row'>
           <span>Shipping</span>
-          <span>$10.00</span>
+          <span>${SHIPPING_FEE}</span>
         </div>
         <div className='cart-info__separate' />
         <div className='cart-info__row'>
           <span>Estimated Total</span>
-          <span>$201.65</span>
+          <span>${totalPrice + SHIPPING_FEE}</span>
         </div>
-        <Link to='/shipping' className='cart-info__next-btn btn btn--primary btn--rounded'>
-          Continue to checkout
-        </Link>
+        {lastStep ? (
+          <button onClick={handleOrder} className='cart-info__next-btn btn btn--primary btn--rounded'>
+            Order
+          </button>
+        ) : (
+          <>
+            {token ? (
+              <>
+                <Link to='/shipping' className='cart-info__next-btn btn btn--primary btn--rounded'>
+                  Continue to checkout
+                </Link>
+              </>
+            ) : (
+              <>
+                <button onClick={navigateToLogin} className='cart-info__next-btn btn btn--primary btn--rounded'>
+                  Continue to checkout
+                </button>
+              </>
+            )}
+          </>
+        )}
       </div>
       <div className='cart-info'>
         <a href='#!'>
@@ -47,4 +125,4 @@ const index = () => {
   )
 }
 
-export default index
+export default CartSummary

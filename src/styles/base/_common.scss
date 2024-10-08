@@ -1,3 +1,4 @@
+@use '../abstracts';
 *,
 ::before,
 ::after {
@@ -14,9 +15,12 @@ html {
 
 body {
   font-size: 1.6rem;
-  font-family: Gordita, sans-serif;
+  font-family: Lato, sans-serif;
   color: var(--text-color);
   background: var(--body-bg);
+  @include abstracts.screen(sm) {
+    font-size: 1.4rem;
+  }
 }
 a {
   color: inherit;
@@ -68,7 +72,7 @@ select {
   justify-content: center;
   gap: 10px;
 
-  height: 46px;
+  height: 40px;
   padding: 0 20px;
   border-radius: 6px;
 
@@ -78,6 +82,10 @@ select {
   font-weight: 500;
   white-space: nowrap;
   user-select: none;
+  @include abstracts.screen(sm) {
+    height: 36px;
+    padding: 0 12px;
+  }
 
   &--small {
     height: 40px;
@@ -97,6 +105,7 @@ select {
   &--primary {
     color: #171c28;
     background: #ffb700;
+    font-weight: 600;
   }
 
   &--outline {
@@ -122,4 +131,30 @@ select {
   &:hover {
     opacity: 0.9;
   }
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.d-flex {
+  display: flex;
+}
+.g-8 {
+  gap: 8px;
+}
+
+.Toastify__toast-container--top-right {
+  top: 30px !important  ;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
 }

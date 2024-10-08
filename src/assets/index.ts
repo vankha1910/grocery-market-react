@@ -41,11 +41,14 @@ import planeIcon from './imgs/card/plane.svg'
 import planeBgIcon from './imgs/card/plane-bg.svg'
 import leafIcon from './imgs/card/leaf.svg'
 import leafBgIcon from './imgs/card/leaf-bg.svg'
+import CheckCompleted from './icons/check_completed_img.png'
+import FilterIcon from './icons/filter.svg'
 
 import slideImage1 from './imgs/slideshow/slideshow-1.png'
 import slideImage1Mb from './imgs/slideshow/slideshow-1-mb.png'
 
 import Avatar from './imgs/avatar/avatar.jpg'
+import defaultAvatar from './imgs/avatar/default-avatar.png'
 import Avatar1 from './imgs/avatar/avatar-1.png'
 import Avatar2 from './imgs/avatar/avatar-2.png'
 import Avatar3 from './imgs/avatar/avatar-3.png'
@@ -119,5 +122,8 @@ export {
   HeartIcon2,
   EditIcon,
   ArrowUp,
-  SunIcon
+  SunIcon,
+  defaultAvatar,
+  CheckCompleted,
+  FilterIcon
 }

@@ -49,5 +49,9 @@
     height: 100%;
     display: flex;
     align-items: flex-end;
+    gap: 8px;
+    @include abstracts.screen(md) {
+      justify-content: flex-end;
+    }
   }
 }
