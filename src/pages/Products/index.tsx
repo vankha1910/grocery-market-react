@@ -264,7 +264,7 @@ const Products = () => {
                     ></Select>
                   </div>
                 </div>
-                <div className='product-list row row-cols-4 row-cols-lg-2 row-cols-md-2 row-cols-sm-1 g-3'>
+                <div className='product-list row row-cols-4 row-cols-lg-2 row-cols-md-2 row-cols-sm-2 g-2'>
                   {isFetching ? (
                     <>
                       <ProductSkeleton />

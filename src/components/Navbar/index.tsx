@@ -7,7 +7,15 @@ type NavbarProps = {
 }
 const index = (props: NavbarProps) => {
   const { showNavbar, setShowNavbar } = props
-
+  const hanldeScrollToContact = () => {
+    const contact = document.getElementById('contact')
+    if (contact) {
+      contact.scrollIntoView({
+        behavior: 'smooth'
+      })
+      if (showNavbar) setShowNavbar(false)
+    }
+  }
   return (
     <>
       <nav id='navbar' className={`navbar ${showNavbar ? 'show' : 'hide'}`}>
@@ -39,9 +47,9 @@ const index = (props: NavbarProps) => {
           </li>
 
           <li className='navbar__item'>
-            <Link to='contact' className='navbar__link'>
+            <button onClick={hanldeScrollToContact} className='navbar__link'>
               Contact
-            </Link>
+            </button>
           </li>
         </ul>
       </nav>

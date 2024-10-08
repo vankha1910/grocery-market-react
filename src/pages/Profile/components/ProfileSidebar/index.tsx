@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { DangerIcon, DownloadIcon, HeartIcon, InforIcon, ProfileIcon, ShieldIcon } from '~/assets'
 import { getProfileFromLS } from '~/utils'
 import { FaCamera } from 'react-icons/fa6'
 import './profileSidebar.scss'
@@ -7,22 +6,34 @@ import useUpdateAvatar from '~/features/user/useUpdateAvatar'
 import { Layout, Menu } from 'antd'
 import { useState } from 'react'
 import FullPageSpin from '~/components/FullPageSpin'
+import { ImProfile } from 'react-icons/im'
+import { IoPersonSharp } from 'react-icons/io5'
+import { FaCartArrowDown } from 'react-icons/fa'
+import { SiAdguard } from 'react-icons/si'
+import { IoIosHelpCircle } from 'react-icons/io'
+import { CgDanger } from 'react-icons/cg'
+
 const { Sider } = Layout
 // interface AvatarState {
 //   avatar: File | null
 // }
 const ProfileSidebar = () => {
-  const [showSider, setShowSider] = useState<boolean>()
+  const [showSider, setShowSider] = useState<boolean>(true)
   const { updateAvatar, isPending } = useUpdateAvatar()
   const user = getProfileFromLS()
   const menuItem = [
     {
+      key: '0',
+      icon: <ImProfile className='profile-menu__icon' />,
+      label: (
+        <Link className='profile-menu__link' to='/profile'>
+          Profile
+        </Link>
+      )
+    },
+    {
       key: '1',
-      icon: (
-        <span className='profile-menu__icon'>
-          <img alt='' className='icon' src={ProfileIcon} />
-        </span>
-      ),
+      icon: <IoPersonSharp className='profile-menu__icon' />,
       label: (
         <Link className='profile-menu__link' to='/profile'>
           Personal info
@@ -31,11 +42,7 @@ const ProfileSidebar = () => {
     },
     {
       key: '2',
-      icon: (
-        <span className='profile-menu__icon'>
-          <img alt='' className='icon' src={DownloadIcon} />
-        </span>
-      ),
+      icon: <FaCartArrowDown className='profile-menu__icon' />,
       label: (
         <Link className='profile-menu__link' to='/profile/my-orders'>
           My orders
@@ -43,56 +50,34 @@ const ProfileSidebar = () => {
       )
     },
     {
-      key: '3',
-      icon: (
-        <span className='profile-menu__icon'>
-          <img alt='' className='icon' src={HeartIcon} />
-        </span>
-      ),
-      label: (
-        <Link className='profile-menu__link' to='favourite'>
-          Lists
-        </Link>
-      )
-    },
-    {
       key: '4',
-      icon: (
-        <span className='profile-menu__icon'>
-          <img alt='' className='icon' src={ShieldIcon} />
-        </span>
-      ),
+      icon: <SiAdguard className='profile-menu__icon' />,
       label: (
         <Link className='profile-menu__link' to='#!'>
           Protection plans
         </Link>
-      )
+      ),
+      disabled: true
     },
     {
       key: '5',
-      icon: (
-        <span className='profile-menu__icon'>
-          <img alt='' className='icon' src={InforIcon} />
-        </span>
-      ),
+      icon: <IoIosHelpCircle className='profile-menu__icon' />,
       label: (
         <Link className='profile-menu__link' to='#!'>
           Help
         </Link>
-      )
+      ),
+      disabled: true
     },
     {
       key: '6',
-      icon: (
-        <span className='profile-menu__icon'>
-          <img alt='' className='icon' src={DangerIcon} />
-        </span>
-      ),
+      icon: <CgDanger className='profile-menu__icon' />,
       label: (
-        <Link className='profile-menu__link' to='#!'>
+        <Link className='profile-menu__link disable' to='#!'>
           Terms of Use
         </Link>
-      )
+      ),
+      disabled: true
     }
   ]
   return (
@@ -141,38 +126,8 @@ const ProfileSidebar = () => {
             </div>
           </div>
         )}
-        <Menu mode='inline' style={{ height: '100%', borderRight: 0 }} items={menuItem} />
+        <Menu mode='inline' style={{ height: '100%', borderRight: 0 }} items={menuItem} defaultSelectedKeys={['0']} />
       </Sider>
-      {/* <div className='profile-menu'>
-          <ul className='profile-menu__list'>
-            <li></li>
-            <li></li>
-            <li>
-              
-            </li>
-            <li>
-              
-            </li>
-            <li>
-             
-            </li>
-            <li>
-             
-            </li>
-          </ul>
-        </div> */}
-      {/* <div className='profile-menu'>
-          <h3 className='profile-menu__title'>My items</h3>
-          <ul className='profile-menu__list'></ul>
-        </div>
-        <div className='profile-menu'>
-          <h3 className='profile-menu__title'>Subscriptions & plans</h3>
-          <ul className='profile-menu__list'></ul>
-        </div>
-        <div className='profile-menu'>
-          <h3 className='profile-menu__title'>Customer Service</h3>
-          <ul className='profile-menu__list'></ul>
-        </div> */}
     </>
   )
 }

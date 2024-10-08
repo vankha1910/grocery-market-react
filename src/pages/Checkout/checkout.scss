@@ -45,8 +45,8 @@
 
   &__heading {
     display: flex;
-    align-items: center;
-
+    // align-items: center;
+    gap: 8px;
     font-size: 2.4rem;
     font-weight: 700;
     line-height: 141.667%;
@@ -55,6 +55,10 @@
       font-size: 2.2rem;
       font-weight: 500;
       line-height: 145.455%;
+    }
+
+    @include abstracts.screen(sm) {
+      font-size: 2rem;
     }
   }
 

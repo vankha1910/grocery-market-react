@@ -1,0 +1,58 @@
+@use '../../styles/abstracts';
+.profile-container {
+  display: flex;
+  gap: 15px;
+
+  @include abstracts.screen(sm) {
+    flex-direction: column;
+  }
+
+  & .ant-layout-sider {
+    @include abstracts.screen(sm) {
+      position: relative !important;
+      overflow: initial !important;
+      width: 100% !important;
+      height: unset !important;
+      max-width: unset !important;
+      flex: 0 !important;
+    }
+  }
+
+  & .ant-menu {
+    @include abstracts.screen(sm) {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-around;
+      padding: 8px 8px !important;
+      border-radius: 4px;
+      position: sticky;
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+  }
+  & .ant-menu-item {
+    @include abstracts.screen(sm) {
+      padding: 8px !important;
+      width: unset !important;
+      display: flex;
+    }
+  }
+
+  & .ant-menu-title-content {
+    @include abstracts.screen(sm) {
+      display: none !important;
+    }
+  }
+}
+.dark .ant-menu-item-disabled {
+  color: #f3f3f340 !important;
+}
+.back-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  margin-top: 4px;
+}

@@ -149,8 +149,8 @@ const TopAction = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to='/favourite' className='user-menu__link'>
-                      Favourite list
+                    <Link to='/profile/my-orders' className='user-menu__link'>
+                      My orders
                     </Link>
                   </li>
                   <li>

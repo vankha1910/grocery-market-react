@@ -1,12 +1,14 @@
 import useGetMyOrder from '~/features/user/useGetMyOrder'
 import './orders.scss'
-import { useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import Order from '../../components/Order'
 import { OrderType } from '~/types/order.type'
 import { useState } from 'react'
 import { Card, Col, Pagination, Row, Skeleton } from 'antd'
 import { LuPackageX } from 'react-icons/lu'
 import NotFound from '~/components/NotFound'
+import { IoArrowBackSharp } from 'react-icons/io5'
+
 const MyOrder = () => {
   const orderStatus = ['all', 'pending', 'processing', 'shipped', 'delivered', 'cancelled']
   const [searchParams, setSearchParams] = useSearchParams()
@@ -38,7 +40,12 @@ const MyOrder = () => {
       <div className='row gy-3'>
         <div className='col-12'>
           <div>
-            <h2 className='cart-info__heading'>My Order</h2>
+            <h2 className='cart-info__heading'>
+              <Link to='/profile'>
+                <IoArrowBackSharp className='back-icon'></IoArrowBackSharp>
+              </Link>
+              My Order
+            </h2>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginTop: '16px' }}>
               {/* filtered data */}
               {orderStatus.map((item) => (

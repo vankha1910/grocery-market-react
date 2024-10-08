@@ -103,7 +103,7 @@ const index = () => {
             </ul>
           </div>
           {/* Footer column 5 */}
-          <div className='footer__col'>
+          <div className='footer__col' id='contact'>
             <h3 className='footer__heading'>Contact</h3>
             <ul className='footer__list'>
               <li>
