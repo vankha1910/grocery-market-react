@@ -2,7 +2,7 @@ import './CartItem.scss'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { HeartIcon2, TrashIcon } from '~/assets'
+import { TrashIcon } from '~/assets'
 import { CartItemType } from '~/types/cart.type'
 import ButtonIncrease from '~/components/ButtonIncrease'
 import { decreaseQuantity, increaseQuantity, removeFromCart } from '~/features/cart/cartSlice'
@@ -53,9 +53,9 @@ const CartItem = ({ cartItem }: { cartItem: CartItemType }) => {
         <div className='cart-item__content-right'>
           {/* <p className='cart-item__total-price'>${productPrice}</p> */}
           <div className='cart-item__ctrl'>
-            <button className='cart-item__ctrl-btn'>
+            {/* <button className='cart-item__ctrl-btn'>
               <img src={HeartIcon2} alt='' />
-            </button>
+            </button> */}
             <button
               onClick={handleRemoveCartItem}
               className='cart-item__ctrl-btn js-toggle'

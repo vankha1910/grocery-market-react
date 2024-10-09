@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import { ArrowUp, CartIcon, HeartIcon, SunIcon, defaultAvatar } from '~/assets'
+import { ArrowUp, CartIcon, SunIcon, defaultAvatar } from '~/assets'
 import './topAction.scss'
 import PreviewItem from '../PreviewItem'
 import { useDarkMode } from '../../contexts/DarkModeContext'
-import { getProfileFromLS, getStoredToken } from '~/utils'
+import { getStoredToken } from '~/utils'
 import { useSelector } from 'react-redux'
 import { CartItemType } from '~/types/cart.type'
 import { RootState } from '~/store'
@@ -15,6 +15,7 @@ const TopAction = () => {
   const { toggleDarkMode, isDarkMode } = useDarkMode()
   const cartList = useSelector<RootState>((state) => state.cart.cart) as CartItemType[]
   const totalPrice = useSelector<RootState>((state) => state.cart.totalPrice) as number
+  const user = useSelector((state: RootState) => state.user.user)
   // const previewList = [
   //   {
   //     productImage: productImage1,
@@ -34,7 +35,6 @@ const TopAction = () => {
   // ]
 
   const token = getStoredToken()
-  const user = getProfileFromLS()
   const handleLogout = () => {
     sessionStorage.removeItem('token')
     window.location.reload()
@@ -51,10 +51,10 @@ const TopAction = () => {
           {' '}
           <div className='top-act__group top-act__group--double'>
             <div className='top-act__btn-wrap'>
-              <button className='top-act__btn'>
+              {/* <button className='top-act__btn'>
                 <img className='icon top-act__icon' src={HeartIcon} />
-                {/* <span className='top-act__title'>03</span> */}
-              </button>
+                <span className='top-act__title'>03</span>
+              </button> */}
               <div className='act-dropdown'>
                 <div className='act-dropdown__inner'>
                   <img src={ArrowUp} alt='' className='act-dropdown__arrow' />

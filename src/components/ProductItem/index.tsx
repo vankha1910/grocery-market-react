@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { HeartIcon, StarIcon } from '~/assets'
+import { StarIcon } from '~/assets'
 import './productItem.scss'
 import { Product } from '~/types/product.type'
 
@@ -10,9 +10,9 @@ const ProductItem = ({ product }: { product?: Product }) => {
         <Link to={`/product/${product?._id}`}>
           <img className='product-card__img' src={product?.thumbImg} alt='' />
         </Link>
-        <button className='product-card__btn-like btn-like'>
+        {/* <button className='product-card__btn-like btn-like'>
           <img className='btn-like__icon icon' src={HeartIcon} alt='' />
-        </button>
+        </button> */}
       </div>
       <Link to={`/product/${product?._id}`} className='product-card__title'>
         {product?.name}

@@ -41,7 +41,7 @@ const ProductInfo = ({ productInfo }: { productInfo: Product }) => {
   }
   return (
     <section className='prod-info'>
-      <Link to={`/products/?q={${productInfo?.brand}}`} className='prod-info__brand'>
+      <Link to={`/products?brand=${productInfo?.brand}`} className='prod-info__brand'>
         {productInfo?.brand}
       </Link>
       <h1 className='prod-info__heading'>{productInfo?.name}</h1>
