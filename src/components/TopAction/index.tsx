@@ -3,7 +3,6 @@ import { ArrowUp, CartIcon, SunIcon, defaultAvatar } from '~/assets'
 import './topAction.scss'
 import PreviewItem from '../PreviewItem'
 import { useDarkMode } from '../../contexts/DarkModeContext'
-import { getStoredToken } from '~/utils'
 import { useSelector } from 'react-redux'
 import { CartItemType } from '~/types/cart.type'
 import { RootState } from '~/store'
@@ -11,32 +10,16 @@ import SearchInput from '../SearchInput'
 import { FaShoppingCart } from 'react-icons/fa'
 
 import NotFound from '../NotFound'
+import { useAuth } from '~/contexts/AuthContext'
 const TopAction = () => {
   const { toggleDarkMode, isDarkMode } = useDarkMode()
   const cartList = useSelector<RootState>((state) => state.cart.cart) as CartItemType[]
   const totalPrice = useSelector<RootState>((state) => state.cart.totalPrice) as number
   const user = useSelector((state: RootState) => state.user.user)
-  // const previewList = [
-  //   {
-  //     productImage: productImage1,
-  //     productName: 'Coffee Beans - Espresso Arabica and Robusta Beans',
-  //     productPrice: 47.0
-  //   },
-  //   {
-  //     productImage: productImage2,
-  //     productName: 'Lavazza Coffee Blends - Try the Italian Espresso',
-  //     productPrice: 10.15
-  //   },
-  //   {
-  //     productImage: productImage3,
-  //     productName: 'Lavazza - Caffè Espresso Black Tin - Ground coffee',
-  //     productPrice: 23.6
-  //   }
-  // ]
-
-  const token = getStoredToken()
+  const { isAuthenticated } = useAuth()
   const handleLogout = () => {
     sessionStorage.removeItem('token')
+    localStorage.removeItem('user')
     window.location.reload()
   }
 
@@ -46,7 +29,7 @@ const TopAction = () => {
         <SearchInput></SearchInput>
       </div>
 
-      {token ? (
+      {isAuthenticated ? (
         <>
           {' '}
           <div className='top-act__group top-act__group--double'>

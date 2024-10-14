@@ -21,7 +21,7 @@ const { Sider } = Layout
 const ProfileSidebar = () => {
   const location = useLocation()
 
-  const [showSider, setShowSider] = useState<boolean>(true)
+  const [showSider, setShowSider] = useState<boolean>(false)
   const { updateAvatar, isPending } = useUpdateAvatar()
   // const user = getProfileFromLS()
   const user = useSelector((state: RootState) => state.user.user)

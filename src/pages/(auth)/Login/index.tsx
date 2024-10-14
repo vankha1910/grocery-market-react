@@ -1,12 +1,13 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import AuthLayout from '../../../layouts/AuthLayout'
 import { GoogleIcon, LockIcon, LoginIntro, MessageIcon } from '~/assets'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import useSignIn from '~/features/auth/useLogin'
 import FullPageSpin from '~/components/FullPageSpin'
+import { useAuth } from '~/contexts/AuthContext'
 const introDesc = `The best of luxury brand values, high quality products, and innovative services`
 const authHeading = `Hello Again!`
 const authDesc = `Welcome back to sign in. As a returning customer, you have access to your previously saved all information.`
@@ -18,8 +19,10 @@ type FormData = {
 
 const Login = () => {
   const signIn = useSignIn()
+  const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
-
+  const [isLoading, setIsLoading] = useState(false)
+  const { isAuthenticated } = useAuth()
   const loginSchema = yup.object().shape({
     email: yup.string().email('Email is not in correct format !').required('Email is required !'),
     password: yup.string().required('Password is required !').min(6, 'Password must be at least 6 characters !')
@@ -35,10 +38,15 @@ const Login = () => {
   const onSubmit = handleSubmit((data) => {
     signIn.mutate(data)
   })
-
+  useEffect(() => {
+    if (isAuthenticated) {
+      setIsLoading(true)
+      navigate('/profile')
+    }
+  }, [isAuthenticated, navigate])
   return (
     <>
-      <FullPageSpin isSpinning={signIn.isPending}></FullPageSpin>
+      <FullPageSpin isSpinning={signIn.isPending || isLoading}></FullPageSpin>
       <AuthLayout introImg={LoginIntro} introDesc={introDesc} authHeading={authHeading} authDesc={authDesc}>
         <form onSubmit={onSubmit} action='/' className='form auth__form'>
           <div className='form__group'>
