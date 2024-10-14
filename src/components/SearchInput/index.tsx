@@ -15,7 +15,7 @@ const SearchInput = () => {
     e.preventDefault()
     if (searchInputRef.current?.value) {
       navigate(`products?search=${searchInputRef.current.value}`)
-      window.location.reload()
+      // window.location.reload()
     }
   }
   // const handleBlurSearch = () => {
@@ -40,6 +40,7 @@ const SearchInput = () => {
           className={`top-act__search-input ${showSearch ? 'show' : 'hide'}`}
           ref={searchInputRef}
           id='search'
+          onKeyDown={(e) => e.key === 'Enter' && handleSearch(e)}
           // onBlur={handleBlurSearch}
         />
       </form>

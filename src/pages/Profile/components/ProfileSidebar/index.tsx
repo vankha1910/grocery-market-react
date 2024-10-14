@@ -1,10 +1,9 @@
-import { Link } from 'react-router-dom'
-import { getProfileFromLS } from '~/utils'
+import { Link, useLocation } from 'react-router-dom'
 import { FaCamera } from 'react-icons/fa6'
 import './profileSidebar.scss'
 import useUpdateAvatar from '~/features/user/useUpdateAvatar'
 import { Layout, Menu } from 'antd'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import FullPageSpin from '~/components/FullPageSpin'
 import { ImProfile } from 'react-icons/im'
 import { IoPersonSharp } from 'react-icons/io5'
@@ -12,15 +11,20 @@ import { FaCartArrowDown } from 'react-icons/fa'
 import { SiAdguard } from 'react-icons/si'
 import { IoIosHelpCircle } from 'react-icons/io'
 import { CgDanger } from 'react-icons/cg'
+import { RootState } from '~/store'
+import { useSelector } from 'react-redux'
 
 const { Sider } = Layout
 // interface AvatarState {
 //   avatar: File | null
 // }
 const ProfileSidebar = () => {
-  const [showSider, setShowSider] = useState<boolean>(true)
+  const location = useLocation()
+
+  const [showSider, setShowSider] = useState<boolean>(false)
   const { updateAvatar, isPending } = useUpdateAvatar()
-  const user = getProfileFromLS()
+  // const user = getProfileFromLS()
+  const user = useSelector((state: RootState) => state.user.user)
   const menuItem = [
     {
       key: '0',
@@ -80,6 +84,17 @@ const ProfileSidebar = () => {
       disabled: true
     }
   ]
+  const [currentKey, setCurrentKey] = useState<string>('0')
+
+  useEffect(() => {
+    if (location.pathname === '/profile/edit-profile') {
+      setCurrentKey('1')
+    } else if (location.pathname === '/profile/my-orders') {
+      setCurrentKey('2')
+    } else {
+      setCurrentKey('0')
+    }
+  }, [location.pathname])
   return (
     <>
       <FullPageSpin isSpinning={isPending}></FullPageSpin>
@@ -119,14 +134,14 @@ const ProfileSidebar = () => {
                     style={{ display: 'none' }}
                     accept='image/*'
                   />
-                  <FaCamera />
+                  <FaCamera style={{ cursor: 'pointer' }} />
                 </label>
               </div>
               {/* <p className='profile-user__desc'>Registered: 17th May 2022</p> */}
             </div>
           </div>
         )}
-        <Menu mode='inline' style={{ height: '100%', borderRight: 0 }} items={menuItem} defaultSelectedKeys={['0']} />
+        <Menu mode='inline' style={{ height: '100%', borderRight: 0 }} items={menuItem} selectedKeys={[currentKey]} />
       </Sider>
     </>
   )

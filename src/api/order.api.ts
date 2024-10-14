@@ -1,7 +1,7 @@
 // import { Address } from '~/types/address.type'
 // import { CartState } from '~/types/cart.type'
 import { Order } from '~/types/order.type'
-import { getStoredToken } from '~/utils'
+import { fetchWithAuth } from './user.api'
 
 const API_HOST = import.meta.env.VITE_API_HOST
 // const headers = {
@@ -33,12 +33,8 @@ const API_HOST = import.meta.env.VITE_API_HOST
 
 export async function createOrderApi(order: Order) {
   const API_URL = `${API_HOST}/api/v1/orders`
-  const response = await fetch(API_URL, {
+  const response = await fetchWithAuth(API_URL, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${getStoredToken()}`
-    },
     body: JSON.stringify(order)
   })
 

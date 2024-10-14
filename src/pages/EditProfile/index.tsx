@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
-import { getProfileFromLS } from '~/utils'
 import useUpdateInfo from '~/features/user/useUpdateInfo'
 import FullPageSpin from '~/components/FullPageSpin'
 import { Spin } from 'antd'
+import { useSelector } from 'react-redux'
+import { RootState } from '~/store'
 
 type FormData = {
   email: string
@@ -15,7 +16,8 @@ type FormData = {
   phoneNumber: string
 }
 const EditProfile = () => {
-  const user = getProfileFromLS()
+  // const user = getProfileFromLS()
+  const user = useSelector((state: RootState) => state.user.user)
   const { updateInfo, isPending } = useUpdateInfo()
   const formSchema = yup.object().shape({
     name: yup.string().required('Name is required !'),

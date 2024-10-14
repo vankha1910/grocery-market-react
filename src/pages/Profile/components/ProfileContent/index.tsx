@@ -1,3 +1,4 @@
+import { getProfileFromLS } from '~/utils'
 import PaymentCard from '../PaymentCard'
 import {
   LocationIcon,
@@ -9,9 +10,11 @@ import {
   planeBgIcon,
   planeIcon,
   productImage1,
-  productImage2
+  productImage2,
+  ProfileIcon
 } from '~/assets'
 const index = () => {
+  const user = getProfileFromLS()
   return (
     <div className='cart-info'>
       <div className='row gy-3'>
@@ -54,43 +57,48 @@ const index = () => {
           <p className='cart-info__desc profile__desc'>Addresses, contact information and password</p>
           <div className='row gy-md-2 row-cols-2 row-cols-lg-1'>
             <div className='col'>
-              <a href='./edit-personal-info.html'>
-                <article className='account-info'>
-                  <div className='account-info__icon'>
-                    <img alt='' className='icon' src={MessageIcon} />
-                  </div>
-                  <div>
-                    <h3 className='account-info__title'>Email Address</h3>
-                    <p className='account-info__desc'>tarek97.ta@gmail.com</p>
-                  </div>
-                </article>
-              </a>
+              <article className='account-info'>
+                <div className='account-info__icon'>
+                  <img alt='' className='icon' src={MessageIcon} />
+                </div>
+                <div>
+                  <h3 className='account-info__title'>Email Address</h3>
+                  <p className='account-info__desc'>{user?.email}</p>
+                </div>
+              </article>
             </div>
             <div className='col'>
-              <a href='./edit-personal-info.html'>
-                <article className='account-info'>
-                  <div className='account-info__icon'>
-                    <img alt='' className='icon' src={PhoneIcon} />
-                  </div>
-                  <div>
-                    <h3 className='account-info__title'>Phone number</h3>
-                    <p className='account-info__desc'>+000 11122 2345 657</p>
-                  </div>
-                </article>
-              </a>
+              <article className='account-info'>
+                <div className='account-info__icon'>
+                  <img alt='' className='icon' src={ProfileIcon} />
+                </div>
+                <div>
+                  <h3 className='account-info__title'>Full name</h3>
+                  <p className='account-info__desc'>{user?.name}</p>
+                </div>
+              </article>
             </div>
             <div className='col'>
-              <a href='./edit-personal-info.html'>
-                <article className='account-info'>
-                  <div className='account-info__icon'>
-                    <img alt='' className='icon' src={LocationIcon} />
-                  </div>
-                  <div>
-                    <h3 className='account-info__title'>Add an address</h3>
-                    <p className='account-info__desc'>Bangladesh Embassy, Washington, DC 20008</p>
-                  </div>
-                </article>
-              </a>
+              <article className='account-info'>
+                <div className='account-info__icon'>
+                  <img alt='' className='icon' src={PhoneIcon} />
+                </div>
+                <div>
+                  <h3 className='account-info__title'>Phone number</h3>
+                  <p className='account-info__desc'>{user?.phoneNumber}</p>
+                </div>
+              </article>
+            </div>
+            <div className='col'>
+              <article className='account-info'>
+                <div className='account-info__icon'>
+                  <img alt='' className='icon' src={LocationIcon} />
+                </div>
+                <div>
+                  <h3 className='account-info__title'>Add an address</h3>
+                  <p className='account-info__desc'>{user?.address}</p>
+                </div>
+              </article>
             </div>
           </div>
         </div>

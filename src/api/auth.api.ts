@@ -1,4 +1,4 @@
-import { getStoredToken } from '~/utils'
+import { fetchWithAuth } from './user.api'
 
 const API_HOST = import.meta.env.VITE_API_HOST
 
@@ -19,6 +19,8 @@ export async function signInApi(email: string, password: string) {
   const API_URL = `${API_HOST}/api/v1/users/login`
   const response = await fetch(API_URL, {
     method: 'POST',
+    credentials: 'include',
+
     headers: {
       'Content-Type': 'application/json'
     },
@@ -26,14 +28,23 @@ export async function signInApi(email: string, password: string) {
   })
   return response
 }
+
+export async function logoutApi() {
+  const API_URL = `${API_HOST}/api/v1/users/logout`
+  const response = await fetchWithAuth(API_URL, {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  return response
+}
+
 export async function changePasswordApi(currentPassword: string, newPassword: string) {
   const API_URL = `${API_HOST}/api/v1/users/change-password`
-  const response = await fetch(API_URL, {
+  const response = await fetchWithAuth(API_URL, {
     method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${getStoredToken()}`
-    },
     body: JSON.stringify({ currentPassword, newPassword })
   })
   return response
@@ -41,12 +52,8 @@ export async function changePasswordApi(currentPassword: string, newPassword: st
 
 export async function checkLoginApi() {
   const API_URL = `${API_HOST}/api/v1/users/check-login`
-  const response = await fetch(API_URL, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${getStoredToken()}`
-    }
+  const response = await fetchWithAuth(API_URL, {
+    method: 'GET'
   })
   return response
 }

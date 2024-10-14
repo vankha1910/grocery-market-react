@@ -1,5 +1,5 @@
 import './navbar.scss'
-import { ArrowDown, ArrowLeft, CartIcon, HeartIcon } from '~/assets'
+import { ArrowDown, ArrowLeft, CartIcon } from '~/assets'
 import { Link } from 'react-router-dom'
 type NavbarProps = {
   showNavbar: boolean
@@ -28,11 +28,11 @@ const index = (props: NavbarProps) => {
             <span className='nav-btn__title'>Cart</span>
             <span className='nav-btn__qnt'>3</span>
           </Link>
-          <Link to='favorite' className='nav-btn'>
+          {/* <Link to='favorite' className='nav-btn'>
             <img className='nav-btn__icon icon' src={HeartIcon} alt='' />
             <span className='nav-btn__title'>Favorite</span>
             <span className='nav-btn__qnt'>3</span>
-          </Link>
+          </Link> */}
         </div>
         <ul className='navbar__list js-dropdown-list'>
           <li className='navbar__item'>

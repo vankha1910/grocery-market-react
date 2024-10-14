@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 const useSignUp = () => {
   const navigate = useNavigate()
   const queryClient = useQueryClient()
-  const signup = useMutation({
+  const { mutate: signup, isPending } = useMutation({
     mutationFn: ({ email, password, confirmPassword }: FormRegisterData) => signUpApi(email, password, confirmPassword),
     onSuccess: async (res) => {
       const data = await res.json()
@@ -30,6 +30,9 @@ const useSignUp = () => {
       queryClient.invalidateQueries({ queryKey: ['auth'] })
     }
   })
-  return signup
+  return {
+    signup,
+    isPending
+  }
 }
 export default useSignUp

@@ -2,6 +2,9 @@
 // enum Roles {
 //   User = 'user',
 //   Admin = 'admin'
+
+import { Address } from './address.type'
+
 // }
 export type FormRegisterData = {
   email: string
@@ -10,10 +13,10 @@ export type FormRegisterData = {
 }
 export interface User {
   _id: string
-  roles: string
   email: string
   name?: string
   avatar?: string
   address?: string
-  phone?: string
+  phoneNumber?: string
+  addresses?: Address[]
 }
