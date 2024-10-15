@@ -27,8 +27,8 @@ const ProductList = () => {
         ) : (
           <>
             {productList?.map((item, index) => (
-              <div className='col'>
-                <ProductItem key={index} product={item} />
+              <div className='col' key={index}>
+                <ProductItem product={item} />
               </div>
             ))}
           </>

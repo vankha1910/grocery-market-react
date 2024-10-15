@@ -22,7 +22,12 @@ const EditProfile = () => {
   const formSchema = yup.object().shape({
     name: yup.string().required('Name is required !'),
     email: yup.string().email('Email is not in correct format !').required('Email is required !'),
-    phoneNumber: yup.string().required('Phone number is required !'),
+    phoneNumber: yup
+      .string()
+      .matches(/^[0-9]+$/, 'Phone number must contain only digits')
+      .min(10, 'Phone number must be at least 10 digits')
+      .max(15, 'Phone number can be up to 15 digits')
+      .required('Phone number is required !'),
     address: yup.string().required('Address is required !')
   })
 

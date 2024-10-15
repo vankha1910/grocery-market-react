@@ -8,7 +8,7 @@ const useProducts = (params: ProductParams) => {
   const queryClient = useQueryClient()
   const [searchParams] = useSearchParams()
   const result = useQuery({
-    queryKey: ['product-list', params],
+    queryKey: ['product-list', params, searchParams],
     queryFn: () => getListProduct(buildQueryParams(params))
   })
   // handle pre fetching

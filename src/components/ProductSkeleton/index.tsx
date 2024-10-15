@@ -4,8 +4,8 @@ const index = () => {
   return (
     <>
       {Array.from({ length: 8 }).map((_, index) => (
-        <div className='col'>
-          <SkeletonItem key={index} />
+        <div className='col' key={index}>
+          <SkeletonItem />
         </div>
       ))}
     </>

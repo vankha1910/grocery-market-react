@@ -53,7 +53,7 @@ const AddressCard = ({ address, index }: { address: Address; index: number }) =>
 
             <Popconfirm
               title='Delete the task'
-              description='Are you sure to delete this task?'
+              description='Are you sure to delete this address ?'
               icon={
                 <QuestionCircleOutlined
                   style={{

@@ -1,6 +1,7 @@
 import './footer.scss'
 import Logo from '../Logo'
 import { FacebookIcon, LinkedinIcon, TiktokIcon, TwitterIcon, YoutubeIcon } from '~/assets'
+import { Link } from 'react-router-dom'
 const index = () => {
   return (
     <div className='footer'>
@@ -24,29 +25,29 @@ const index = () => {
             <h3 className='footer__heading'>Shop</h3>
             <ul className='footer__list'>
               <li>
-                <a href='#!' className='footer__link'>
+                <Link to='#' className='footer__link'>
                   All Departments
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#!' className='footer__link'>
+                <Link to='#' className='footer__link'>
                   Fashion Deals
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#!' className='footer__link'>
+                <Link to='#' className='footer__link'>
                   Electronics Discounts
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#!' className='footer__link'>
+                <Link to='#' className='footer__link'>
                   Home &amp; Living Specials
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#!' className='footer__link'>
+                <Link to='#' className='footer__link'>
                   Beauty Bargains
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -55,14 +56,14 @@ const index = () => {
             <h3 className='footer__heading'>Support</h3>
             <ul className='footer__list'>
               <li>
-                <a href='#!' className='footer__link'>
+                <Link to='#' className='footer__link'>
                   Store locator
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#!' className='footer__link'>
+                <Link to='#' className='footer__link'>
                   Order status
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -71,34 +72,34 @@ const index = () => {
             <h3 className='footer__heading'>Company</h3>
             <ul className='footer__list'>
               <li>
-                <a href='#!' className='footer__link'>
+                <Link to='#' className='footer__link'>
                   Customer Service
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#!' className='footer__link'>
+                <Link to='#' className='footer__link'>
                   Terms of Use
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#!' className='footer__link'>
+                <Link to='#' className='footer__link'>
                   Privacy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#!' className='footer__link'>
+                <Link to='#' className='footer__link'>
                   Careers
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#!' className='footer__link'>
+                <Link to='#' className='footer__link'>
                   About
-                </a>
+                </Link>
               </li>
               <li>
-                <a href='#!' className='footer__link'>
+                <Link to='#' className='footer__link'>
                   Affiliates
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -108,16 +109,16 @@ const index = () => {
             <ul className='footer__list'>
               <li>
                 <p className='footer__label'>Email</p>
-                <a href='mailto:contact@grocerymart.com' className='footer__link'>
+                <Link to='mailto:contact@grocerymart.com' className='footer__link'>
                   {' '}
                   contact@grocerymart.com{' '}
-                </a>
+                </Link>
               </li>
               <li>
                 <p className='footer__label'>Hotline</p>
-                <a href='tel:18008888' className='footer__link'>
+                <Link to='tel:18008888' className='footer__link'>
                   18008888
-                </a>
+                </Link>
               </li>
               <li>
                 <p className='footer__label'>Address</p>
@@ -135,21 +136,21 @@ const index = () => {
         <div className='footer__bottom'>
           <p className='footer__copyright'>© 2010 - 2025 Grocery Mart. All rights reserved.</p>
           <div className='footer__socials'>
-            <a href='#!' className='footer__social-link footer__social-link--facebook'>
+            <Link to='#' className='footer__social-link footer__social-link--facebook'>
               <img src={FacebookIcon} alt='' className='footer__social-icon' />
-            </a>
-            <a href='#!' className='footer__social-link footer__social-link--youtube'>
+            </Link>
+            <Link to='#' className='footer__social-link footer__social-link--youtube'>
               <img src={YoutubeIcon} alt='' className='footer__social-icon' />
-            </a>
-            <a href='#!' className='footer__social-link footer__social-link--tiktok'>
+            </Link>
+            <Link to='#' className='footer__social-link footer__social-link--tiktok'>
               <img src={TiktokIcon} alt='' className='footer__social-icon' />
-            </a>
-            <a href='#!' className='footer__social-link footer__social-link--twitter'>
+            </Link>
+            <Link to='#' className='footer__social-link footer__social-link--twitter'>
               <img src={TwitterIcon} alt='' className='footer__social-icon' />
-            </a>
-            <a href='#!' className='footer__social-link footer__social-link--linkedin'>
+            </Link>
+            <Link to='#' className='footer__social-link footer__social-link--linkedin'>
               <img src={LinkedinIcon} alt='' className='footer__social-icon' />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
