@@ -151,6 +151,17 @@ const Products = () => {
       })
     }
   }, [])
+
+  useEffect(() => {
+    if (searchParams.get('search')) {
+      setParams((pre) => {
+        return {
+          ...pre,
+          search: searchParams.get('search') || ''
+        }
+      })
+    }
+  }, [searchParams])
   return (
     <>
       <main className='products-page'>

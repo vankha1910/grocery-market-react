@@ -32,9 +32,15 @@ const breadcrumbArray = [
 type FormData = Omit<Address, '_id'>
 const Shipping = () => {
   const { addressList } = useSelector<RootState>((state: RootState) => state.address) as AddressStateType
-
+  const { user } = useSelector((state: RootState) => state.user)
   const addressSchema = yup.object().shape({
     name: yup.string().required('Name is required !'),
+    phone: yup
+      .string()
+      .matches(/^[0-9]+$/, 'Phone number must contain only digits')
+      .min(10, 'Phone number must be at least 10 digits')
+      .max(15, 'Phone number can be up to 15 digits')
+      .required('Phone number is required !'),
     address: yup.string().required('Address is required !')
   })
   // const currentUser = getProfileFromLS()
@@ -48,7 +54,12 @@ const Shipping = () => {
     formState: { errors },
     handleSubmit
   } = useForm<FormData>({
-    resolver: yupResolver(addressSchema)
+    resolver: yupResolver(addressSchema),
+    defaultValues: {
+      name: user?.name || '',
+      phone: user?.phoneNumber || '',
+      address: user?.address || ''
+    }
   })
 
   const onSubmit = handleSubmit((data) => {

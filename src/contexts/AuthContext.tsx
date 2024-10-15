@@ -5,30 +5,43 @@ import { getProfileFromLS } from '~/utils'
 type AuthContextType = {
   isAuthenticated: boolean
   setIsAuthenticated: (value: boolean) => void
+  loading: boolean
 }
 
 const defaultContext: AuthContextType = {
   isAuthenticated: false,
-  setIsAuthenticated: () => {}
+  setIsAuthenticated: () => {},
+  loading: true
 }
 
 const AuthContext = createContext(defaultContext)
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [loading, setLoading] = useState(true)
   const user = getProfileFromLS()
 
   useEffect(() => {
-    if (Object.keys(user).length === 0) return
+    if (Object.keys(user).length === 0) {
+      setLoading(false)
+      return
+    }
     const fetchToken = async () => {
-      const token = await refreshAccessToken()
-      console.log(token)
-      if (token) setIsAuthenticated(true)
+      try {
+        const token = await refreshAccessToken()
+        if (token) setIsAuthenticated(true)
+      } catch (error) {
+        console.log('Error refreshing token:', error)
+      } finally {
+        setLoading(false)
+      }
     }
     fetchToken()
   }, [])
 
-  return <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>{children}</AuthContext.Provider>
+  return (
+    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, loading }}>{children}</AuthContext.Provider>
+  )
 }
 
 export const useAuth = () => {

@@ -54,7 +54,7 @@ const index = () => {
         </div>
         <div className='col-12'>
           <h2 className='cart-info__heading'>Account info</h2>
-          <p className='cart-info__desc profile__desc'>Addresses, contact information and password</p>
+          <p className='cart-info__desc profile__desc'>Addresses, contact information</p>
           <div className='row gy-md-2 row-cols-2 row-cols-lg-1'>
             <div className='col'>
               <article className='account-info'>

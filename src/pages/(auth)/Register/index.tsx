@@ -7,6 +7,7 @@ import * as yup from 'yup'
 import useSignUp from '~/features/auth/useSignUp'
 import { Spin } from 'antd'
 import FullPageSpin from '~/components/FullPageSpin'
+import { useState } from 'react'
 const introDesc = `The best of luxury brand values, high quality products, and innovative services`
 const authHeading = `Sign Up`
 const authDesc = `Let’s create your account and Shop like a pro and save money.`
@@ -18,12 +19,20 @@ type FormData = {
 }
 const Register = () => {
   const { signup, isPending } = useSignUp()
-
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const registerSchema = yup.object().shape({
-    email: yup.string().email('Email is not in correct format !').required('Email is required !'),
+    email: yup
+      .string()
+      .matches(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Email is not in correct format !')
+      .email('Email is not in correct format !')
+      .required('Email is required !'),
     password: yup.string().required('Password is required !').min(6, 'Password must be at least 6 characters !'),
-    confirmPassword: yup.string().required('Password is required !').min(6, 'Password must be at least 6 characters !')
-    // .equals([yup.ref('password')], 'Passwords must match !')
+    confirmPassword: yup
+      .string()
+      .required('Password is required !')
+      .min(6, 'Password must be at least 6 characters !')
+      .oneOf([yup.ref('password')], 'Passwords must match !')
   })
   const {
     register,
@@ -46,7 +55,7 @@ const Register = () => {
       <FullPageSpin isSpinning={isPending}></FullPageSpin>
       <AuthLayout introImg={LoginIntro} introDesc={introDesc} authHeading={authHeading} authDesc={authDesc}>
         <>
-          <form autoComplete='off' onSubmit={onSubmit} action='/' className='form auth__form'>
+          <form noValidate autoComplete='off' onSubmit={onSubmit} action='/' className='form auth__form'>
             <div className='form__group'>
               <div className='form__text-input'>
                 <input type='email' placeholder='Email' className='form__input' autoFocus {...register('email')} />
@@ -57,8 +66,19 @@ const Register = () => {
             </div>
             <div className='form__group'>
               <div className='form__text-input'>
-                <input type='password' placeholder='Password' className='form__input' {...register('password')} />
-                <img src={LockIcon} alt='' className='form__input-icon' />
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder='Password'
+                  className='form__input'
+                  {...register('password')}
+                />
+                <img
+                  onClick={() => setShowPassword(!showPassword)}
+                  src={LockIcon}
+                  alt=''
+                  className='form__input-icon'
+                  style={{ cursor: 'pointer' }}
+                />
                 {/* <img src={FormErrorIcon} alt='' className='form__input-icon-error' /> */}
               </div>
               {errors?.password && <p className='form__error'>{errors?.password?.message}</p>}
@@ -66,12 +86,18 @@ const Register = () => {
             <div className='form__group'>
               <div className='form__text-input'>
                 <input
-                  type='password'
+                  type={showConfirmPassword ? 'text' : 'password'}
                   placeholder='Confirm password'
                   className='form__input'
                   {...register('confirmPassword')}
                 />
-                <img src={LockIcon} alt='' className='form__input-icon' />
+                <img
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  src={LockIcon}
+                  alt=''
+                  className='form__input-icon'
+                  style={{ cursor: 'pointer' }}
+                />
                 {/* <img src={FormErrorIcon} alt='' className='form__input-icon-error' /> */}
               </div>
               {errors?.confirmPassword && <p className='form__error'>{errors?.confirmPassword?.message}</p>}

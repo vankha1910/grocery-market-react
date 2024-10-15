@@ -4,7 +4,12 @@ import { FormRegisterData } from '~/types/auth.type'
 import { toast } from 'react-toastify'
 import { setProfileToLS, storedToken } from '~/utils'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '~/contexts/AuthContext'
+import { useDispatch } from 'react-redux'
+import { setUserInfo } from '../user/userSlice'
 const useSignUp = () => {
+  const dispatch = useDispatch()
+  const { setIsAuthenticated } = useAuth()
   const navigate = useNavigate()
   const queryClient = useQueryClient()
   const { mutate: signup, isPending } = useMutation({
@@ -16,6 +21,8 @@ const useSignUp = () => {
         setProfileToLS(data.data.user)
         storedToken(data.token)
         queryClient.setQueryData(['user'], data.data.user)
+        dispatch(setUserInfo(data.data.user))
+        setIsAuthenticated(true)
         setTimeout(() => {
           navigate('/')
         }, 1000)
