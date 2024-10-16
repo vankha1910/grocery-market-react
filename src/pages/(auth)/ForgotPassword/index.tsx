@@ -15,8 +15,8 @@ const ForgotPassword = () => {
           <div className='form__group'>
             <div className='form__text-input'>
               <input type='email' name='' id='' placeholder='Email' className='form__input' autoFocus required />
-              <img src={MessageIcon} alt='' className='form__input-icon' />
-              <img src={FormErrorIcon} alt='' className='form__input-icon-error' />
+              <img src={MessageIcon} alt='message-icon' className='form__input-icon' />
+              <img src={FormErrorIcon} alt='form-error-icon' className='form__input-icon-error' />
             </div>
             <p className='form__error'>Email is not in correct format</p>
           </div>

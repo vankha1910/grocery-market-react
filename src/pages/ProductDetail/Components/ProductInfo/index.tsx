@@ -132,18 +132,18 @@ const ProductInfo = ({ productInfo }: { productInfo: Product }) => {
         <div className='col-7 col-xxl-6 col-xl-12'>
           <div className='prod-props'>
             <div className='prod-prop'>
-              <img alt='' className='prod-prop__icon icon' src={DocumentIcon} />
+              <img alt='document-icon' className='prod-prop__icon icon' src={DocumentIcon} />
               <h4 className='prod-prop__title'>Compare</h4>
             </div>
             <div className='prod-prop'>
-              <img alt='' className='prod-prop__icon icon' src={CartIcon} />
+              <img alt='cart-icon' className='prod-prop__icon icon' src={CartIcon} />
               <div>
                 <h4 className='prod-prop__title'>Delivery</h4>
                 <p className='prod-prop__desc'>From $6 for 1-3 days</p>
               </div>
             </div>
             <div className='prod-prop'>
-              <img alt='' className='prod-prop__icon icon' src={BagIcon} />
+              <img alt='bag-icon' className='prod-prop__icon icon' src={BagIcon} />
               <div>
                 <h4 className='prod-prop__title'>Pickup</h4>
                 <p className='prod-prop__desc'>Out of 2 store, today</p>

@@ -63,7 +63,7 @@ const Register = () => {
             <div className='form__group'>
               <div className='form__text-input'>
                 <input type='email' placeholder='Email' className='form__input' autoFocus {...register('email')} />
-                <img src={MessageIcon} alt='' className='form__input-icon' />
+                <img src={MessageIcon} alt='message-icon' className='form__input-icon' />
                 {/* <img src={FormErrorIcon} alt='' className='form__input-icon-error' /> */}
               </div>
               {errors?.email && <p className='form__error'>{errors?.email?.message}</p>}
@@ -79,7 +79,7 @@ const Register = () => {
                 <img
                   onClick={() => setShowPassword(!showPassword)}
                   src={LockIcon}
-                  alt=''
+                  alt='lock-icon'
                   className='form__input-icon'
                   style={{ cursor: 'pointer' }}
                 />
@@ -98,7 +98,7 @@ const Register = () => {
                 <img
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                   src={LockIcon}
-                  alt=''
+                  alt='lock-icon'
                   className='form__input-icon'
                   style={{ cursor: 'pointer' }}
                 />
@@ -112,7 +112,7 @@ const Register = () => {
                 {isPending ? <Spin></Spin> : 'Sign Up'}
               </button>
               <button className='btn btn--outline auth__btn btn--no-margin'>
-                <img src={GoogleIcon} alt='' className='btn__icon icon' />
+                <img src={GoogleIcon} alt='google-icon' className='btn__icon icon' />
                 Sign up with Google
               </button>
             </div>

@@ -7,8 +7,8 @@ const ProductItem = ({ product }: { product?: Product }) => {
   return (
     <article className='product-card'>
       <div className='product-card__img-wrap'>
-        <Link to={`/product/${product?._id}`}>
-          <img className='product-card__img' src={product?.thumbImg} alt='' />
+        <Link to={`/product/${product?._id}`} aria-label='product'>
+          <img className='product-card__img' src={product?.thumbImg} alt='product-thumb' />
         </Link>
         {/* <button className='product-card__btn-like btn-like'>
           <img className='btn-like__icon icon' src={HeartIcon} alt='' />
@@ -27,7 +27,7 @@ const ProductItem = ({ product }: { product?: Product }) => {
             : product?.size[0]?.price}
           {product?.discount !== 0 && <span className='prod-info__tax'>{product?.discount}%</span>}
         </p>
-        <img className='product-card__icon' src={StarIcon} alt='' />
+        <img className='product-card__icon' src={StarIcon} alt='star-icon' />
         <p className='product-card__score'>{product?.rated}</p>
       </div>
     </article>

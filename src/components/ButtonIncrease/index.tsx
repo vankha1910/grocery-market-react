@@ -19,11 +19,11 @@ const index = ({
   return (
     <div className='button-increase'>
       <button disabled={isDisabledDecrease} onClick={handleDecrease} className='cart-item__input-btn'>
-        <img className='icon' src={MinusIcon} alt='' />
+        <img className='button-increase__icon' src={MinusIcon} alt='' />
       </button>
       <span>{quantity}</span>
       <button disabled={isDisabledIncrease} onClick={handleIncrease} className='cart-item__input-btn'>
-        <img className='icon' src={PlusIcon} alt='' />
+        <img className='button-increase__icon' src={PlusIcon} alt='' />
       </button>
     </div>
   )

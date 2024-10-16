@@ -136,20 +136,20 @@ const index = () => {
         <div className='footer__bottom'>
           <p className='footer__copyright'>© 2010 - 2025 Grocery Mart. All rights reserved.</p>
           <div className='footer__socials'>
-            <Link to='#' className='footer__social-link footer__social-link--facebook'>
-              <img src={FacebookIcon} alt='' className='footer__social-icon' />
+            <Link to='#' className='footer__social-link footer__social-link--facebook' aria-label='facebook'>
+              <img src={FacebookIcon} alt='facebook-icon' className='footer__social-icon' />
             </Link>
-            <Link to='#' className='footer__social-link footer__social-link--youtube'>
-              <img src={YoutubeIcon} alt='' className='footer__social-icon' />
+            <Link to='#' className='footer__social-link footer__social-link--youtube' aria-label='youtube'>
+              <img src={YoutubeIcon} alt='youtube-icon' className='footer__social-icon' />
             </Link>
-            <Link to='#' className='footer__social-link footer__social-link--tiktok'>
-              <img src={TiktokIcon} alt='' className='footer__social-icon' />
+            <Link to='#' className='footer__social-link footer__social-link--tiktok' aria-label='tiktok'>
+              <img src={TiktokIcon} alt='tiktok-icon' className='footer__social-icon' />
             </Link>
-            <Link to='#' className='footer__social-link footer__social-link--twitter'>
-              <img src={TwitterIcon} alt='' className='footer__social-icon' />
+            <Link to='#' className='footer__social-link footer__social-link--twitter' aria-label='twitter'>
+              <img src={TwitterIcon} alt='twitter-icon' className='footer__social-icon' />
             </Link>
-            <Link to='#' className='footer__social-link footer__social-link--linkedin'>
-              <img src={LinkedinIcon} alt='' className='footer__social-icon' />
+            <Link to='#' className='footer__social-link footer__social-link--linkedin' aria-label='linkedin'>
+              <img src={LinkedinIcon} alt='linkedin-icon' className='footer__social-icon' />
             </Link>
           </div>
         </div>

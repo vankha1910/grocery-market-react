@@ -25,9 +25,9 @@ const index = ({
         background: background
       }}
     >
-      <img alt='' className='payment-card__img' src={cartImgBg} />
+      <img alt='payment' className='payment-card__img' src={cartImgBg} />
       <div className='payment-card__top'>
-        <img alt='' src={cartImgIcon} />
+        <img alt='card-icon' src={cartImgIcon} />
         <span className='payment-card__type'>{cardType}</span>
       </div>
       <div className='payment-card__number'>{cartNumber}</div>

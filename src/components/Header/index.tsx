@@ -15,7 +15,7 @@ const Header = () => {
             toggle-target='#navbar'
             className='top-bar__more js-toggle d-none d-md-block'
           >
-            <img className='top-bar__more-icon icon' src={MenuToggleIcon} alt='' />
+            <img className='top-bar__more-icon icon' src={MenuToggleIcon} alt='toggle-icon' />
           </button>
           <Logo />
           <Navbar showNavbar={showNavbar} setShowNavbar={setShowNavbar} />

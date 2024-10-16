@@ -14,7 +14,7 @@ const index = ({ children, ...props }: AuthLayoutProps) => {
     <main className='auth'>
       {/* Auth intro */}
       <div className='auth__intro d-md-none'>
-        <img src={props?.introImg} alt='' className='auth__intro-img' />
+        <img src={props?.introImg} alt='intro-img' className='auth__intro-img' />
         <p className='auth__intro-text'>{props?.introDesc}</p>
       </div>
       {/* Auth content */}

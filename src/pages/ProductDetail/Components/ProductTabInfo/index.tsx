@@ -122,7 +122,7 @@ const ProductTabInfo = ({ productInfo }: { productInfo: Product }) => {
                 <div className='col'>
                   <div className='review-card'>
                     <div className='review-card__content'>
-                      <img alt='' className='review-card__avatar' src={Avatar1} />
+                      <img alt='avatar' className='review-card__avatar' src={Avatar1} />
                       <div className='review-card__info'>
                         <h4 className='review-card__title'>Jakir Hussen</h4>
                         <p className='review-card__desc'>Great product, I love this Coffee Beans</p>
@@ -139,7 +139,7 @@ const ProductTabInfo = ({ productInfo }: { productInfo: Product }) => {
                 <div className='col'>
                   <div className='review-card'>
                     <div className='review-card__content'>
-                      <img alt='' className='review-card__avatar' src={Avatar2} />
+                      <img alt='avatar' className='review-card__avatar' src={Avatar2} />
                       <div className='review-card__info'>
                         <h4 className='review-card__title'>Jubed Ahmed</h4>
                         <p className='review-card__desc'>Awesome Coffee, I love this Coffee Beans</p>
@@ -156,7 +156,7 @@ const ProductTabInfo = ({ productInfo }: { productInfo: Product }) => {
                 <div className='col'>
                   <div className='review-card'>
                     <div className='review-card__content'>
-                      <img alt='' className='review-card__avatar' src={Avatar3} />
+                      <img alt='avatar' className='review-card__avatar' src={Avatar3} />
                       <div className='review-card__info'>
                         <h4 className='review-card__title'>Delwar Hussain</h4>
                         <p className='review-card__desc'>Great product, I like this Coffee Beans</p>

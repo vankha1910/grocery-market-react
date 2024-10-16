@@ -60,7 +60,7 @@ const ChangePassword = () => {
                 autoFocus
                 {...register('currentPassword')}
               />
-              <img src={LockIcon} alt='' className='form__input-icon' />
+              <img src={LockIcon} alt='lock-icon' className='form__input-icon' />
               {/* <img src={FormErrorIcon} alt='' className='form__input-icon-error' /> */}
             </div>
             {errors?.currentPassword && <p className='form__error'>{errors?.currentPassword?.message}</p>}
@@ -68,7 +68,7 @@ const ChangePassword = () => {
           <div className='form__group'>
             <div className='form__text-input'>
               <input type='password' placeholder='New Password' className='form__input' {...register('newPassword')} />
-              <img src={LockIcon} alt='' className='form__input-icon' />
+              <img src={LockIcon} alt='lock-icon' className='form__input-icon' />
               {/* <img src={FormErrorIcon} alt='' className='form__input-icon-error' /> */}
             </div>
             {errors?.newPassword && <p className='form__error'>{errors?.newPassword?.message}</p>}
@@ -81,7 +81,7 @@ const ChangePassword = () => {
                 className='form__input'
                 {...register('confirmNewPassword')}
               />
-              <img src={LockIcon} alt='' className='form__input-icon' />
+              <img src={LockIcon} alt='lock-icon' className='form__input-icon' />
               {/* <img src={FormErrorIcon} alt='' className='form__input-icon-error' /> */}
             </div>
             {errors?.confirmNewPassword && <p className='form__error'>{errors?.confirmNewPassword?.message}</p>}

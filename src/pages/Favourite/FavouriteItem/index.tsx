@@ -13,7 +13,7 @@ const index = ({ product }: { product: ProductProps }) => {
         <input type='checkbox' name='shipping-adress' className='cart-info__checkbox-input' defaultChecked />
       </label>
       <Link to='/product/2'>
-        <img src={productImage} alt='' className='cart-item__thumb' />
+        <img src={productImage} alt='product-thumb' className='cart-item__thumb' />
       </Link>
       <div className='cart-item__content'>
         <div className='cart-item__content-left'>

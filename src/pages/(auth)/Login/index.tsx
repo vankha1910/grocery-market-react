@@ -53,7 +53,7 @@ const Login = () => {
           <div className='form__group'>
             <div className='form__text-input'>
               <input type='email' placeholder='Email' className='form__input' autoFocus {...register('email')} />
-              <img src={MessageIcon} alt='' className='form__input-icon' />
+              <img src={MessageIcon} alt='message-icon' className='form__input-icon' />
             </div>
             {errors?.email && <p className='form__error'>{errors?.email.message}</p>}
           </div>
@@ -68,7 +68,7 @@ const Login = () => {
               />
               <img
                 src={LockIcon}
-                alt=''
+                alt='lock-icon'
                 className='form__input-icon pointer'
                 onClick={() => setShowPassword(!showPassword)}
               />
@@ -85,7 +85,7 @@ const Login = () => {
               Sign In
             </button>
             <button className='btn btn--outline auth__btn btn--no-margin'>
-              <img src={GoogleIcon} alt='' className='btn__icon icon' />
+              <img src={GoogleIcon} alt='logo' className='btn__icon icon' />
               Sign in with Google
             </button>
           </div>

@@ -40,7 +40,7 @@ const TopAction = () => {
               </button> */}
               <div className='act-dropdown'>
                 <div className='act-dropdown__inner'>
-                  <img src={ArrowUp} alt='' className='act-dropdown__arrow' />
+                  <img src={ArrowUp} alt='arrow-up-icon' className='act-dropdown__arrow' />
                   <div className='act-dropdown__top'>
                     <h2 className='act-dropdown__title'>You have 3 item(s)</h2>
                   </div>
@@ -64,12 +64,12 @@ const TopAction = () => {
 
             <div className='top-act__btn-wrap'>
               <button className='top-act__btn'>
-                <img className='icon top-act__icon' src={CartIcon} />
+                <img alt='cart-icon' className='icon top-act__icon' src={CartIcon} />
                 {cartList?.length > 0 && <span className='top-act__badge'>{cartList?.length || 0}</span>}
               </button>
               <div className='act-dropdown'>
                 <div className='act-dropdown__inner'>
-                  <img src={ArrowUp} alt='' className='act-dropdown__arrow' />
+                  <img src={ArrowUp} alt='arrow-up-icon' className='act-dropdown__arrow' />
                   <div className='act-dropdown__top'>
                     {cartList?.length > 0 && (
                       <h2 className='act-dropdown__title'>You have {cartList?.length || 0} item(s)</h2>
@@ -117,7 +117,7 @@ const TopAction = () => {
             <img className='top-act__avatar' src={user?.avatar || defaultAvatar} alt='Avatar' />
             <div className='act-dropdown top-act__dropdown'>
               <div className='act-dropdown__inner user-menu'>
-                <img src={ArrowUp} alt='' className='act-dropdown__arrow top-act__dropdown-arrow' />
+                <img src={ArrowUp} alt='arrow-up-icon' className='act-dropdown__arrow top-act__dropdown-arrow' />
                 <div className='user-menu__top'>
                   <img src={user?.avatar || defaultAvatar} alt='Avatar' className='user-menu__avatar' />
                   <div>
@@ -144,7 +144,7 @@ const TopAction = () => {
                   <li className='user-menu__separate'>
                     <button onClick={toggleDarkMode} className='user-menu__link '>
                       <span>{!isDarkMode ? 'Dark mode' : 'Light mode'}</span>
-                      <img src={SunIcon} alt='' className='icon user-menu__icon' />
+                      <img src={SunIcon} alt='sun-icon' className='icon user-menu__icon' />
                     </button>
                   </li>
 
@@ -165,7 +165,7 @@ const TopAction = () => {
           </Link> */}
           <div className='top-act__btn-wrap'>
             <Link to='/checkout' className='top-act__btn'>
-              <img className='icon top-act__icon' src={CartIcon} />
+              <img alt='cart-icon' aria-label='cart-icon' className='icon top-act__icon' src={CartIcon} />
               {cartList?.length > 0 && <span className='top-act__badge'>{cartList?.length || 0}</span>}
             </Link>
           </div>

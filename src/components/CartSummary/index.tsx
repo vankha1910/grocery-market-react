@@ -112,7 +112,7 @@ const CartSummary = ({ lastStep }: Props) => {
         <a href='#!'>
           <article className='gift-item'>
             <div className='gift-item__icon-wrap'>
-              <img src={GiftIcon} alt='' className='gift-item__icon' />
+              <img src={GiftIcon} alt='gift-icon' className='gift-item__icon' />
             </div>
             <div className='gift-item__content'>
               <h3 className='gift-item__title'>Send this order as a gift.</h3>

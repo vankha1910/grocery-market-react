@@ -110,7 +110,6 @@ const Shipping = () => {
                         className='user-address__btn btn btn--primary btn--rounded btn--small'
                         onClick={() => setShowModal(true)}
                       >
-                        <img src='./assets/icons/plus.svg' alt='' />
                         Add a new address
                       </button>
                     </div>

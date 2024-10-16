@@ -46,7 +46,7 @@ const index = () => {
             </div>
             <div className='col'>
               <button className='new-card'>
-                <img alt='' className='new-card__icon icon' src={PlusIcon} />
+                <img alt='plus-icon' className='new-card__icon icon' src={PlusIcon} />
                 <p className='new-card__text'>Add New Card</p>
               </button>
             </div>
@@ -59,7 +59,7 @@ const index = () => {
             <div className='col'>
               <article className='account-info'>
                 <div className='account-info__icon'>
-                  <img alt='' className='icon' src={MessageIcon} />
+                  <img alt='message' className='icon' src={MessageIcon} />
                 </div>
                 <div>
                   <h3 className='account-info__title'>Email Address</h3>
@@ -70,7 +70,7 @@ const index = () => {
             <div className='col'>
               <article className='account-info'>
                 <div className='account-info__icon'>
-                  <img alt='' className='icon' src={ProfileIcon} />
+                  <img alt='profile' className='icon' src={ProfileIcon} />
                 </div>
                 <div>
                   <h3 className='account-info__title'>Full name</h3>
@@ -81,7 +81,7 @@ const index = () => {
             <div className='col'>
               <article className='account-info'>
                 <div className='account-info__icon'>
-                  <img alt='' className='icon' src={PhoneIcon} />
+                  <img alt='phone' className='icon' src={PhoneIcon} />
                 </div>
                 <div>
                   <h3 className='account-info__title'>Phone number</h3>
@@ -92,7 +92,7 @@ const index = () => {
             <div className='col'>
               <article className='account-info'>
                 <div className='account-info__icon'>
-                  <img alt='' className='icon' src={LocationIcon} />
+                  <img alt='location' className='icon' src={LocationIcon} />
                 </div>
                 <div>
                   <h3 className='account-info__title'>Add an address</h3>
@@ -106,7 +106,7 @@ const index = () => {
           <h2 className='cart-info__heading'>Lists</h2>
           <p className='cart-info__desc profile__desc'>2 items - Primary</p>
           <article className='favourite-item'>
-            <img alt='' className='favourite-item__thumb' src={productImage1} />
+            <img alt='product-thumb' className='favourite-item__thumb' src={productImage1} />
             <div>
               <h3 className='favourite-item__title'>Coffee Beans - Espresso Arabica and Robusta Beans</h3>
               <div className='favourite-item__content'>
@@ -122,7 +122,7 @@ const index = () => {
             }}
           />
           <article className='favourite-item'>
-            <img alt='' className='favourite-item__thumb' src={productImage2} />
+            <img alt='product-thumb' className='favourite-item__thumb' src={productImage2} />
             <div>
               <h3 className='favourite-item__title'>Lavazza Coffee Blends - Try the Italian Espresso</h3>
               <div className='favourite-item__content'>

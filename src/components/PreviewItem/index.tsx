@@ -5,7 +5,7 @@ const index = ({ cartItem }: { cartItem: CartItemType }) => {
   return (
     <article className='cart-preview-item'>
       <div className='cart-preview-item__img-wrap'>
-        <img src={cartItem?.thumbImg} alt='' className='cart-preview-item__thumb' />
+        <img src={cartItem?.thumbImg} alt='cart-preview' className='cart-preview-item__thumb' />
       </div>
       <h3 className='cart-preview-item__title'>{cartItem?.name}</h3>
       <p className='cart-preview-item__price'>

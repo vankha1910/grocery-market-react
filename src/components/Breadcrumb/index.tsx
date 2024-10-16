@@ -17,7 +17,7 @@ const index = ({ breadcrumbArray }: BreadcrumbProps) => {
         <li key={index}>
           <Link className='breadcrumbs__link' to={`/${lower(item.path)}`}>
             {item.name}
-            {index !== breadcrumbArray.length - 1 && <img alt='' src={ArrowRight} />}
+            {index !== breadcrumbArray.length - 1 && <img alt='arrow-right' src={ArrowRight} />}
           </Link>
         </li>
       ))}
