@@ -60,7 +60,7 @@ const TopAction = () => {
                 </div>
               </div>
             </div>
-            <div className='top-act__separate' />
+            {/* <div className='top-act__separate' /> */}
 
             <div className='top-act__btn-wrap'>
               <button className='top-act__btn'>

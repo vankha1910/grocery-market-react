@@ -26,7 +26,6 @@ const index = (props: NavbarProps) => {
           <Link to='checkout' className='nav-btn'>
             <img className='nav-btn__icon icon' src={CartIcon} alt='' />
             <span className='nav-btn__title'>Cart</span>
-            <span className='nav-btn__qnt'>3</span>
           </Link>
           {/* <Link to='favorite' className='nav-btn'>
             <img className='nav-btn__icon icon' src={HeartIcon} alt='' />

@@ -3,7 +3,7 @@ import './orders.scss'
 import { Link, useSearchParams } from 'react-router-dom'
 import Order from '../../components/Order'
 import { OrderType } from '~/types/order.type'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Card, Col, Pagination, Row, Skeleton } from 'antd'
 import { LuPackageX } from 'react-icons/lu'
 import NotFound from '~/components/NotFound'
@@ -35,6 +35,9 @@ const MyOrder = () => {
     searchParams.set('page', page.toString())
     setSearchParams(searchParams)
   }
+  useEffect(() => {
+    document.title = 'My Order | Coffee Store'
+  }, [])
   return (
     <div className='cart-info' style={{ flex: 1 }}>
       <div className='row gy-3'>

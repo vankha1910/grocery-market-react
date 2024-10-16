@@ -6,15 +6,15 @@ import { RootState } from '~/store'
 import { AddressState, CartState } from '~/types/cart.type'
 import FullPageSpin from '../FullPageSpin'
 import { Order } from '~/types/order.type'
-import { getStoredToken } from '~/utils'
 import { toast } from 'react-toastify'
+import { useAuth } from '~/contexts/AuthContext'
 
 type Props = {
   lastStep?: boolean
 }
 
 const CartSummary = ({ lastStep }: Props) => {
-  const token = getStoredToken()
+  const { isAuthenticated } = useAuth()
   const navigate = useNavigate()
   const { createOrder, isPending } = useCreateOrder()
   const cartState = useSelector<RootState>((state) => state.cart) as CartState
@@ -92,7 +92,7 @@ const CartSummary = ({ lastStep }: Props) => {
           </button>
         ) : (
           <>
-            {token ? (
+            {isAuthenticated ? (
               <>
                 <Link to='/shipping' className='cart-info__next-btn btn btn--primary btn--rounded'>
                   Continue to checkout

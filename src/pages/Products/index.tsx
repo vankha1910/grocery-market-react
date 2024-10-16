@@ -134,7 +134,8 @@ const Products = () => {
   }
 
   useEffect(() => {
-    // Continue tomorowww
+    document.title = 'Products | Coffee Shop'
+
     const searchValue = new URLSearchParams(window.location.search).get('search')
     const brandValue = new URLSearchParams(window.location.search).get('brand')
     const categoryValue = new URLSearchParams(window.location.search).get('category')

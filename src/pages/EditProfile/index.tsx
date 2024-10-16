@@ -8,6 +8,7 @@ import FullPageSpin from '~/components/FullPageSpin'
 import { Spin } from 'antd'
 import { useSelector } from 'react-redux'
 import { RootState } from '~/store'
+import { useEffect } from 'react'
 
 type FormData = {
   email: string
@@ -55,6 +56,9 @@ const EditProfile = () => {
       return
     updateInfo(data)
   })
+  useEffect(() => {
+    document.title = 'Edit Profile | Coffee Store'
+  }, [])
   return (
     <>
       <FullPageSpin isSpinning={isPending}></FullPageSpin>
