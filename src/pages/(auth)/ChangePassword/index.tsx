@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { Spin } from 'antd'
 import { useChangePassword } from '~/features/auth/useChangePassword'
+import { useEffect } from 'react'
 const introDesc = `The best of luxury brand values, high quality products, and innovative services`
 const authHeading = `Change Password`
 const authDesc = `  `
@@ -42,6 +43,10 @@ const ChangePassword = () => {
   const onSubmit = handleSubmit((data) => {
     changePassword.mutate(data)
   })
+
+  useEffect(() => {
+    document.title = 'Change Password | Coffee shop'
+  }, [])
   return (
     <AuthLayout introImg={LoginIntro} introDesc={introDesc} authHeading={authHeading} authDesc={authDesc}>
       <>

@@ -1,8 +1,12 @@
 import './profile.scss'
 // import ProfileSidebar from './components/ProfileSidebar'
 import ProfileContent from './components/ProfileContent'
-const index = () => {
+import { useEffect } from 'react'
+const Profile = () => {
+  useEffect(() => {
+    document.title = 'Profile'
+  }, [])
   return <ProfileContent />
 }
 
-export default index
+export default Profile

@@ -1,4 +1,5 @@
 // import { productImage1, productImage2, productImage3, productImage4 } from '~/assets'
+import { useEffect } from 'react'
 import Breadcrumb from '../../components/Breadcrumb'
 import ImageReview from './Components/ImageReview'
 import ProductInfo from './Components/ProductInfo'
@@ -24,6 +25,9 @@ const ProductDetail = () => {
       path: `products?brand=${product?.brand}`
     }
   ]
+  useEffect(() => {
+    document.title = `${product?.name} | Coffee Store`
+  }, [product])
   return (
     <main className='product-page'>
       <div className='container'>

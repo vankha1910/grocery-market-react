@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom'
 import AuthLayout from '../../../layouts/AuthLayout'
 import { ForgotIntro, FormErrorIcon, MessageIcon } from '~/assets'
-const index = () => {
+import { useEffect } from 'react'
+const ForgotPassword = () => {
   const authHeading = `Reset your password`
   const authDesc = `Enter your email and we'll send you a link to reset your password.`
+  useEffect(() => {
+    document.title = 'Forgot Password | Coffee shop'
+  }, [])
   return (
     <AuthLayout introImg={ForgotIntro} authHeading={authHeading} authDesc={authDesc}>
       <>
@@ -30,4 +34,4 @@ const index = () => {
   )
 }
 
-export default index
+export default ForgotPassword

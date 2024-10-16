@@ -35,15 +35,17 @@
   }
   & .ant-menu-item {
     @include abstracts.screen(sm) {
-      padding: 8px !important;
+      // padding: 0 8px 0px !important;
       width: unset !important;
-      display: flex;
+      display: flex !important;
+      padding: 0 0 0 8px !important;
     }
   }
 
   & .ant-menu-title-content {
     @include abstracts.screen(sm) {
-      display: none !important;
+      // display: none !important;
+      width: 0 !important;
     }
   }
 }

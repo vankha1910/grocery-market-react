@@ -11,14 +11,14 @@ const index = () => {
           <div className='footer__col'>
             {/* Logo */}
             <Logo isFooter></Logo>
-            <p className='footer__desc'>
+            {/* <p className='footer__desc'>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, maxime et veniam eligendi rem voluptatibus.
             </p>
-            <p className='footer__help-text'>Receive product news and updates.</p>
-            <form action='' className='footer__form'>
+            <p className='footer__help-text'>Receive product news and updates.</p> */}
+            {/* <form action='' className='footer__form'>
               <input type='text' className='footer__input' placeholder='Email address' />
               <button className='btn btn--primary'>SEND</button>
-            </form>
+            </form> */}
           </div>
           {/* Footer column 2 */}
           <div className='footer__col'>

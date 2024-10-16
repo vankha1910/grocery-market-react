@@ -71,6 +71,10 @@ const Shipping = () => {
       setShowModal(false)
     }
   }, [isSuccess])
+
+  useEffect(() => {
+    document.title = 'Shipping | Coffee Store'
+  }, [])
   return (
     <>
       <main className='checkout-page'>
@@ -188,6 +192,7 @@ const Shipping = () => {
                 onClick={() => setShowModal(false)}
                 className='btn btn--small btn--text modal__btn js-toggle'
                 toggle-target='#add-new-address'
+                type='button'
               >
                 Cancel
               </button>

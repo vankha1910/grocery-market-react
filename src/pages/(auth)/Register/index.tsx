@@ -7,7 +7,7 @@ import * as yup from 'yup'
 import useSignUp from '~/features/auth/useSignUp'
 import { Spin } from 'antd'
 import FullPageSpin from '~/components/FullPageSpin'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 const introDesc = `The best of luxury brand values, high quality products, and innovative services`
 const authHeading = `Sign Up`
 const authDesc = `Let’s create your account and Shop like a pro and save money.`
@@ -50,6 +50,10 @@ const Register = () => {
   const onSubmit = handleSubmit((data) => {
     signup(data)
   })
+
+  useEffect(() => {
+    document.title = 'Register | Coffee shop'
+  }, [])
   return (
     <>
       <FullPageSpin isSpinning={isPending}></FullPageSpin>

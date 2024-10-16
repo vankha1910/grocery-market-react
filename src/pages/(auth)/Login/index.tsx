@@ -4,7 +4,7 @@ import { GoogleIcon, LockIcon, LoginIntro, MessageIcon } from '~/assets'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import useSignIn from '~/features/auth/useLogin'
 import FullPageSpin from '~/components/FullPageSpin'
 const introDesc = `The best of luxury brand values, high quality products, and innovative services`
@@ -42,6 +42,9 @@ const Login = () => {
   //     navigate('/profile')
   //   }
   // }, [isAuthenticated, navigate])
+  useEffect(() => {
+    document.title = 'Login | Coffee shop'
+  }, [])
   return (
     <>
       <FullPageSpin isSpinning={signIn.isPending}></FullPageSpin>

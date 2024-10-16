@@ -17,7 +17,12 @@
   position: relative;
   display: flex;
   justify-content: space-between;
-  @extend %flexItemsCenter;
+  align-items: center;
+
+  @include abstracts.screen(md) {
+    justify-content: unset;
+    // margin-left: 55px;
+  }
   &__logo {
     @include abstracts.screen(lg) {
       // margin-left: 55px;
@@ -29,5 +34,8 @@
       // transform: translate(-50%, -50%);
       margin-left: 0;
     }
+  }
+  &__more {
+    margin-right: 8px;
   }
 }

@@ -7,6 +7,7 @@ import NotFound from '../../components/NotFound'
 import { useSelector } from 'react-redux'
 import { RootState } from '~/store'
 import { LuPackageX } from 'react-icons/lu'
+import { useEffect } from 'react'
 const Checkout = () => {
   const cartList = useSelector((state: RootState) => state.cart.cart)
   const breadcrumbArray = [
@@ -19,7 +20,9 @@ const Checkout = () => {
       path: 'checkout'
     }
   ]
-
+  useEffect(() => {
+    document.title = 'Checkout | Coffee Store'
+  }, [])
   return (
     <main className='checkout-page'>
       <div className='container'>
