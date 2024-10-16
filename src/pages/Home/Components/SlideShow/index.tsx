@@ -23,7 +23,7 @@ const index = () => {
         <a href='#'>
           <picture>
             <source media='(max-width: 767.98px)' srcSet={slideImage1Mb} />
-            <img className='slideshow__image' src={slideImage1} alt='' />
+            <img className='slideshow__image' src={slideImage1} alt='slideshow-img' />
           </picture>
         </a>
       </div>

@@ -18,7 +18,7 @@ const ImageReview = ({ listProductImage }: ImageReviewProps) => {
     <div className='prod-preview'>
       <div className='prod-preview__list'>
         <div className='prod-preview__item'>
-          <img alt='' className='prod-preview__img' src={currentImage} />
+          <img alt='prod-preview-img' className='prod-preview__img' src={currentImage} />
         </div>
       </div>
       <div className='prod-preview__thumbs'>
@@ -26,7 +26,7 @@ const ImageReview = ({ listProductImage }: ImageReviewProps) => {
           <img
             onMouseEnter={() => handleHover(image)}
             key={index}
-            alt=''
+            alt='prod-preview-img'
             className={`prod-preview__thumb-img ${currentImage === image ? 'prod-preview__thumb-img--current' : ''}`}
             src={image}
           />

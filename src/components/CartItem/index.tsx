@@ -26,7 +26,7 @@ const CartItem = ({ cartItem }: { cartItem: CartItemType }) => {
   return (
     <article className='cart-item'>
       <Link to='/product/2'>
-        <img src={cartItem.thumbImg} alt='' className='cart-item__thumb' />
+        <img src={cartItem.thumbImg} alt='product-thumb' className='cart-item__thumb' />
       </Link>
       <div className='cart-item__content'>
         <div className='cart-item__content-left'>
@@ -61,7 +61,7 @@ const CartItem = ({ cartItem }: { cartItem: CartItemType }) => {
               className='cart-item__ctrl-btn js-toggle'
               toggle-target='#delete-confirm'
             >
-              <img src={TrashIcon} alt='' />
+              <img src={TrashIcon} alt='trash-icon' />
             </button>
           </div>
         </div>

@@ -8,7 +8,7 @@ interface LogoProps {
 const index = ({ isFooter = false }: LogoProps) => {
   return (
     <Link to='/' className={`logo  ${isFooter ? 'footer__logo' : 'top-bar__logo '}`}>
-      <img src={Logo} alt='grocery market' className='logo__img' />
+      <img src={Logo} alt='mycoffee logo' className='logo__img' />
       <h1 className='logo__title'>mycoffee</h1>
     </Link>
   )

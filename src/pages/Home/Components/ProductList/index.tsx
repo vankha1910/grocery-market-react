@@ -15,7 +15,6 @@ const ProductList = () => {
         <div className='filter-wrapper'>
           <Link to='/products' className='btn-filter'>
             View all
-            <img src='./assets/icons/filter.svg' alt='' />
           </Link>
         </div>
       </div>

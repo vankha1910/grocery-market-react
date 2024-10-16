@@ -14,7 +14,7 @@ const index = ({ order }: { order: OrderType }) => {
       <div className='order__products'>
         {order?.products.map((product, index) => (
           <div className='order-item' key={index}>
-            <img className='order-item__img' src={product?.thumbnail || productImage1} alt='' />
+            <img className='order-item__img' src={product?.thumbnail || productImage1} alt='product-thumb' />
             <div className='order-item__info'>
               <p className='order-item__title'>{product?.name}</p>
               <p className='order-item__price'>

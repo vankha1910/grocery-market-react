@@ -119,7 +119,7 @@ const ProfileSidebar = () => {
         {!showSider && (
           <div className='profile__sidebar'>
             <div className='profile-user'>
-              <img alt='' className='profile-user__avatar' src={user?.avatar} />
+              <img alt='user-avatar' className='profile-user__avatar' src={user?.avatar} />
               <h1 className='profile-user__name'>{user?.name || user?.email}</h1>
               <div className='edit-avatar'>
                 <label htmlFor='avatar'>

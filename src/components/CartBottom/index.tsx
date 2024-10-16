@@ -11,7 +11,7 @@ const CartBottom = () => {
         <div className='col-8 col-xxl-7'>
           <div className='cart-info__continue'>
             <Link to='/products' className='cart-info__continue-link'>
-              <img className='cart-info__continue-icon icon' src={ArrowDown} alt='' />
+              <img alt='arrow-down-icon' className='cart-info__continue-icon icon' src={ArrowDown} />
               Continue Shopping
             </Link>
           </div>

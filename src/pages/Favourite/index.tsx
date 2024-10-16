@@ -37,7 +37,7 @@ const index = () => {
           <div className='search-bar d-none d-md-flex'>
             <input type='text' name='' id='' placeholder='Search for item' className='search-bar__input' />
             <button className='search-bar__submit'>
-              <img src='./assets/icons/search.svg' alt='' className='search-bar__icon icon' />
+              <img src='./assets/icons/search.svg' alt='search' className='search-bar__icon icon' />
             </button>
           </div>
         </div>
@@ -67,7 +67,11 @@ const index = () => {
                   <div className='cart-info__row cart-info__row-md--block'>
                     <div className='cart-info__continue'>
                       <a href='./' className='cart-info__continue-link'>
-                        <img className='cart-info__continue-icon icon' src='./assets/icons/arrow-down-2.svg' alt='' />
+                        <img
+                          className='cart-info__continue-icon icon'
+                          src='./assets/icons/arrow-down-2.svg'
+                          alt='arrow-down-icon'
+                        />
                         Continue Shopping
                       </a>
                     </div>

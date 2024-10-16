@@ -20,11 +20,11 @@ const index = (props: NavbarProps) => {
     <>
       <nav id='navbar' className={`navbar ${showNavbar ? 'show' : 'hide'}`}>
         <button onClick={() => setShowNavbar(false)} className='navbar__close js-toggle d-none d-md-block '>
-          <img className='icon navbar__close-icon ' src={ArrowLeft} alt='' />
+          <img className='icon navbar__close-icon ' src={ArrowLeft} alt='arrow-left-icon' />
         </button>
         <div className='d-none d-md-flex nav-act'>
           <Link to='checkout' className='nav-btn'>
-            <img className='nav-btn__icon icon' src={CartIcon} alt='' />
+            <img className='nav-btn__icon icon' src={CartIcon} alt='cart-icon' />
             <span className='nav-btn__title'>Cart</span>
           </Link>
           {/* <Link to='favorite' className='nav-btn'>
@@ -41,7 +41,7 @@ const index = (props: NavbarProps) => {
           </li>
           <li className='navbar__item'>
             <Link to='products' className='navbar__link'>
-              Product <img src={ArrowDown} alt='' className='navbar__arrow icon' />
+              Product <img src={ArrowDown} alt='arrow-down-icon' className='navbar__arrow icon' />
             </Link>
           </li>
 
