@@ -1,5 +1,5 @@
 import './ButtonIncrease.scss'
-import { MinusIcon, PlusIcon } from '~/assets'
+import { FaPlus, FaMinus } from 'react-icons/fa6'
 
 type Props = {
   quantity: number
@@ -19,11 +19,11 @@ const index = ({
   return (
     <div className='button-increase'>
       <button disabled={isDisabledDecrease} onClick={handleDecrease} className='cart-item__input-btn'>
-        <img className='button-increase__icon' src={MinusIcon} alt='' />
+        <FaMinus className='button-increase__icon' />
       </button>
       <span>{quantity}</span>
       <button disabled={isDisabledIncrease} onClick={handleIncrease} className='cart-item__input-btn'>
-        <img className='button-increase__icon' src={PlusIcon} alt='' />
+        <FaPlus className='button-increase__icon' />
       </button>
     </div>
   )

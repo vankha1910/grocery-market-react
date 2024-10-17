@@ -7,6 +7,7 @@ import { Product } from '~/types/product.type'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '~/features/cart/cartSlice'
 import { useState } from 'react'
+
 import * as _ from 'lodash'
 const ProductInfo = ({ productInfo }: { productInfo: Product }) => {
   const [grindType, setGrindType] = useState(productInfo?.grindType[0] || 'whole bean')

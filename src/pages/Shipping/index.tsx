@@ -29,6 +29,18 @@ const breadcrumbArray = [
     path: 'shipping'
   }
 ]
+const addDays = (days: number) => {
+  const date = new Date()
+  date.setDate(date.getDate() + days)
+  return date
+}
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('en-US', {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric'
+  })
+}
 type FormData = Omit<Address, '_id'>
 const Shipping = () => {
   const { addressList } = useSelector<RootState>((state: RootState) => state.address) as AddressStateType
@@ -75,6 +87,10 @@ const Shipping = () => {
   useEffect(() => {
     document.title = 'Shipping | Coffee Store'
   }, [])
+
+  const startDate = addDays(2)
+  const endDate = addDays(4)
+
   return (
     <>
       <main className='checkout-page'>
@@ -97,7 +113,9 @@ const Shipping = () => {
             <div className='row gy-xl-3'>
               <div className='col-8 col-xl-12'>
                 <div className='cart-info'>
-                  <h2 className='cart-info__heading'>1. Shipping, arrives between Mon, May 16—Tue, May 24</h2>
+                  <h2 className='cart-info__heading'>
+                    1. Shipping, arrives between {formatDate(startDate)}—{formatDate(endDate)}
+                  </h2>
                   <div className='cart-info__separate' />
                   {/* Checkout address */}
                   <div className='user-address'>

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { GiftIcon } from '~/assets'
 import useCreateOrder from '~/features/cart/useCreateOrder'
 import { RootState } from '~/store'
@@ -16,6 +16,7 @@ type Props = {
 const CartSummary = ({ lastStep }: Props) => {
   const { isAuthenticated } = useAuth()
   const navigate = useNavigate()
+  const location = useLocation()
   const { createOrder, isPending } = useCreateOrder()
   const cartState = useSelector<RootState>((state) => state.cart) as CartState
   const addressState = useSelector<RootState>((state) => state.address) as AddressState
@@ -58,7 +59,7 @@ const CartSummary = ({ lastStep }: Props) => {
     toast.warning('You need to login first')
 
     setTimeout(() => {
-      navigate('/login')
+      navigate('/login', { state: { from: location } })
     }, 1500)
   }
   return (

@@ -62,7 +62,7 @@ const TopAction = () => {
             </div>
             {/* <div className='top-act__separate' /> */}
 
-            <div className='top-act__btn-wrap'>
+            <div className='top-act__btn-wrap d-sm-none'>
               <button className='top-act__btn'>
                 <img alt='cart-icon' className='icon top-act__icon' src={CartIcon} />
                 {cartList?.length > 0 && <span className='top-act__badge'>{cartList?.length || 0}</span>}
@@ -163,7 +163,7 @@ const TopAction = () => {
           {/* <Link to='/register' className='btn btn--text d-md-none'>
             Sign In
           </Link> */}
-          <div className='top-act__btn-wrap'>
+          <div className='top-act__btn-wrap d-sm-none'>
             <Link to='/checkout' className='top-act__btn'>
               <img alt='cart-icon' aria-label='cart-icon' className='icon top-act__icon' src={CartIcon} />
               {cartList?.length > 0 && <span className='top-act__badge'>{cartList?.length || 0}</span>}
