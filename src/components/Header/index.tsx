@@ -2,8 +2,9 @@ import './header.scss'
 import Navbar from '../Navbar'
 import Logo from '../Logo'
 import TopAction from '../TopAction'
-import { MenuToggleIcon } from '~/assets'
 import { useState } from 'react'
+import { RxHamburgerMenu } from 'react-icons/rx'
+
 const Header = () => {
   const [showNavbar, setShowNavbar] = useState(false)
   return (
@@ -15,9 +16,11 @@ const Header = () => {
             toggle-target='#navbar'
             className='top-bar__more js-toggle d-none d-md-block'
           >
-            <img className='top-bar__more-icon icon' src={MenuToggleIcon} alt='toggle-icon' />
+            <RxHamburgerMenu fontSize={24} className='top-bar__more-icon icon' />
+            {/* <img className='top-bar__more-icon icon' src={MenuToggleIcon} alt='toggle-icon' /> */}
           </button>
           <Logo />
+
           <Navbar showNavbar={showNavbar} setShowNavbar={setShowNavbar} />
           <TopAction />
         </div>
