@@ -5,6 +5,9 @@
     width: 100% !important;
     height: 100% !important;
   }
+  .ant-skeleton {
+    overflow: hidden;
+  }
 }
 .product-card__row {
   .product-card__price {
