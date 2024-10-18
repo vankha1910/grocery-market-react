@@ -32,6 +32,7 @@ const useSignUp = () => {
     },
     onError: (error) => {
       console.log(`error ${error}`)
+      toast.error('Something went wrong, please try again')
     },
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ['auth'] })

@@ -22,7 +22,7 @@ export const useChangePassword = () => {
     },
     onError: (error) => {
       console.error(error)
-      toast.error("Current password doesn't match")
+      toast.error('Something went wrong, please try again')
     }
   })
   return changePassword
